@@ -9,7 +9,7 @@ public class ProductoFisico  extends Producto{
     private String codigoBarras;
     private String ubicacion;
     private int descuento;
-
+// nombre de la fruta 
     public ProductoFisico(String nombre, double precio, String categoria, String marca, int stock, String codigoBarras, String ubicacion, int descuento) throws CampoVacioException {
         super(nombre, precio, categoria);
         this.marca = marca;
