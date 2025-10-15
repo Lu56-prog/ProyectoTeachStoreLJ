@@ -14,5 +14,6 @@ public class TeachStoreLJ {
         } catch (CampoVacioException ex){
             System.out.println("Error: " + ex.getMessage());
         }
+        System.out.println("Hola");
     }
 }
