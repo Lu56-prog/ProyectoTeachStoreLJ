@@ -4,9 +4,9 @@ package Clases;
 import MeException.*;
 
 public abstract class Producto{
-    private String nombre;
-    private double precio;
-    private String categoria;
+    protected  String nombre;
+    protected double precio;
+    protected  String categoria;
 
     public Producto(String nombre, double precio, String categoria) throws CampoVacioException{
         setNombre(nombre);
@@ -18,9 +18,9 @@ public abstract class Producto{
         return nombre;
     }
 
-    private void setNombre(String nombre) throws CampoVacioException{
+    private void setNombre(String nombre){
         if(nombre.trim().isEmpty()){
-            throw new CampoVacioException("¡El nombre no puede ser un campo vacio!");
+            throw new CampoVacioException("El nombre no puede ser un campo vacio");
         }
         this.nombre = nombre;
     }
@@ -30,6 +30,9 @@ public abstract class Producto{
     }
 
     private void setPrecio(double precio) {
+        if(precio<=0){
+            throw new NumeroMenorACero("El precio no puede ser menor a 0");
+        }
         this.precio = precio;
     }
 
@@ -38,6 +41,9 @@ public abstract class Producto{
     }
 
     private void setCategoria(String categoria) {
+        if(categoria.trim().isEmpty()){
+            throw new CampoVacioException("Ctegoria no puede ser un campo vacio");
+        }
         this.categoria = categoria;
     } 
 }
