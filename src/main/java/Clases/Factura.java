@@ -4,12 +4,13 @@ package Clases;
 import java.util.Date;
 
 //Falta heredar de orden de compra
-public class Factura {
-    private String idFactura;
-    private String codigoLicencia;
-    private Date fechaRegistro;
-    private Date horaRegistro;
-    private String cajeroVenta;
-    private MetodoPago metodoPago;
+public class Factura extends OrdenCompra {
+    protected  String idFactura;
+    protected String codigoLicencia;
+    protected  Date fechaRegistro;
+    protected  Date horaRegistro;
+    protected  String cajeroVenta;
+    protected  MetodoPago metodoPago;
+    
     
 }

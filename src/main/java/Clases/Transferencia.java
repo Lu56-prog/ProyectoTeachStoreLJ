@@ -2,7 +2,7 @@
 package Clases;
 
 public class Transferencia extends MetodoPago {
-    private int numeroReferencia;
-    private boolean confirmacion;
+    protected  int numeroReferencia;
+    protected boolean confirmacion;
     
 }

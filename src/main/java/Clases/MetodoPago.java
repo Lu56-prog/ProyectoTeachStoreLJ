@@ -1,9 +1,8 @@
 
 package Clases;
 public class MetodoPago {
- 
-    private double totalPagar;
-    private String metodoPago;
-    private boolean estadoPago;
+    protected double totalPagar;
+    protected  String metodoPago;
+    protected  boolean estadoPago;
     
 }

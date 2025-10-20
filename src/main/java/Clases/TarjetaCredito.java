@@ -2,9 +2,8 @@
 package Clases;
 
 public class TarjetaCredito extends MetodoPago {
-    private int numero;
-    private double cuotas;
-    private double totalRecargo;
-    private double totalPagar;
-    s
+    protected  int numero;
+    protected  double cuotas;
+    protected  double totalRecargo;
+    protected double totalPagar;
 }
