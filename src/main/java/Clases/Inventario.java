@@ -2,13 +2,14 @@
 package Clases;
 
 import java.time.LocalDate;
+import java.util.*;
 
 public class Inventario {
-    ProductoFisico listaProductos;
-    LocalDate fechaActualizacion;
+    public List<ProductoFisico> listaProductos;
+    public LocalDate fechaActualizacion;
 
-    public Inventario(ProductoFisico listaProductos, LocalDate fechaActualizacion) {
-        this.listaProductos = listaProductos;
+    public Inventario() {
+        this.listaProductos = new ArrayList<>();
         this.fechaActualizacion = LocalDate.now();
     }
 }

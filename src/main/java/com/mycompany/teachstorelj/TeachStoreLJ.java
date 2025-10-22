@@ -7,10 +7,13 @@ import MeException.*;
 import GUI.*;
 
 public class TeachStoreLJ {
+    
+    public static Inventario inventario;
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame();
+        inventario = new Inventario();
         
+        MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         mainFrame.setLocationRelativeTo(null);
     }

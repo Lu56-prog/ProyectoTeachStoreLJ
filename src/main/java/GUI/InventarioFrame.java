@@ -30,10 +30,11 @@ public class InventarioFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        buttonCrearProducto4 = new javax.swing.JButton();
-        buttonCrearProducto7 = new javax.swing.JButton();
-        buttonCrearProducto8 = new javax.swing.JButton();
-        buttonCrearProducto9 = new javax.swing.JButton();
+        btnModificarProducto = new javax.swing.JButton();
+        btnAgregarProducto = new javax.swing.JButton();
+        btnEliminarProducto = new javax.swing.JButton();
+        btnVerProductos = new javax.swing.JButton();
+        btnModificarProducto2 = new javax.swing.JButton();
 
         buttonCrearProducto1.setBackground(new java.awt.Color(39, 241, 82));
         buttonCrearProducto1.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
@@ -50,55 +51,68 @@ public class InventarioFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 46));
 
-        jLabel2.setBackground(new java.awt.Color(238, 238, 238));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(238, 238, 238));
         jLabel2.setText("TechStore");
 
-        jLabel1.setBackground(new java.awt.Color(238, 238, 238));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(238, 238, 238));
         jLabel1.setText("Inventario");
 
-        buttonCrearProducto4.setBackground(new java.awt.Color(39, 241, 82));
-        buttonCrearProducto4.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
-        buttonCrearProducto4.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCrearProducto4.setText("Modificar Producto");
-        buttonCrearProducto4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        buttonCrearProducto4.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarProducto.setBackground(new java.awt.Color(39, 241, 82));
+        btnModificarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnModificarProducto.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarProducto.setText("Modificar Producto");
+        btnModificarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCrearProducto4ActionPerformed(evt);
+                btnModificarProductoActionPerformed(evt);
             }
         });
 
-        buttonCrearProducto7.setBackground(new java.awt.Color(39, 241, 82));
-        buttonCrearProducto7.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
-        buttonCrearProducto7.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCrearProducto7.setText("Agregar Producto");
-        buttonCrearProducto7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        buttonCrearProducto7.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarProducto.setBackground(new java.awt.Color(39, 241, 82));
+        btnAgregarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregarProducto.setText("Agregar Producto");
+        btnAgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCrearProducto7ActionPerformed(evt);
+                btnAgregarProductoActionPerformed(evt);
             }
         });
 
-        buttonCrearProducto8.setBackground(new java.awt.Color(39, 241, 82));
-        buttonCrearProducto8.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
-        buttonCrearProducto8.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCrearProducto8.setText("Eliminar Producto");
-        buttonCrearProducto8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        buttonCrearProducto8.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarProducto.setBackground(new java.awt.Color(39, 241, 82));
+        btnEliminarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnEliminarProducto.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarProducto.setText("Eliminar Producto");
+        btnEliminarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCrearProducto8ActionPerformed(evt);
+                btnEliminarProductoActionPerformed(evt);
             }
         });
 
-        buttonCrearProducto9.setBackground(new java.awt.Color(39, 241, 82));
-        buttonCrearProducto9.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
-        buttonCrearProducto9.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCrearProducto9.setText("Ver Producto");
-        buttonCrearProducto9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        buttonCrearProducto9.addActionListener(new java.awt.event.ActionListener() {
+        btnVerProductos.setBackground(new java.awt.Color(39, 241, 82));
+        btnVerProductos.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnVerProductos.setForeground(new java.awt.Color(0, 0, 0));
+        btnVerProductos.setText("Ver Productos");
+        btnVerProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCrearProducto9ActionPerformed(evt);
+                btnVerProductosActionPerformed(evt);
+            }
+        });
+
+        btnModificarProducto2.setBackground(new java.awt.Color(39, 241, 82));
+        btnModificarProducto2.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnModificarProducto2.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarProducto2.setText("Inicio");
+        btnModificarProducto2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnModificarProducto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicio(evt);
             }
         });
 
@@ -112,20 +126,23 @@ public class InventarioFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(buttonCrearProducto8, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCrearProducto9, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(buttonCrearProducto7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCrearProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(btnModificarProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,13 +153,15 @@ public class InventarioFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCrearProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCrearProducto7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCrearProducto9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCrearProducto8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(btnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(btnModificarProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,30 +182,44 @@ public class InventarioFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCrearProducto1ActionPerformed
 
-    private void buttonCrearProducto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearProducto4ActionPerformed
+    private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCrearProducto4ActionPerformed
+    }//GEN-LAST:event_btnModificarProductoActionPerformed
 
-    private void buttonCrearProducto7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearProducto7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCrearProducto7ActionPerformed
+    private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
+        AgregarProductoFisicoFrame apf = new AgregarProductoFisicoFrame();
+        apf.setVisible(true);
+        apf.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
-    private void buttonCrearProducto8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearProducto8ActionPerformed
+    private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCrearProducto8ActionPerformed
+    }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
-    private void buttonCrearProducto9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearProducto9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCrearProducto9ActionPerformed
+    private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
+        MostrarProductoFram mpf = new MostrarProductoFram();
+        mpf.setVisible(true);
+        mpf.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btnVerProductosActionPerformed
+
+    private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
+        MainFrame mn = new MainFrame();
+        mn.setVisible(true);
+        mn.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btnInicio
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarProducto;
+    private javax.swing.JButton btnEliminarProducto;
+    private javax.swing.JButton btnModificarProducto;
+    private javax.swing.JButton btnModificarProducto2;
+    private javax.swing.JButton btnVerProductos;
     private javax.swing.JButton buttonCrearProducto1;
-    private javax.swing.JButton buttonCrearProducto4;
-    private javax.swing.JButton buttonCrearProducto7;
-    private javax.swing.JButton buttonCrearProducto8;
-    private javax.swing.JButton buttonCrearProducto9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
