@@ -183,7 +183,10 @@ public class InventarioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCrearProducto1ActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
-        // TODO add your handling code here:
+        ModificarProdutoFrame mpf = new  ModificarProdutoFrame();
+        mpf.setVisible(true);
+        mpf.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
@@ -198,9 +201,9 @@ public class InventarioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
-        MostrarProductoFram mpf = new MostrarProductoFram();
-        mpf.setVisible(true);
-        mpf.setLocationRelativeTo(null);
+        VerProductosFrame vpf = new VerProductosFrame();
+        vpf.setVisible(true);
+        vpf.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btnVerProductosActionPerformed
 

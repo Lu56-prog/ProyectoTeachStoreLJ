@@ -85,5 +85,19 @@ public class ProductoFisico  extends Producto{
         this.descuento = descuento;
     }
     
+    public void modificarProducto(String nombre, double precio, String categoria, String marca, int stock, String ubicacion, int descuento){
+        setNombre(nombre);
+        setPrecio(precio);
+        setCategoria(categoria);
+        setMarca(marca);
+        setStock(stock);
+        setCodigoBarras();
+        setUbicacion(ubicacion);
+        setDescuento(descuento);
+    }
     
+    @Override
+    public String toString() {
+        return this.codigoBarras + " -> " + this.nombre;
+    }
 }

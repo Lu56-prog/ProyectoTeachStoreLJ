@@ -18,7 +18,7 @@ public abstract class Producto{
         return nombre;
     }
 
-    private void setNombre(String nombre){
+    protected void setNombre(String nombre){
         if(nombre.trim().isEmpty()){
             throw new CampoVacioException("El nombre no puede ser un campo vacio");
         }
@@ -29,7 +29,7 @@ public abstract class Producto{
         return precio;
     }
 
-    private void setPrecio(double precio) {
+    protected void setPrecio(double precio) {
         if(precio<=0){
             throw new NumeroMenorACero("El precio no puede ser menor a 0");
         }
@@ -40,7 +40,7 @@ public abstract class Producto{
         return categoria;
     }
 
-    private void setCategoria(String categoria) {
+    protected void setCategoria(String categoria) {
         if(categoria.trim().isEmpty()){
             throw new CampoVacioException("Ctegoria no puede ser un campo vacio");
         }

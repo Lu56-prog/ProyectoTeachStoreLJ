@@ -343,10 +343,23 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
         String nombreProducto = txtNombre.getText();
-        double precioProducto = Double.parseDouble(txtPrecio.getText());
+        String precioTexto = txtPrecio.getText();
+        precioTexto = precioTexto.replace(".", "");
+        precioTexto = precioTexto.replace(",", "");
+        double precioProducto = -1;
+        try {
+            precioProducto = Double.parseDouble(precioTexto); 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
+        }
         String categoriaProducto = comboCategoria.getSelectedItem().toString();
         String marcaProducto = txtMarca.getText();
-        int stockProducto = Integer.parseInt(txtStock.getText());
+        int stockProducto = -1;
+        try {
+            stockProducto = Integer.parseInt(txtStock.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifica que Stock sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
+        }
         String ubicacionProducto = txtUbicacion.getText();
         int descuento = Integer.parseInt(txtDescuento.getText());
         AgregarProductoFisicoFrame apf = new AgregarProductoFisicoFrame();

@@ -13,14 +13,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Lucerito
  */
-public class MostrarProductoFram extends javax.swing.JFrame {
+public class VerProductosFrame extends javax.swing.JFrame {
     
     DefaultTableModel mt  = new DefaultTableModel();
 
     /**
      * Creates new form MostrarProductoFram
      */
-    public MostrarProductoFram() {
+    public VerProductosFrame() {
         initComponents();
         
         String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
@@ -130,12 +130,11 @@ public class MostrarProductoFram extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
