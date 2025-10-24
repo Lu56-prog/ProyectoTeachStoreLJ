@@ -9,8 +9,9 @@ import MeException.CampoVacioException;
 import MeException.NumeroMenorACero;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 
 public class ModificarProdutoFrame extends javax.swing.JFrame {
@@ -474,7 +475,12 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         ProductoFisico productoElegido = (ProductoFisico) comboProductos.getSelectedItem();
         
         txtNombre2.setText(productoElegido.getNombre());
-        txtPrecio2.setText(String.valueOf(productoElegido.getPrecio()));
+        
+        double precio = productoElegido.getPrecio();
+        DecimalFormat fm = new DecimalFormat("#, ###");
+        String precioFormateado = fm.format(precio);
+        
+        txtPrecio2.setText(precioFormateado);
         comboCategoria2.setSelectedItem(productoElegido.getCategoria());
         txtMarca2.setText(productoElegido.getMarca());
         txtStock2.setText(String.valueOf(productoElegido.getStock()));

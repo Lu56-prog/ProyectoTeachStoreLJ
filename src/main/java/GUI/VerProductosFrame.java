@@ -26,12 +26,12 @@ public class VerProductosFrame extends javax.swing.JFrame {
         
         actualizarTabla();
         
-        comboPrecio.addItem("Todos");
-        comboPrecio.addItem("$0 - $9.999");
-        comboPrecio.addItem("$10.000 - $19.999");
-        comboPrecio.addItem("$20.000 - $29.999");
-        comboPrecio.addItem("$30.000 - $49.999");
-        comboPrecio.addItem("Más de $50.000");
+        comboPrecio.addItem("$0 - $499.999");
+        comboPrecio.addItem("$500.000 - $1.499.999");
+        comboPrecio.addItem("$1.500.000 - $2.999.999");
+        comboPrecio.addItem("$3.000.000 - $4.999.999");
+        comboPrecio.addItem("$5.000.000 - $9.999.999");
+        comboPrecio.addItem("$10.000.000 o más"); 
     }
 
     /**
@@ -47,6 +47,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        comboCategoria1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -56,6 +57,11 @@ public class VerProductosFrame extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
         comboPrecio = new javax.swing.JComboBox<>();
+        comboCategoria = new javax.swing.JComboBox<>();
+        comboStock = new javax.swing.JComboBox<>();
+        txtCodigo = new javax.swing.JTextField();
+        txtUbicacion = new javax.swing.JTextField();
+        comboDescuento = new javax.swing.JComboBox<>();
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
@@ -76,6 +82,13 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(238, 238, 238));
         jLabel5.setText("Agregar Producto");
+
+        comboCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
+        comboCategoria1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCategoria1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -132,8 +145,54 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
         txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtMarcaKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMarcaKetReleased(evt);
+            }
+        });
+
+        comboPrecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        comboPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPrecioActionPerformed(evt);
+            }
+        });
+
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
+        comboCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCategoriaActionPerformed(evt);
+            }
+        });
+
+        comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Stock bajo" }));
+        comboStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboStockActionPerformed(evt);
+            }
+        });
+
+        txtCodigo.setText("PR-FISICO-00");
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodigoKetReleased(evt);
+            }
+        });
+
+        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUbicacionKetReleased(evt);
+            }
+        });
+
+        comboDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Con descuento", "Sin descuento" }));
+        comboDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDescuentoActionPerformed(evt);
             }
         });
 
@@ -141,49 +200,63 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(430, 430, 430))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1011, 1130, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel7)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(161, 161, 161)
-                                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 11, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,9 +293,41 @@ public class VerProductosFrame extends javax.swing.JFrame {
        actualizarTabla();
     }//GEN-LAST:event_txtMarcaActionPerformed
 
-    private void txtMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyPressed
+    private void comboPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrecioActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtMarcaKeyPressed
+    }//GEN-LAST:event_comboPrecioActionPerformed
+
+    private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboCategoriaActionPerformed
+
+    private void comboStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStockActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboStockActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtMarcaKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKetReleased
+       actualizarTabla();
+    }//GEN-LAST:event_txtMarcaKetReleased
+
+    private void txtCodigoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtCodigoKetReleased
+
+    private void txtUbicacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtUbicacionKetReleased
+
+    private void comboCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoria1ActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboCategoria1ActionPerformed
+
+    private void comboDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDescuentoActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboDescuentoActionPerformed
 
     private void actualizarTabla(){
         mt.setRowCount(0);
@@ -246,19 +351,75 @@ public class VerProductosFrame extends javax.swing.JFrame {
            String ubicacion = producto.getUbicacion();
            double descuento = producto.getDescuento();
            
-           if((txtNombre.getText()).equals("") && (txtMarca.getText()).equals("")){
-               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
+           //Validar rango de precio
+           String eleccionPrecio = comboPrecio.getSelectedItem().toString();
+           boolean controladorPrecio;
+           if(eleccionPrecio.equals("Todos")){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
+               controladorPrecio = true;
            } else{
-                if(nombre.startsWith(txtNombre.getText()) && marca.startsWith(txtMarca.getText())){
-                    mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
-                }
+               controladorPrecio = false;
+           }
+           
+           //Validar categoria escogida
+           String eleccioCategoria = comboCategoria.getSelectedItem().toString();
+           boolean controlCategoria = false;
+           if(eleccioCategoria.equals("Todos") || eleccioCategoria.equals(categoria)){
+               controlCategoria = true;
+           }
+           
+           //Validar stock elegido
+           String eleccionStock = comboStock.getSelectedItem().toString();
+           boolean controlStock = false;
+           if(eleccionStock.equals("Todos")){
+               controlStock = true;
+           } else if (eleccionStock.equals("Stock bajo") && stock <= 5){
+               controlStock = true;
+           }
+           
+           //Validar descuentoe elegido
+           String eleccionDescuento = comboDescuento.getSelectedItem().toString();
+           boolean controlDescuento = false;
+           if(eleccionDescuento.equals("Todos")){
+               controlDescuento = true;
+           } else if (eleccionDescuento.equals("Con descuento") && descuento > 0){
+               controlDescuento = true;
+           } else if (eleccionDescuento.equals("Sin descuento") && descuento == 0){
+               controlDescuento = true;
+           }
+           
+           //Mostrar tabla segun busqueda
+           if(nombre.startsWith(txtNombre.getText()) && 
+                   marca.startsWith(txtMarca.getText()) && 
+                   controladorPrecio &&
+                   controlCategoria &&
+                   controlStock &&
+                   codigoBarras.startsWith(txtCodigo.getText()) &&
+                   ubicacion.startsWith(txtUbicacion.getText()) &&
+                   controlDescuento){
+               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
            }
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
+    private javax.swing.JComboBox<String> comboCategoria;
+    private javax.swing.JComboBox<String> comboCategoria1;
+    private javax.swing.JComboBox<String> comboDescuento;
     private javax.swing.JComboBox<String> comboPrecio;
+    private javax.swing.JComboBox<String> comboStock;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -268,7 +429,9 @@ public class VerProductosFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableProductos;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }

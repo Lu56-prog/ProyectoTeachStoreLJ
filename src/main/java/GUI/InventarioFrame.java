@@ -197,7 +197,10 @@ public class InventarioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
-        // TODO add your handling code here:
+        EliminarProductoFrame epf = new EliminarProductoFrame();
+        epf.setVisible(true);
+        epf.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
