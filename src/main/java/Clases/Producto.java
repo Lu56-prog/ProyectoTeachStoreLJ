@@ -42,7 +42,7 @@ public abstract class Producto{
 
     protected void setCategoria(String categoria) {
         if(categoria.trim().isEmpty()){
-            throw new CampoVacioException("Ctegoria no puede ser un campo vacio");
+            throw new CampoVacioException("Categoria no puede ser un campo vacio");
         }
         this.categoria = categoria;
     } 

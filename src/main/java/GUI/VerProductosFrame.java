@@ -7,6 +7,7 @@ package GUI;
 import Clases.*;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,25 +24,14 @@ public class VerProductosFrame extends javax.swing.JFrame {
     public VerProductosFrame() {
         initComponents();
         
-        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
-        mt.setColumnIdentifiers(encabezado);
+        actualizarTabla();
         
-        tableProductos.setModel(mt);
-        
-        List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
-        
-        for(ProductoFisico producto : productosFisicos) {
-           String nombre = producto.getNombre();
-           double precio = producto.getPrecio();
-           String categoria = producto.getCategoria();
-           String marca = producto.getMarca();
-           int stock = producto.getStock();
-           String codigoBarras = producto.getCodigoBarras();
-           String ubicacion = producto.getUbicacion();
-           double descuento = producto.getDescuento();
-           
-           mt.addRow(new Object[] {nombre, precio, categoria, marca, stock, codigoBarras, ubicacion, descuento});
-        }
+        comboPrecio.addItem("Todos");
+        comboPrecio.addItem("$0 - $9.999");
+        comboPrecio.addItem("$10.000 - $19.999");
+        comboPrecio.addItem("$20.000 - $29.999");
+        comboPrecio.addItem("$30.000 - $49.999");
+        comboPrecio.addItem("Más de $50.000");
     }
 
     /**
@@ -63,6 +53,9 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProductos = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        comboPrecio = new javax.swing.JComboBox<>();
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
@@ -85,7 +78,6 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jLabel5.setText("Agregar Producto");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 46));
 
@@ -123,27 +115,57 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKetReleased(evt);
+            }
+        });
+
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMarcaActionPerformed(evt);
+            }
+        });
+        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMarcaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(430, 430, 430))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1011, 1130, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(161, 161, 161)
+                                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,11 +174,16 @@ public class VerProductosFrame extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,9 +208,57 @@ public class VerProductosFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtNombreKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtNombreKetReleased
+
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+       actualizarTabla();
+    }//GEN-LAST:event_txtMarcaActionPerformed
+
+    private void txtMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyPressed
+        actualizarTabla();
+    }//GEN-LAST:event_txtMarcaKeyPressed
+
+    private void actualizarTabla(){
+        mt.setRowCount(0);
+        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
+        mt.setColumnIdentifiers(encabezado);
+        
+        tableProductos.setModel(mt);
+        
+        List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
+        
+        
+        for(ProductoFisico producto : productosFisicos) {
+           String nombre = producto.getNombre();
+           double precio = producto.getPrecio();
+           DecimalFormat fm = new DecimalFormat("#, ###");
+           String precioFormateado = fm.format(precio);
+           String categoria = producto.getCategoria();
+           String marca = producto.getMarca();
+           int stock = producto.getStock();
+           String codigoBarras = producto.getCodigoBarras();
+           String ubicacion = producto.getUbicacion();
+           double descuento = producto.getDescuento();
+           
+           if((txtNombre.getText()).equals("") && (txtMarca.getText()).equals("")){
+               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
+           } else{
+                if(nombre.startsWith(txtNombre.getText()) && marca.startsWith(txtMarca.getText())){
+                    mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
+                }
+           }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
+    private javax.swing.JComboBox<String> comboPrecio;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -193,5 +268,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableProductos;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
