@@ -14,15 +14,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EliminarProductoFrame extends javax.swing.JFrame {
+    Frames recargarPagina = new Frames();
     DefaultTableModel mt  = new DefaultTableModel();
-    /**
-     * Creates new form EliminarProductoFrame
-     */
     public EliminarProductoFrame() {
         initComponents();
         
+        //Atraemos la lista de productos fisicos
         List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
         
+        //Cada producto lo agregamos al comboBox
         for(ProductoFisico producto: productosFisicos){
             comboProductos.addItem(producto);
         }
@@ -62,6 +62,7 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         jLabel102.setText("Eliminar Producto");
 
         comboProductos.setBackground(new java.awt.Color(59, 63, 66));
+        comboProductos.setForeground(new java.awt.Color(255, 255, 255));
         comboProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboProductosActionPerformed(evt);
@@ -71,7 +72,7 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(59, 63, 66));
 
         btnEliminarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnEliminarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnEliminarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminarProducto.setText("Eliminar");
         btnEliminarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -82,7 +83,7 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         });
 
         btnInicio12.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio12.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnInicio12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnInicio12.setForeground(new java.awt.Color(0, 0, 0));
         btnInicio12.setText("Inicio");
         btnInicio12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -137,16 +138,13 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel101)
                         .addGap(0, 679, Short.MAX_VALUE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(comboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(299, 299, 299)
@@ -186,22 +184,24 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboProductosActionPerformed
 
     private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
+        //Segun el producto elegido, lo eliminamos de la lista
         ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
         
         TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
         JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
-        recargarPagina();
+        
+        dispose();
+        recargarPagina.recargarEliminarProducto();
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void btnInicio12(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio12
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio12
     
     private void actualizarTabla(){
+        //Cada escoge un producto se muestra le informacion de este
+        //Cada que escoga un producto diferente la tabla debe actualizarce 
         mt.setRowCount(0);
         String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
         mt.setColumnIdentifiers(encabezado);
@@ -223,13 +223,6 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         double descuento = productoEliminar.getDescuento();
         
         mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
-    }
-    
-    private void recargarPagina(){
-        dispose();
-        EliminarProductoFrame epf = new EliminarProductoFrame();
-        epf.setVisible(true);
-        epf.setLocationRelativeTo(null);
     }
 
 

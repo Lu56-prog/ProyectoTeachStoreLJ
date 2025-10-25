@@ -18,14 +18,14 @@ public class VerProductosFrame extends javax.swing.JFrame {
     
     DefaultTableModel mt  = new DefaultTableModel();
 
-    /**
-     * Creates new form MostrarProductoFram
-     */
+    Frames recargarPagina = new Frames();
     public VerProductosFrame() {
         initComponents();
         
+        //Se actualiza la tabla
         actualizarTabla();
         
+        //Agregamos los items al filtro de precio
         comboPrecio.addItem("$0 - $499.999");
         comboPrecio.addItem("$500.000 - $1.499.999");
         comboPrecio.addItem("$1.500.000 - $2.999.999");
@@ -118,7 +118,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableProductos);
 
         btnInicio.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnInicio.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnInicio.setText("Inicio");
         btnInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -128,6 +128,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setBackground(new java.awt.Color(59, 63, 66));
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -139,6 +141,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        txtMarca.setBackground(new java.awt.Color(59, 63, 66));
+        txtMarca.setForeground(new java.awt.Color(255, 255, 255));
         txtMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMarcaActionPerformed(evt);
@@ -150,6 +154,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        comboPrecio.setBackground(new java.awt.Color(59, 63, 66));
+        comboPrecio.setForeground(new java.awt.Color(255, 255, 255));
         comboPrecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
         comboPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +163,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        comboCategoria.setBackground(new java.awt.Color(59, 63, 66));
+        comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
         comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
         comboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +172,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        comboStock.setBackground(new java.awt.Color(59, 63, 66));
+        comboStock.setForeground(new java.awt.Color(255, 255, 255));
         comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Stock bajo" }));
         comboStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +181,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        txtCodigo.setBackground(new java.awt.Color(59, 63, 66));
+        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
         txtCodigo.setText("PR-FISICO-00");
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,12 +195,16 @@ public class VerProductosFrame extends javax.swing.JFrame {
             }
         });
 
+        txtUbicacion.setBackground(new java.awt.Color(59, 63, 66));
+        txtUbicacion.setForeground(new java.awt.Color(255, 255, 255));
         txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtUbicacionKetReleased(evt);
             }
         });
 
+        comboDescuento.setBackground(new java.awt.Color(59, 63, 66));
+        comboDescuento.setForeground(new java.awt.Color(255, 255, 255));
         comboDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Con descuento", "Sin descuento" }));
         comboDescuento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,17 +227,15 @@ public class VerProductosFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jLabel7)))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel7))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(12, 12, 12)
+                                .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -243,15 +257,16 @@ public class VerProductosFrame extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel7)
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboCategoria)
+                        .addComponent(comboPrecio)
+                        .addComponent(comboStock)
+                        .addComponent(txtCodigo)
+                        .addComponent(txtUbicacion)
+                        .addComponent(comboDescuento)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -274,13 +289,12 @@ public class VerProductosFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
+        //Boton inicio
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicioActionPerformed
-
+    
+    //Cada que agrega un nuevo filtro o buscador se actualiza la tabla
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -330,6 +344,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboDescuentoActionPerformed
 
     private void actualizarTabla(){
+        //Actualizamos al tabla segun los filtros deseados
         mt.setRowCount(0);
         String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
         mt.setColumnIdentifiers(encabezado);
@@ -399,7 +414,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
                controlDescuento = true;
            }
            
-           //Mostrar tabla segun busqueda
+           //Mostrar tabla según busqueda, si el producto cumple con cada caracteristica se mostrara
            if(nombre.startsWith(txtNombre.getText()) && 
                    marca.startsWith(txtMarca.getText()) && 
                    controladorPrecio &&

@@ -15,9 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AgregarProductoFisicoFrame
-     */
+    Frames recargarPagina = new Frames();
+    
     public AgregarProductoFisicoFrame() {
         initComponents();
     }
@@ -189,7 +188,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         txtDescuento.setText("0");
 
         btnAgregarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnAgregarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnAgregarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarProducto.setText("Guardar");
         btnAgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -200,7 +199,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         });
 
         btnInicio.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnInicio.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnInicio.setText("Inicio");
         btnInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -342,11 +341,14 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboCategoriaProducto1ActionPerformed
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
+
+        //Abstraemos los datos registrados por el usuario
         String nombreProducto = txtNombre.getText();
         String precioTexto = txtPrecio.getText();
         precioTexto = precioTexto.replace(".", "");
         precioTexto = precioTexto.replace(",", "");
         double precioProducto = -1;
+        //Nos aseguramos de que el precio sea un número
         try {
             precioProducto = Double.parseDouble(precioTexto); 
         } catch (NumberFormatException e) {
@@ -355,6 +357,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         String categoriaProducto = comboCategoria.getSelectedItem().toString();
         String marcaProducto = txtMarca.getText();
         int stockProducto = -1;
+        //Nos aseguramos que el stock sea un numero
         try {
             stockProducto = Integer.parseInt(txtStock.getText());
         } catch (NumberFormatException e) {
@@ -362,44 +365,40 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         }
         String ubicacionProducto = txtUbicacion.getText();
         int descuento = Integer.parseInt(txtDescuento.getText());
-        AgregarProductoFisicoFrame apf = new AgregarProductoFisicoFrame();
+        
         
         try{
+            //Creamos el nuevo producto
             ProductoFisico producto = new ProductoFisico(nombreProducto, precioProducto, categoriaProducto, marcaProducto, stockProducto, ubicacionProducto, descuento);
             producto.mostrarInfo();
+            //Agregamos el producto al inventario
             TeachStoreLJ.inventario.listaProductos.add(producto);
             JOptionPane.showMessageDialog(null, "Producto Fisico Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            //Al agregar el producto la pagina se actualiza
             dispose();
-            apf.setVisible(true);
-            apf.setLocationRelativeTo(null);
+            recargarPagina.recargarAgregarProducto();
+            
         } catch (CampoVacioException ex){
+            //Verificamos que ningun campo este vacio
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
         } catch(NumeroMenorACero ex){
+            //Verificamos que ningun número sobrepase el rango
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnModificarProducto2btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProducto2btnInicio
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btnModificarProducto2btnInicio
 
     private void btnModificarProducto3btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProducto3btnInicio
-        MainFrame mn = new MainFrame();
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
-        dispose();
+
     }//GEN-LAST:event_btnModificarProducto3btnInicio
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
+        //Boton volver a inicio
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
 
 

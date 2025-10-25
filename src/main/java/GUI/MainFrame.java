@@ -4,15 +4,12 @@
  */
 package GUI;
 
-/**
- *
- * @author Lucerito
- */
-public class MainFrame extends javax.swing.JFrame {
+import Clases.*;
 
-    /**
-     * Creates new form MainFrame
-     */
+public class MainFrame extends javax.swing.JFrame {
+    
+    Frames recargarPagina = new Frames();
+    
     public MainFrame() {
         initComponents();
     }
@@ -46,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("TechStore");
 
         BtnCrearCompra.setBackground(new java.awt.Color(39, 241, 82));
-        BtnCrearCompra.setFont(new java.awt.Font("Be Vietnam Pro", 0, 24)); // NOI18N
+        BtnCrearCompra.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         BtnCrearCompra.setForeground(new java.awt.Color(0, 0, 0));
         BtnCrearCompra.setText("Nueva Compra");
         BtnCrearCompra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -57,7 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         BtnInventario.setBackground(new java.awt.Color(39, 241, 82));
-        BtnInventario.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        BtnInventario.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         BtnInventario.setForeground(new java.awt.Color(0, 0, 0));
         BtnInventario.setText("Inventario");
         BtnInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -68,7 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         BtnSeriviciosDigitales.setBackground(new java.awt.Color(39, 241, 82));
-        BtnSeriviciosDigitales.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        BtnSeriviciosDigitales.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         BtnSeriviciosDigitales.setForeground(new java.awt.Color(0, 0, 0));
         BtnSeriviciosDigitales.setText("Servicios Digititales");
         BtnSeriviciosDigitales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -79,7 +76,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         BtnPersonal.setBackground(new java.awt.Color(39, 241, 82));
-        BtnPersonal.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        BtnPersonal.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         BtnPersonal.setForeground(new java.awt.Color(0, 0, 0));
         BtnPersonal.setText("Personal");
         BtnPersonal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -90,7 +87,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         BtnClientes.setBackground(new java.awt.Color(39, 241, 82));
-        BtnClientes.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        BtnClientes.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         BtnClientes.setForeground(new java.awt.Color(0, 0, 0));
         BtnClientes.setText("Clientes");
         BtnClientes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -101,7 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btnSalir.setBackground(new java.awt.Color(39, 241, 82));
-        btnSalir.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnSalir.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -184,11 +181,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSeriviciosDigitalesActionPerformed
 
     private void BtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInventarioActionPerformed
-        InventarioFrame inf = new InventarioFrame();
-        
-        inf.setVisible(true);
-        inf.setLocationRelativeTo(null);
+        //Boton pagina inventario
         dispose();
+        recargarPagina.recargarInventario();
     }//GEN-LAST:event_BtnInventarioActionPerformed
 
     private void BtnCrearCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearCompraActionPerformed
@@ -196,7 +191,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCrearCompraActionPerformed
 
     private void btnSalirbtnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirbtnInicio
-
+        //Salir del sistema
         System.exit(0);
     }//GEN-LAST:event_btnSalirbtnInicio
 

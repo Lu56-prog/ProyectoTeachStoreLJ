@@ -15,10 +15,12 @@ import javax.swing.JOptionPane;
 
 
 public class ModificarProdutoFrame extends javax.swing.JFrame {
-    
+    Frames recargarPagina = new Frames();
     public ModificarProdutoFrame() {
         initComponents();
         
+        
+        //Cargamos los productos y agregamos cada uno al comboBox
         List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
         
         for(ProductoFisico producto: productosFisicos){
@@ -168,6 +170,7 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         jLabel102.setText("Modificar Producto");
 
         comboProductos.setBackground(new java.awt.Color(59, 63, 66));
+        comboProductos.setForeground(new java.awt.Color(255, 255, 255));
         comboProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboProductosActionPerformed(evt);
@@ -210,7 +213,7 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         txtDescuento2.setText("0");
 
         btnModificarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnModificarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnModificarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModificarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnModificarProducto.setText("Modificar");
         btnModificarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -241,7 +244,7 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         jLabel115.setText("Categoria");
 
         btnInicio12.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio12.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnInicio12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnInicio12.setForeground(new java.awt.Color(0, 0, 0));
         btnInicio12.setText("Inicio");
         btnInicio12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -412,11 +415,9 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarProducto11ActionPerformed
 
     private void btnInicio11(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio11
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
+        //Boton inicio
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio11
 
     private void comboCategoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoria2ActionPerformed
@@ -424,13 +425,13 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboCategoria2ActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
-        ModificarProdutoFrame mpf = new  ModificarProdutoFrame();
-        
+        //Abstraemos cada dato ingresado por el usaurio
         String nombreProducto = txtNombre2.getText();
         String precioTexto = txtPrecio2.getText();
         precioTexto = precioTexto.replace(".", "");
         precioTexto = precioTexto.replace(",", "");
         double precioProducto = -1;
+        //Verificamos que precio sea un numero
         try {
             precioProducto = Double.parseDouble(precioTexto); 
         } catch (NumberFormatException e) {
@@ -439,6 +440,7 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         String categoriaProducto = comboCategoria2.getSelectedItem().toString();
         String marcaProducto = txtMarca2.getText();
         int stockProducto = -1;
+        //Verficiamos que stock sea un numero
         try {
             stockProducto = Integer.parseInt(txtStock2.getText());
         } catch (NumberFormatException e) {
@@ -449,13 +451,13 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
         
         ProductoFisico productoModificar = (ProductoFisico) comboProductos.getSelectedItem();
         
+        //Segun los nuevos datos modificamos el producto
         try{
             productoModificar.modificarProducto(nombreProducto, precioProducto, categoriaProducto, marcaProducto, stockProducto, ubicacionProducto, descuento);
             productoModificar.mostrarInfo();
             JOptionPane.showMessageDialog(null, "Producto Fisico Modificado", "Creacion Producto", JOptionPane.HEIGHT);
             dispose();
-            mpf.setVisible(true);
-            mpf.setLocationRelativeTo(null);
+            recargarPagina.recargarModificarProducto();
         } catch (CampoVacioException ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
         } catch(NumeroMenorACero ex){
@@ -464,14 +466,13 @@ public class ModificarProdutoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     private void btnInicio12(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio12
-        MainFrame mn = new MainFrame();
-
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
+        //Boton inicio
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio12
 
     private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
+        //Segun el producto elegio aparece la informacion, si desea modificar simplemente borra y coloca el nuevo dato
         ProductoFisico productoElegido = (ProductoFisico) comboProductos.getSelectedItem();
         
         txtNombre2.setText(productoElegido.getNombre());

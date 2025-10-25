@@ -4,15 +4,11 @@
  */
 package GUI;
 
-/**
- *
- * @author Lucerito
- */
-public class InventarioFrame extends javax.swing.JFrame {
+import Clases.*;
 
-    /**
-     * Creates new form InventarioFrame
-     */
+public class InventarioFrame extends javax.swing.JFrame {
+    Frames recargarPagina = new Frames();
+    
     public InventarioFrame() {
         initComponents();
     }
@@ -62,7 +58,7 @@ public class InventarioFrame extends javax.swing.JFrame {
         jLabel1.setText("Inventario");
 
         btnModificarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnModificarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnModificarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModificarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnModificarProducto.setText("Modificar Producto");
         btnModificarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -73,7 +69,7 @@ public class InventarioFrame extends javax.swing.JFrame {
         });
 
         btnAgregarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnAgregarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnAgregarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarProducto.setText("Agregar Producto");
         btnAgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -84,7 +80,7 @@ public class InventarioFrame extends javax.swing.JFrame {
         });
 
         btnEliminarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnEliminarProducto.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnEliminarProducto.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminarProducto.setText("Eliminar Producto");
         btnEliminarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -95,7 +91,7 @@ public class InventarioFrame extends javax.swing.JFrame {
         });
 
         btnVerProductos.setBackground(new java.awt.Color(39, 241, 82));
-        btnVerProductos.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
+        btnVerProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnVerProductos.setForeground(new java.awt.Color(0, 0, 0));
         btnVerProductos.setText("Ver Productos");
         btnVerProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -106,7 +102,7 @@ public class InventarioFrame extends javax.swing.JFrame {
         });
 
         btnModificarProducto2.setBackground(new java.awt.Color(39, 241, 82));
-        btnModificarProducto2.setFont(new java.awt.Font("Be Vietnam Pro", 0, 12)); // NOI18N
+        btnModificarProducto2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnModificarProducto2.setForeground(new java.awt.Color(0, 0, 0));
         btnModificarProducto2.setText("Inicio");
         btnModificarProducto2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -126,10 +122,13 @@ public class InventarioFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addContainerGap()
+                        .addComponent(btnModificarProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,11 +137,8 @@ public class InventarioFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnModificarProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addComponent(btnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +147,7 @@ public class InventarioFrame extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,7 +155,7 @@ public class InventarioFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnModificarProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -183,38 +179,33 @@ public class InventarioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCrearProducto1ActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
-        ModificarProdutoFrame mpf = new  ModificarProdutoFrame();
-        mpf.setVisible(true);
-        mpf.setLocationRelativeTo(null);
+        //Boton pagian modificar producto
         dispose();
+        recargarPagina.recargarModificarProducto();
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
-        AgregarProductoFisicoFrame apf = new AgregarProductoFisicoFrame();
-        apf.setVisible(true);
-        apf.setLocationRelativeTo(null);
+        //Boton pagina agregar producto
         dispose();
+        recargarPagina.recargarAgregarProducto();
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
-        EliminarProductoFrame epf = new EliminarProductoFrame();
-        epf.setVisible(true);
-        epf.setLocationRelativeTo(null);
+        //Boton pagina eliminar producto
         dispose();
+        recargarPagina.recargarEliminarProducto();
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
-        VerProductosFrame vpf = new VerProductosFrame();
-        vpf.setVisible(true);
-        vpf.setLocationRelativeTo(null);
+        //Boton pagina ver productos
         dispose();
+        recargarPagina.recagargarVerProductos();
     }//GEN-LAST:event_btnVerProductosActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
-        MainFrame mn = new MainFrame();
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
+        //Boton pagina principal
         dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
 
 
