@@ -11,8 +11,8 @@ public class ServicioDigital extends Producto {
     private Tecnico tecnicoResponsable;  
     // Constructor
     public ServicioDigital(String nombre, double precio, String categoria,
-                           LocalTime duracionEstimada, String descripcion,
-                           Tecnico tecnicoResponsable) throws CampoVacioException {
+        LocalTime duracionEstimada, String descripcion,
+        Tecnico tecnicoResponsable) throws CampoVacioException {
         super(nombre, precio, categoria);
         setDuracionEstimada(duracionEstimada);
         setDescripcion(descripcion);
