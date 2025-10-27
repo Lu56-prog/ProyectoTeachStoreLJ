@@ -100,4 +100,12 @@ public class ProductoFisico  extends Producto{
     public String toString() {
         return this.codigoBarras + " -> " + this.nombre;
     }
+
+    String getCantidad() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setCantidad(int cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

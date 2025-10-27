@@ -645,7 +645,7 @@
                           <Component id="jLabel103" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="344" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="comboProductos1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboSDigitales" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel15" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -665,7 +665,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel104" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="comboProductos1" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboSDigitales" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel15" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -702,7 +702,7 @@
             <Property name="text" type="java.lang.String" value="Modificar Servicio Digital"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboProductos1">
+        <Component class="javax.swing.JComboBox" name="comboSDigitales">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="42" green="3f" red="3b" type="rgb"/>
@@ -715,7 +715,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboProductos1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboSDigitalesActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ProductoFisico&gt;"/>

@@ -13,6 +13,8 @@ public class OrdenCompra extends Venta{
     private  double iva;
     private double total;
 
+    private static final double PORCENTAJE_IVA = 0.19;
+    
     public OrdenCompra( String estado, ArrayList<ProductoFisico> listaProductosFisicos, ArrayList<ServicioDigital> listaProductosDigitales, double subtotal, double descuentoPorLotes, double descuentoPorFidelidad, double descuentoPuntos, double iva, double total) {
         super(estado);
         this.listaProductosFisicos = listaProductosFisicos;
@@ -22,7 +24,7 @@ public class OrdenCompra extends Venta{
         this.descuentoPorFidelidad = descuentoPorFidelidad;
         this.descuentoPuntos = descuentoPuntos;
         this.iva = iva;
-        this.total = total;
+        this.total = total; 
     }
 
     public ArrayList<ProductoFisico> getListaProductosFisicos() {

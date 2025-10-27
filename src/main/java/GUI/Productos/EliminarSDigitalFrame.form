@@ -268,7 +268,7 @@
                           <Component id="jLabel103" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="comboProductos1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cobmoSDitigitales" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel15" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -288,7 +288,7 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jLabel104" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="comboProductos1" min="-2" max="-2" attributes="0"/>
+                  <Component id="cobmoSDitigitales" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel15" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -325,7 +325,7 @@
             <Property name="text" type="java.lang.String" value="Eliminar Servicio Digital"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboProductos1">
+        <Component class="javax.swing.JComboBox" name="cobmoSDitigitales">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="42" green="3f" red="3b" type="rgb"/>
@@ -338,7 +338,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboProductos1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cobmoSDitigitalesActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ProductoFisico&gt;"/>
@@ -441,7 +441,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tablaProducto1">
+                <Component class="javax.swing.JTable" name="tablaSDigital">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="1">

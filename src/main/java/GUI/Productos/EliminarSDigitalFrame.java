@@ -42,12 +42,12 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        comboProductos1 = new javax.swing.JComboBox<>();
+        cobmoSDitigitales = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
         btnEliminarSDigital = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaProducto1 = new javax.swing.JTable();
+        tablaSDigital = new javax.swing.JTable();
 
         jPanel12.setBackground(new java.awt.Color(30, 30, 46));
 
@@ -180,11 +180,11 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         jLabel104.setForeground(new java.awt.Color(238, 238, 238));
         jLabel104.setText("Eliminar Servicio Digital");
 
-        comboProductos1.setBackground(new java.awt.Color(59, 63, 66));
-        comboProductos1.setForeground(new java.awt.Color(255, 255, 255));
-        comboProductos1.addActionListener(new java.awt.event.ActionListener() {
+        cobmoSDitigitales.setBackground(new java.awt.Color(59, 63, 66));
+        cobmoSDitigitales.setForeground(new java.awt.Color(255, 255, 255));
+        cobmoSDitigitales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductos1ActionPerformed(evt);
+                cobmoSDitigitalesActionPerformed(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
             }
         });
 
-        tablaProducto1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSDigital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null}
             },
@@ -220,7 +220,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
                 "Nombre", "Precio", "Categoria", "Duracion", "Descripcion", "Técnico Responsable"
             }
         ));
-        jScrollPane2.setViewportView(tablaProducto1);
+        jScrollPane2.setViewportView(tablaSDigital);
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -262,7 +262,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel103)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(comboProductos1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cobmoSDitigitales, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
@@ -278,7 +278,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel104)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cobmoSDitigitales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -319,9 +319,9 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnInicio12
 
-    private void comboProductos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductos1ActionPerformed
+    private void cobmoSDitigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobmoSDitigitalesActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboProductos1ActionPerformed
+    }//GEN-LAST:event_cobmoSDitigitalesActionPerformed
 
     private void btnEliminarSDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSDigitalActionPerformed
         //Segun el producto elegido, lo eliminamos de la lista
@@ -370,8 +370,8 @@ private void actualizarTabla(){
     private javax.swing.JButton btnEliminarSDigital;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnInicio12;
+    private javax.swing.JComboBox<ProductoFisico> cobmoSDitigitales;
     private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos1;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
@@ -383,6 +383,6 @@ private void actualizarTabla(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaProducto;
-    private javax.swing.JTable tablaProducto1;
+    private javax.swing.JTable tablaSDigital;
     // End of variables declaration//GEN-END:variables
 }

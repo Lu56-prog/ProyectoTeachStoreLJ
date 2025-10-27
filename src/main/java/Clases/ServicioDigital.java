@@ -77,4 +77,12 @@ public class ServicioDigital extends Producto {
     public String toString() {
         return "Servicio: " + this.nombre + " (" + this.duracionEstimada + ")";
     }
+
+    String getCantidad() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setCantidad(int cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

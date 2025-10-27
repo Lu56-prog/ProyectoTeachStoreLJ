@@ -1,21 +1,12 @@
 
 package Clases;
-import GUI.Productos.EliminarProductoFrame;
-import GUI.Productos.InventarioFrame;
-import GUI.Productos.AgregarSDigitalesFrame;
-import GUI.Productos.EliminarSDigitalFrame;
-import GUI.Productos.AgregarProductoFisicoFrame;
-import GUI.Productos.ModificarProdutoFrame;
-import GUI.Productos.VerProductosFrame;
-import GUI.Productos.VerSDigitalesFrame;
-import GUI.Productos.ServicioDigitalFrame;
-import GUI.Productos.ModificarSDigitalesFrame;
+
+
 import GUI.*;
-import GUI.Clientes.AgregarClienteFrame;
-import GUI.Clientes.ClientesFrame;
-import GUI.Clientes.EliminarClienteFrame;
-import GUI.Clientes.ModificarClienteFrame;
-import GUI.Clientes.VerClientesFrame;
+import GUI.Clientes.*;
+import GUI.Productos.*;
+import GUI.Empleados.*;
+
 
 
 public class Frames {
@@ -47,7 +38,7 @@ public class Frames {
     }
     
     public void recargarModificarProducto(){
-        ModificarProdutoFrame mpf = new ModificarProdutoFrame();
+        ModificarEmpleadoFrame mpf = new ModificarEmpleadoFrame();
         
         mpf.setVisible(true);
         mpf.setLocationRelativeTo(null);
@@ -136,5 +127,41 @@ public class Frames {
         
         vcf.setVisible(true);
         vcf.setLocationRelativeTo(null);
+    }
+    
+    //Empleados
+        public void recargarEmpleados(){
+        EmpleadoFrame ef = new EmpleadoFrame();
+        
+        ef.setVisible(true);
+        ef.setLocationRelativeTo(null);
+    }
+    
+    public void recargarAgregarEmpleado(){
+        AgregarEmpleadoFrame aef = new AgregarEmpleadoFrame();
+        
+        aef.setVisible(true);
+        aef.setLocationRelativeTo(null);
+    }
+    
+    public void recargarModificarEmpleado(){
+        ModificarProductoFrame mef = new ModificarProductoFrame();
+        
+        mef.setVisible(true);
+        mef.setLocationRelativeTo(null);
+    }
+    
+    public void recargarEliminarEmpleado(){
+        EliminarEmpleadoFrame eef = new EliminarEmpleadoFrame();
+        
+        eef.setVisible(true);
+        eef.setLocationRelativeTo(null);
+    }
+    
+    public void recargarVerEmpleados(){
+        VerEmpleadosFrame vef = new VerEmpleadosFrame();
+        
+        vef.setVisible(true);
+        vef.setLocationRelativeTo(null);
     }
 }

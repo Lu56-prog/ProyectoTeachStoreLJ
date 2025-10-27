@@ -64,7 +64,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        comboProductos1 = new javax.swing.JComboBox<>();
+        comboSDigitales = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
         txtMarca3 = new javax.swing.JTextField();
         comboCategoria3 = new javax.swing.JComboBox<>();
@@ -376,11 +376,11 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
         jLabel104.setForeground(new java.awt.Color(238, 238, 238));
         jLabel104.setText("Modificar Servicio Digital");
 
-        comboProductos1.setBackground(new java.awt.Color(59, 63, 66));
-        comboProductos1.setForeground(new java.awt.Color(255, 255, 255));
-        comboProductos1.addActionListener(new java.awt.event.ActionListener() {
+        comboSDigitales.setBackground(new java.awt.Color(59, 63, 66));
+        comboSDigitales.setForeground(new java.awt.Color(255, 255, 255));
+        comboSDigitales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductos1ActionPerformed(evt);
+                comboSDigitalesActionPerformed(evt);
             }
         });
 
@@ -556,7 +556,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel103)
                         .addGap(0, 344, Short.MAX_VALUE))
-                    .addComponent(comboProductos1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboSDigitales, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
@@ -572,7 +572,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel104)
                 .addGap(18, 18, 18)
-                .addComponent(comboProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboSDigitales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -659,7 +659,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnInicio12
 
-    private void comboProductos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductos1ActionPerformed
+    private void comboSDigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSDigitalesActionPerformed
         //Segun el producto elegio aparece la informacion, si desea modificar simplemente borra y coloca el nuevo dato
         ProductoFisico productoElegido = (ProductoFisico) comboProductos.getSelectedItem();
 
@@ -675,7 +675,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
         txtStock2.setText(String.valueOf(productoElegido.getStock()));
         txtUbicacion2.setText(productoElegido.getUbicacion());
         txtDescuento2.setText(String.valueOf(productoElegido.getDescuento()));
-    }//GEN-LAST:event_comboProductos1ActionPerformed
+    }//GEN-LAST:event_comboSDigitalesActionPerformed
 
     private void comboCategoria3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoria3ActionPerformed
         // TODO add your handling code here:
@@ -739,7 +739,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboCategoria2;
     private javax.swing.JComboBox<String> comboCategoria3;
     private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos1;
+    private javax.swing.JComboBox<ProductoFisico> comboSDigitales;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
