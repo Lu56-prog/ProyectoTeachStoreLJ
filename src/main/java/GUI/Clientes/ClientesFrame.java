@@ -4,15 +4,11 @@
  */
 package GUI.Clientes;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+
 public class ClientesFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ClientesFrame
-     */
+    Frames recargarPagina = new Frames();
     public ClientesFrame() {
         initComponents();
     }
@@ -172,25 +168,25 @@ public class ClientesFrame extends javax.swing.JFrame {
     private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
         //Boton pagian modificar producto
         dispose();
-        recargarPagina.recargarModificarProducto();
+        recargarPagina.recargarModificarCliente();
     }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         //Boton pagina agregar producto
         dispose();
-        recargarPagina.recargarAgregarProducto();
+        recargarPagina.recargarAgregarCliente();
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         //Boton pagina eliminar producto
         dispose();
-        recargarPagina.recargarEliminarProducto();
+        recargarPagina.recargarEliminarCliente();
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btnVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerClienteActionPerformed
         //Boton pagina ver productos
         dispose();
-        recargarPagina.recagargarVerProductos();
+        recargarPagina.recargarVerClientes();
     }//GEN-LAST:event_btnVerClienteActionPerformed
 
     private void btnModificarProducto2btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProducto2btnInicio

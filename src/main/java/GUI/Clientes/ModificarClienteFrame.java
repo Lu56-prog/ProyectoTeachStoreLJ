@@ -4,15 +4,17 @@
  */
 package GUI.Clientes;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+import MeException.CampoVacioException;
+import MeException.NumeroMenorACero;
+import java.util.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
 public class ModificarClienteFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ModificarCliente
-     */
+    Frames recargarPagina = new Frames();
     public ModificarClienteFrame() {
         initComponents();
     }
@@ -263,62 +265,11 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
-        //Segun el producto elegio aparece la informacion, si desea modificar simplemente borra y coloca el nuevo dato
-        ProductoFisico productoElegido = (ProductoFisico) comboProductos.getSelectedItem();
-
-        txtNombre2.setText(productoElegido.getNombre());
-
-        double precio = productoElegido.getPrecio();
-        DecimalFormat fm = new DecimalFormat("#, ###");
-        String precioFormateado = fm.format(precio);
-
-        txtPrecio2.setText(precioFormateado);
-        comboCategoria2.setSelectedItem(productoElegido.getCategoria());
-        txtMarca2.setText(productoElegido.getMarca());
-        txtStock2.setText(String.valueOf(productoElegido.getStock()));
-        txtUbicacion2.setText(productoElegido.getUbicacion());
-        txtDescuento2.setText(String.valueOf(productoElegido.getDescuento()));
+        
     }//GEN-LAST:event_comboProductosActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
-        //Abstraemos cada dato ingresado por el usaurio
-        String nombreProducto = txtNombre2.getText();
-        String precioTexto = txtPrecio2.getText();
-        precioTexto = precioTexto.replace(".", "");
-        precioTexto = precioTexto.replace(",", "");
-        double precioProducto = -1;
-        //Verificamos que precio sea un numero
-        try {
-            precioProducto = Double.parseDouble(precioTexto);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
-        String categoriaProducto = comboCategoria2.getSelectedItem().toString();
-        String marcaProducto = txtMarca2.getText();
-        int stockProducto = -1;
-        //Verficiamos que stock sea un numero
-        try {
-            stockProducto = Integer.parseInt(txtStock2.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que Stock sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
-        String ubicacionProducto = txtUbicacion2.getText();
-        int descuento = Integer.parseInt(txtDescuento2.getText());
-
-        ProductoFisico productoModificar = (ProductoFisico) comboProductos.getSelectedItem();
-
-        //Segun los nuevos datos modificamos el producto
-        try{
-            productoModificar.modificarProducto(nombreProducto, precioProducto, categoriaProducto, marcaProducto, stockProducto, ubicacionProducto, descuento);
-            productoModificar.mostrarInfo();
-            JOptionPane.showMessageDialog(null, "Producto Fisico Modificado", "Creacion Producto", JOptionPane.HEIGHT);
-            dispose();
-            recargarPagina.recargarModificarProducto();
-        } catch (CampoVacioException ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
-        } catch(NumeroMenorACero ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
-        }
+       
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio

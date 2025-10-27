@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class VerProductosFrame extends javax.swing.JFrame {
     
     DefaultTableModel mt  = new DefaultTableModel();
-
     Frames recargarPagina = new Frames();
+    
     public VerProductosFrame() {
         initComponents();
         

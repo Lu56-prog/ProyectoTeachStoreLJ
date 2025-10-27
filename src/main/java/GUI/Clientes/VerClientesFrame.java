@@ -4,15 +4,17 @@
  */
 package GUI.Clientes;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+import java.util.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
+import javax.swing.table.DefaultTableModel;
+
 public class VerClientesFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VerClientesFrame
-     */
+    DefaultTableModel mt  = new DefaultTableModel();
+    Frames recargarPagina = new Frames();
+    
     public VerClientesFrame() {
         initComponents();
     }
@@ -292,7 +294,90 @@ public class VerClientesFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_comboDescuentoActionPerformed
 
-
+ private void actualizarTabla(){
+        //Actualizamos al tabla segun los filtros deseados
+        mt.setRowCount(0);
+        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
+        mt.setColumnIdentifiers(encabezado);
+        
+        tableProductos.setModel(mt);
+        
+        List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
+        
+        
+        for(ProductoFisico producto : productosFisicos) {
+           String nombre = producto.getNombre();
+           double precio = producto.getPrecio();
+           DecimalFormat fm = new DecimalFormat("#, ###");
+           String precioFormateado = fm.format(precio);
+           String categoria = producto.getCategoria();
+           String marca = producto.getMarca();
+           int stock = producto.getStock();
+           String codigoBarras = producto.getCodigoBarras();
+           String ubicacion = producto.getUbicacion();
+           double descuento = producto.getDescuento();
+           
+           //Validar rango de precio
+           String eleccionPrecio = comboPrecio.getSelectedItem().toString();
+           boolean controladorPrecio;
+           if(eleccionPrecio.equals("Todos")){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
+               controladorPrecio = true;
+           } else{
+               controladorPrecio = false;
+           }
+           
+           //Validar categoria escogida
+           String eleccioCategoria = comboCategoria.getSelectedItem().toString();
+           boolean controlCategoria = false;
+           if(eleccioCategoria.equals("Todos") || eleccioCategoria.equals(categoria)){
+               controlCategoria = true;
+           }
+           
+           //Validar stock elegido
+           String eleccionStock = comboStock.getSelectedItem().toString();
+           boolean controlStock = false;
+           if(eleccionStock.equals("Todos")){
+               controlStock = true;
+           } else if (eleccionStock.equals("Stock bajo") && stock <= 5){
+               controlStock = true;
+           }
+           
+           //Validar descuentoe elegido
+           String eleccionDescuento = comboDescuento.getSelectedItem().toString();
+           boolean controlDescuento = false;
+           if(eleccionDescuento.equals("Todos")){
+               controlDescuento = true;
+           } else if (eleccionDescuento.equals("Con descuento") && descuento > 0){
+               controlDescuento = true;
+           } else if (eleccionDescuento.equals("Sin descuento") && descuento == 0){
+               controlDescuento = true;
+           }
+           
+           //Mostrar tabla según busqueda, si el producto cumple con cada caracteristica se mostrara
+           if(nombre.startsWith(txtNombre.getText()) && 
+                   marca.startsWith(txtMarca.getText()) && 
+                   controladorPrecio &&
+                   controlCategoria &&
+                   controlStock &&
+                   codigoBarras.startsWith(txtCodigo.getText()) &&
+                   ubicacion.startsWith(txtUbicacion.getText()) &&
+                   controlDescuento){
+               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
+           }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;

@@ -4,15 +4,15 @@
  */
 package GUI.Clientes;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+import MeException.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
+import javax.swing.JOptionPane;
+
 public class AgregarClienteFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AgregarClienteFrame
-     */
+    Frames recargarPagina = new Frames();
+    
     public AgregarClienteFrame() {
         initComponents();
     }
@@ -36,7 +36,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        btnAgregarProducto = new javax.swing.JButton();
+        btnAgregarCliente = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         txtTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -88,14 +88,14 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
 
         txtDireccion.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
 
-        btnAgregarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnAgregarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
-        btnAgregarProducto.setText("Guardar");
-        btnAgregarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarCliente.setBackground(new java.awt.Color(39, 241, 82));
+        btnAgregarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAgregarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregarCliente.setText("Guardar");
+        btnAgregarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProductoActionPerformed(evt);
+                btnAgregarClienteActionPerformed(evt);
             }
         });
 
@@ -171,7 +171,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -211,7 +211,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -231,51 +231,10 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
 
-        //Abstraemos los datos registrados por el usuario
-        String nombreProducto = txtNombre.getText();
-        String precioTexto = txtIdentificacion.getText();
-        precioTexto = precioTexto.replace(".", "");
-        precioTexto = precioTexto.replace(",", "");
-        double precioProducto = -1;
-        //Nos aseguramos de que el precio sea un número
-        try {
-            precioProducto = Double.parseDouble(precioTexto);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
-        String categoriaProducto = comboCategoria.getSelectedItem().toString();
-        String marcaProducto = txtDireccion.getText();
-        int stockProducto = -1;
-        //Nos aseguramos que el stock sea un numero
-        try {
-            stockProducto = Integer.parseInt(txtStock.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que Stock sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
-        String ubicacionProducto = txtUbicacion.getText();
-        int descuento = Integer.parseInt(txtDescuento.getText());
-
-        try{
-            //Creamos el nuevo producto
-            ProductoFisico producto = new ProductoFisico(nombreProducto, precioProducto, categoriaProducto, marcaProducto, stockProducto, ubicacionProducto, descuento);
-            producto.mostrarInfo();
-            //Agregamos el producto al inventario
-            TeachStoreLJ.inventario.listaProductos.add(producto);
-            JOptionPane.showMessageDialog(null, "Producto Fisico Creado", "Creacion Producto", JOptionPane.HEIGHT);
-            //Al agregar el producto la pagina se actualiza
-            dispose();
-            recargarPagina.recargarAgregarProducto();
-
-        } catch (CampoVacioException ex){
-            //Verificamos que ningun campo este vacio
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
-        } catch(NumeroMenorACero ex){
-            //Verificamos que ningun número sobrepase el rango
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnAgregarProductoActionPerformed
+        
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
         //Boton volver a inicio
@@ -293,7 +252,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarProducto;
+    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnInicio;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

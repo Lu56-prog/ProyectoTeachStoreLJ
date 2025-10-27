@@ -4,15 +4,20 @@
  */
 package GUI.Clientes;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+import MeException.CampoVacioException;
+import MeException.NumeroMenorACero;
+import java.util.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class EliminarClienteFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EliminarClienteFrame
-     */
+    Frames recargarPagina = new Frames();
+    DefaultTableModel mt  = new DefaultTableModel();
+    
     public EliminarClienteFrame() {
         initComponents();
     }
@@ -295,18 +300,11 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
-        actualizarTabla();
+ 
     }//GEN-LAST:event_comboProductosActionPerformed
 
     private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
-        //Segun el producto elegido, lo eliminamos de la lista
-        ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
-
-        TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
-        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
-
-        dispose();
-        recargarPagina.recargarEliminarProducto();
+       
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -315,23 +313,15 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicio
 
     private void comboProductos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductos2ActionPerformed
-        actualizarTabla();
+       
     }//GEN-LAST:event_comboProductos2ActionPerformed
 
     private void btnEliminarProducto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProducto3ActionPerformed
-        //Segun el producto elegido, lo eliminamos de la lista
-        ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
-
-        TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
-        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
-
-        dispose();
-        recargarPagina.recargarEliminarProducto();
+        
     }//GEN-LAST:event_btnEliminarProducto3ActionPerformed
 
     private void btnInicio3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio3
-        dispose();
-        recargarPagina.recargarMainFrame();
+
     }//GEN-LAST:event_btnInicio3
 
 
