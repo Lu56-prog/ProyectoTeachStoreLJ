@@ -10,8 +10,8 @@ public class Empleado extends Usuario{
     LocalDate fechaIngreso;
     String jornadaLaboral;
 
-    public Empleado(String id, String nombre, int cedula, String telefono,String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
-        super(id, nombre, cedula, telefono);
+    public Empleado(String id, String nombre, int cedula, String telefono,String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
+        super(id, nombre, cedula, telefono, correo);
         this.cargo = cargo;
         this.profesion = profesion;
         this.salario = salario;

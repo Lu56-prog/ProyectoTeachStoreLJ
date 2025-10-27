@@ -177,7 +177,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnPersonalActionPerformed
 
     private void BtnSeriviciosDigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeriviciosDigitalesActionPerformed
-        // TODO add your handling code here:
+        //Boton pagina servicios digitales
+        dispose();
+        recargarPagina.recargarSDigital();
     }//GEN-LAST:event_BtnSeriviciosDigitalesActionPerformed
 
     private void BtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInventarioActionPerformed

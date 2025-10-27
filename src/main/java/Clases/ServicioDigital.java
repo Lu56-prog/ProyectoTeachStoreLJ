@@ -10,9 +10,7 @@ public class ServicioDigital extends Producto {
     private String descripcion;         
     private Tecnico tecnicoResponsable;  
     // Constructor
-    public ServicioDigital(String nombre, double precio, String categoria,
-        LocalTime duracionEstimada, String descripcion,
-        Tecnico tecnicoResponsable) throws CampoVacioException {
+    public ServicioDigital(String nombre, double precio, String categoria, LocalTime duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException {
         super(nombre, precio, categoria);
         setDuracionEstimada(duracionEstimada);
         setDescripcion(descripcion);
@@ -20,7 +18,6 @@ public class ServicioDigital extends Producto {
     }
 
     
-
     public LocalTime getDuracionEstimada() {
         return duracionEstimada;
     }
@@ -57,20 +54,17 @@ public class ServicioDigital extends Producto {
  
 
     public void mostrarInfo() {
-        System.out.println("""
-                           
-                           === Servicio Digital ===
-                           Nombre: """ + this.nombre +
+        System.out.println("""      
+                === Servicio Digital ===
+                Nombre: """ + this.nombre +
                 "\nPrecio: $" + this.precio +
                 "\nCategoría: " + this.categoria +
                 "\nDuración Estimada: " + this.duracionEstimada +
                 "\nDescripción: " + this.descripcion +
-                "\nTécnico Responsable: " + this.tecnicoResponsable.getNombre());
+                "\nTécnico Responsable: " + this.tecnicoResponsable);
     }
 
-    public void modificarServicio(String nombre, double precio, String categoria,
-                                  LocalTime duracionEstimada, String descripcion,
-                                  Tecnico tecnicoResponsable) {
+    public void modificarServicio(String nombre, double precio, String categoria, LocalTime duracionEstimada, String descripcion, Tecnico tecnicoResponsable) {
         setNombre(nombre);
         setPrecio(precio);
         setCategoria(categoria);
@@ -82,4 +76,5 @@ public class ServicioDigital extends Producto {
     @Override
     public String toString() {
         return "Servicio: " + this.nombre + " (" + this.duracionEstimada + ")";
+    }
 }
