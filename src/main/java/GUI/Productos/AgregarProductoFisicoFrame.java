@@ -366,7 +366,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         } catch (CampoVacioException ex){
             //Verificamos que ningun campo este vacio
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
-        } catch(NumeroFueraDeLimites ex){
+        } catch(NumeroFueraDeLimitesException ex){
             //Verificamos que ningun número sobrepase el rango
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
         }

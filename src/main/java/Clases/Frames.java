@@ -3,16 +3,7 @@ package Clases;
 
 
 import GUI.MainFrame;
-import GUI.Productos.AgregarSDigitalesFrame;
-import GUI.Productos.VerSDigitalesFrame;
-import GUI.Productos.EliminarProductoFrame;
-import GUI.Productos.VerProductosFrame;
-import GUI.Productos.AgregarProductoFisicoFrame;
-import GUI.Productos.ModificarProductoFrame;
-import GUI.Productos.EliminarSDigitalFrame;
-import GUI.Productos.ModificarSDigitalesFrame;
-import GUI.Productos.ServicioDigitalFrame;
-import GUI.Productos.InventarioFrame;
+import GUI.Productos.*;
 import GUI.Clientes.*;
 import GUI.Empleados.*;
 import javax.swing.JOptionPane;
@@ -192,6 +183,18 @@ public class Frames {
     
     public int convertirEntero(String numero, String mensaje){
         int numeroConvertido = -1;
+        try {
+            numeroConvertido = Integer.parseInt(numero);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifica que " + mensaje + " sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return numeroConvertido;
+    }
+    
+    //Para validar los minutos ingresados
+    public long convertirLong(String numero, String mensaje){
+        long numeroConvertido = -1;
         try {
             numeroConvertido = Integer.parseInt(numero);
         } catch (NumberFormatException e) {

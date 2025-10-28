@@ -1,5 +1,6 @@
 
 package Clases;
+
 public abstract class MetodoPago {
     private double totalPagar;
     private  String metodoPago;

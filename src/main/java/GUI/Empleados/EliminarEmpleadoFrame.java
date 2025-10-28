@@ -7,7 +7,7 @@ package GUI.Empleados;
 import GUI.Clientes.*;
 import Clases.*;
 import MeException.CampoVacioException;
-import MeException.NumeroFueraDeLimites;
+import MeException.NumeroFueraDeLimitesException;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;

@@ -32,7 +32,7 @@ public abstract class Producto{
 
     protected void setPrecio(double precio) {
         if(precio<=0 || precio >= 99999999){
-            throw new NumeroFueraDeLimites("El precio esta fuera de sus limites");
+            throw new NumeroFueraDeLimitesException("El precio esta fuera de sus limites");
         }
         this.precio = precio;
     }

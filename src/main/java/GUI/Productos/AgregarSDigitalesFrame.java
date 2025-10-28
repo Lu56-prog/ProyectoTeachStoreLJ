@@ -7,8 +7,10 @@ package GUI.Productos;
 import Clases.*;
 import MeException.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.time.Duration;
 import java.util.List;
 import javax.swing.JOptionPane;
+import java.time.Duration;
 
 public class AgregarSDigitalesFrame extends javax.swing.JFrame {
 
@@ -20,9 +22,9 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         //Cargamos los tecnico y agregamos el comboBox tecnicos
         List<Empleado> empleados = TeachStoreLJ.empleados.listaEmpleados;
         
-        for(ProductoFisico tecnico: empleados){
-            if(tecnico.getCategoria() == "Tecnico"){
-                comboTecnicos.addItem(tecnico);
+        for(Empleado tecnico: empleados){
+            if(tecnico.getCargo().equals("Tecnico")){
+                comboTecnicos.addItem(tecnico.toString());
             }
         }
     }
@@ -45,7 +47,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtMarca = new javax.swing.JTextField();
+        txtDuracion = new javax.swing.JTextField();
         comboCategoria = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -94,8 +96,8 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(238, 238, 238));
         jLabel9.setText("Duracion (Minutos)");
 
-        txtMarca.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
-        txtMarca.setText("30");
+        txtDuracion.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        txtDuracion.setText("30");
 
         comboCategoria.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
         comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantemiento y reparación", "Software y sistemas", "Redes y conectividad", "Asesoria y soporte técnico" }));
@@ -199,7 +201,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
                                         .addGap(44, 44, 44)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(6, 6, 6))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -230,7 +232,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,12 +271,34 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     private void btnAgregarSDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSDigitalActionPerformed
        //Abstraemos los datos registrados proe l usuario
        String nombre = txtNombre.getText();
-       String precioTexto = txtPrecio.getText();
-       precioTexto = precioTexto.replace(".", "");
-       precioTexto = precioTexto.replace(",", "");
        double precio = recargarPagina.convertirPrecio(txtPrecio.getText());
        String categoria = comboCategoria.getSelectedItem().toString();
+       long duracionLong = recargarPagina.convertirLong(txtDuracion.getText(), "Hora");
+       Duration duracion = Duration.ofMinutes(0);
+       if(duracionLong != -1){
+           duracion = Duration.ofMinutes(duracionLong);
+       }
        String descripcion = txtDescripcion.getText();
+       Tecnico tecnicoResponsable = (Tecnico) comboTecnicos.getSelectedItem();
+       
+       //Creamos el servicio digital y lo agregamos
+        try {
+            ServicioDigital servicioDigital = new ServicioDigital(nombre, precio, categoria, duracion, descripcion, tecnicoResponsable);
+            servicioDigital.mostrarInfo();
+            
+            TeachStoreLJ.inventario.listaSDigitales.add(servicioDigital);
+            JOptionPane.showMessageDialog(null, "Servicio Digital Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            //Al agregar el producto la pagina se actualiza
+            dispose();
+            recargarPagina.recargarAgregarProducto();
+        } catch (CampoVacioException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
+        } catch(TiempoNoPermitidoException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "TIEMPO NO VALIDO", JOptionPane.ERROR_MESSAGE);
+        } catch(NumeroFueraDeLimitesException ex){
+            //Verificamos que ningun número sobrepase el rango
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarSDigitalActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -307,7 +331,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtDuracion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables

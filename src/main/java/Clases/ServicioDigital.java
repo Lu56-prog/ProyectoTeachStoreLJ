@@ -10,7 +10,7 @@ public class ServicioDigital extends Producto {
     private String descripcion;         
     private Tecnico tecnicoResponsable;  
     // Constructor
-    public ServicioDigital(String nombre, double precio, String categoria, Duration duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException {
+    public ServicioDigital(String nombre, double precio, String categoria, Duration duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException, TiempoNoPermitidoException{
         super(nombre, precio, categoria);
         setDuracionEstimada(duracionEstimada);
         setDescripcion(descripcion);
@@ -23,7 +23,9 @@ public class ServicioDigital extends Producto {
     }
 
     private void setDuracionEstimada(Duration duracionEstimada) {
- 
+        if(duracionEstimada.toMinutes() < 30){
+            throw new TiempoNoPermitidoException("El tiempo minimo es de 30 minutos");
+        }
         this.duracionEstimada = duracionEstimada;
     }
 

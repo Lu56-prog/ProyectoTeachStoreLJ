@@ -3,7 +3,8 @@ package Clases;
 
 import java.util.ArrayList;
 
-public class OrdenCompra extends Venta{
+public class OrdenCompra {
+    private String estado;
     private  ArrayList<ProductoFisico> listaProductosFisicos;
     private  ArrayList<ServicioDigital> listaProductosDigitales;
     private  double subtotal;
@@ -16,7 +17,7 @@ public class OrdenCompra extends Venta{
     private static final double PORCENTAJE_IVA = 0.19;
     
     public OrdenCompra( String estado, ArrayList<ProductoFisico> listaProductosFisicos, ArrayList<ServicioDigital> listaProductosDigitales, double subtotal, double descuentoPorLotes, double descuentoPorFidelidad, double descuentoPuntos, double iva, double total) {
-        super(estado);
+        this.estado = estado;
         this.listaProductosFisicos = listaProductosFisicos;
         this.listaProductosDigitales = listaProductosDigitales;
         this.subtotal = subtotal;
