@@ -10,6 +10,7 @@ import MeException.NumeroFueraDeLimitesException;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;
+import java.time.Duration;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class EliminarSDigitalFrame extends javax.swing.JFrame {
@@ -19,6 +20,13 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
     
     public EliminarSDigitalFrame() {
         initComponents();
+        
+        //Cargamos Servicios a mmodificar
+        List<ServicioDigital> servicioDigital = TeachStoreLJ.inventario.listaSDigitales;
+        
+        for(ServicioDigital servicio: servicioDigital){
+            comboSDigitales.addItem(servicio);
+        }
     }
 
     /**
@@ -30,140 +38,15 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel12 = new javax.swing.JPanel();
-        jLabel101 = new javax.swing.JLabel();
-        jLabel102 = new javax.swing.JLabel();
-        comboProductos = new javax.swing.JComboBox<>();
-        jPanel13 = new javax.swing.JPanel();
-        btnEliminarProducto = new javax.swing.JButton();
-        btnInicio12 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaProducto = new javax.swing.JTable();
         jPanel14 = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        cobmoSDitigitales = new javax.swing.JComboBox<>();
+        comboSDigitales = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
         btnEliminarSDigital = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaSDigital = new javax.swing.JTable();
-
-        jPanel12.setBackground(new java.awt.Color(30, 30, 46));
-
-        jLabel101.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel101.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel101.setText("TechStore");
-
-        jLabel102.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel102.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel102.setText("Eliminar Producto");
-
-        comboProductos.setBackground(new java.awt.Color(59, 63, 66));
-        comboProductos.setForeground(new java.awt.Color(255, 255, 255));
-        comboProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductosActionPerformed(evt);
-            }
-        });
-
-        jPanel13.setBackground(new java.awt.Color(59, 63, 66));
-
-        btnEliminarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnEliminarProducto.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminarProducto.setText("Eliminar");
-        btnEliminarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarProductoActionPerformed(evt);
-            }
-        });
-
-        btnInicio12.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnInicio12.setForeground(new java.awt.Color(0, 0, 0));
-        btnInicio12.setText("Inicio");
-        btnInicio12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnInicio12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicio12(evt);
-            }
-        });
-
-        tablaProducto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Precio", "Categoria", "Marca", "Stock", "CodigoBarras", "Ubicacion", "Descuento"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaProducto);
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(btnInicio12, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnInicio12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel101)
-                        .addGap(0, 679, Short.MAX_VALUE))
-                    .addComponent(comboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel102)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel101)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel102)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -180,11 +63,11 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         jLabel104.setForeground(new java.awt.Color(238, 238, 238));
         jLabel104.setText("Eliminar Servicio Digital");
 
-        cobmoSDitigitales.setBackground(new java.awt.Color(59, 63, 66));
-        cobmoSDitigitales.setForeground(new java.awt.Color(255, 255, 255));
-        cobmoSDitigitales.addActionListener(new java.awt.event.ActionListener() {
+        comboSDigitales.setBackground(new java.awt.Color(59, 63, 66));
+        comboSDigitales.setForeground(new java.awt.Color(255, 255, 255));
+        comboSDigitales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cobmoSDitigitalesActionPerformed(evt);
+                comboSDigitalesActionPerformed(evt);
             }
         });
 
@@ -214,10 +97,10 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
 
         tablaSDigital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Precio", "Categoria", "Duracion", "Descripcion", "Técnico Responsable"
+                "Nombre", "Precio", "Categoria", "Duracion", "Descripcion", "Técnico Responsable", "Codigo"
             }
         ));
         jScrollPane2.setViewportView(tablaSDigital);
@@ -231,7 +114,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnEliminarSDigital, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -259,26 +142,24 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboSDigitales, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel103)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cobmoSDitigitales, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel103)
+                            .addComponent(jLabel104))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(330, Short.MAX_VALUE)
-                .addComponent(jLabel104)
-                .addGap(309, 309, 309))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel103)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel104)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cobmoSDitigitales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel104)
+                .addGap(18, 18, 18)
+                .addComponent(comboSDigitales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -288,9 +169,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,38 +179,19 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
+    private void comboSDigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSDigitalesActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboProductosActionPerformed
-
-    private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
-        //Segun el producto elegido, lo eliminamos de la lista
-        ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
-
-        TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
-        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
-
-        dispose();
-        recargarPagina.recargarEliminarProducto();
-    }//GEN-LAST:event_btnEliminarProductoActionPerformed
-
-    private void btnInicio12(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio12
-
-    }//GEN-LAST:event_btnInicio12
-
-    private void cobmoSDitigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobmoSDitigitalesActionPerformed
-        actualizarTabla();
-    }//GEN-LAST:event_cobmoSDitigitalesActionPerformed
+    }//GEN-LAST:event_comboSDigitalesActionPerformed
 
     private void btnEliminarSDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSDigitalActionPerformed
-        //Segun el producto elegido, lo eliminamos de la lista
-        ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
+        //Segun el SERVICIO elegido, lo eliminamos de la lista
+        ServicioDigital servicioEliminar = (ServicioDigital) comboSDigitales.getSelectedItem();
 
-        TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
-        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
+        TeachStoreLJ.inventario.listaSDigitales.remove(servicioEliminar);
+        JOptionPane.showMessageDialog(null, "Servicio Digital  Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
 
         dispose();
-        recargarPagina.recargarEliminarProducto();
+        recargarPagina.recargarEliminarSDigital();
     }//GEN-LAST:event_btnEliminarSDigitalActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -340,49 +200,39 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicio
 
 private void actualizarTabla(){
-        //Cada escoge un producto se muestra le informacion de este
-        //Cada que escoga un producto diferente la tabla debe actualizarce 
+        //Cada escoge un servicio se muestra le informacion de este
+        //Cada que escoga un servicio diferente la tabla debe actualizarce 
         mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
+        String encabezado [] = {"Nombre", "Precio", "Categoria", "Duracion", "Descripcion", "Tecnico Responsable", "Codigo"};
         mt.setColumnIdentifiers(encabezado);
         
-        tablaProducto.setModel(mt);
+        tablaSDigital.setModel(mt);
         
-        ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
+        ServicioDigital servicioEliminar = (ServicioDigital) comboSDigitales.getSelectedItem();
         
         
-        String nombre = productoEliminar.getNombre();
-        double precio = productoEliminar.getPrecio();
+        String nombre = servicioEliminar.getNombre();
+        double precio = servicioEliminar.getPrecio();
         DecimalFormat fm = new DecimalFormat("#, ###");
         String precioFormateado = fm.format(precio);
-        String categoria = productoEliminar.getCategoria();
-        String marca = productoEliminar.getMarca();
-        int stock = productoEliminar.getStock();
-        String codigoBarras = productoEliminar.getCodigoBarras();
-        String ubicacion = productoEliminar.getUbicacion();
-        double descuento = productoEliminar.getDescuento();
+        String categoria = servicioEliminar.getCategoria();
+        String duracion = servicioEliminar.getDuracionEstimada().toString();
+        String descripcion = servicioEliminar.getDescripcion();
+        Tecnico tecnicoR = servicioEliminar.getTecnicoResponsable();
+        String id = servicioEliminar.getId();
         
-        mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
+        mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnEliminarSDigital;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnInicio12;
-    private javax.swing.JComboBox<ProductoFisico> cobmoSDitigitales;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel102;
+    private javax.swing.JComboBox<ServicioDigital> comboSDigitales;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaProducto;
     private javax.swing.JTable tablaSDigital;
     // End of variables declaration//GEN-END:variables
 }

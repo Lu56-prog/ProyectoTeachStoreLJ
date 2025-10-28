@@ -324,26 +324,12 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         //Abstraemos cada dato ingresado por el usaurio
         String nombreProducto = txtNombre.getText();
         String precioTexto = txtPrecio.getText();
-        precioTexto = precioTexto.replace(".", "");
-        precioTexto = precioTexto.replace(",", "");
-        double precioProducto = -1;
-        //Verificamos que precio sea un numero
-        try {
-            precioProducto = Double.parseDouble(precioTexto); 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
+        double precioProducto = recargarPagina.convertirPrecio(precioTexto);
         String categoriaProducto = comboCategoria.getSelectedItem().toString();
         String marcaProducto = txtMarca.getText();
-        int stockProducto = -1;
-        //Verficiamos que stock sea un numero
-        try {
-            stockProducto = Integer.parseInt(txtStock.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que Stock sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
+        int stockProducto = recargarPagina.convertirEntero(txtStock.getText(), "Stock");
         String ubicacionProducto = txtUbicacion.getText();
-        int descuento = Integer.parseInt(txtDescuento.getText());
+        int descuento = recargarPagina.convertirEntero(txtDescuento.getText(), "descuento");
         
         ProductoFisico productoModificar = (ProductoFisico) comboProductos.getSelectedItem();
         

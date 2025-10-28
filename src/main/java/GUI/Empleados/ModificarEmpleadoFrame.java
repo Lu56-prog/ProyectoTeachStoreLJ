@@ -18,6 +18,7 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
     
     public ModificarEmpleadoFrame() {
         initComponents();
+        
     }
 
     /**
