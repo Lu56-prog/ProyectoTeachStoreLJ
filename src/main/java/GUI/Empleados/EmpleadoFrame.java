@@ -175,7 +175,7 @@ public class EmpleadoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarEmpleadoActionPerformed
 
     private void btnEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoActionPerformed
-        //Boton pagina eliminar producto
+        //Boton pagina eliminar empleado
         dispose();
         recargarPagina.recargarEliminarEmpleado();
     }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed

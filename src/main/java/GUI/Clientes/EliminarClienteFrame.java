@@ -179,7 +179,7 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
         jLabel106.setBackground(new java.awt.Color(255, 255, 255));
         jLabel106.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel106.setText("Eliminar Producto");
+        jLabel106.setText("Eliminar Cliente");
 
         comboProductos2.setBackground(new java.awt.Color(59, 63, 66));
         comboProductos2.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,19 +266,19 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
                     .addComponent(comboProductos2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel106)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(306, 306, 306))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel105)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel106)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(comboProductos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -321,43 +321,30 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarProducto3ActionPerformed
 
     private void btnInicio3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio3
-
+        dispose();
+        recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio3
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarProducto;
-    private javax.swing.JButton btnEliminarProducto1;
-    private javax.swing.JButton btnEliminarProducto2;
     private javax.swing.JButton btnEliminarProducto3;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnInicio1;
-    private javax.swing.JButton btnInicio2;
     private javax.swing.JButton btnInicio3;
     private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos1;
     private javax.swing.JComboBox<ProductoFisico> comboProductos2;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tablaProducto;
-    private javax.swing.JTable tablaProducto1;
-    private javax.swing.JTable tablaProducto2;
     private javax.swing.JTable tablaProducto3;
     // End of variables declaration//GEN-END:variables
 }

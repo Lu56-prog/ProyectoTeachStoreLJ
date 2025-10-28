@@ -2,9 +2,18 @@
 package Clases;
 
 
-import GUI.*;
+import GUI.MainFrame;
+import GUI.Productos.AgregarSDigitalesFrame;
+import GUI.Productos.VerSDigitalesFrame;
+import GUI.Productos.EliminarProductoFrame;
+import GUI.Productos.VerProductosFrame;
+import GUI.Productos.AgregarProductoFisicoFrame;
+import GUI.Productos.ModificarProductoFrame;
+import GUI.Productos.EliminarSDigitalFrame;
+import GUI.Productos.ModificarSDigitalesFrame;
+import GUI.Productos.ServicioDigitalFrame;
+import GUI.Productos.InventarioFrame;
 import GUI.Clientes.*;
-import GUI.Productos.*;
 import GUI.Empleados.*;
 
 
@@ -38,7 +47,7 @@ public class Frames {
     }
     
     public void recargarModificarProducto(){
-        ModificarEmpleadoFrame mpf = new ModificarEmpleadoFrame();
+        ModificarProductoFrame mpf = new ModificarProductoFrame();
         
         mpf.setVisible(true);
         mpf.setLocationRelativeTo(null);
@@ -145,7 +154,7 @@ public class Frames {
     }
     
     public void recargarModificarEmpleado(){
-        ModificarProductoFrame mef = new ModificarProductoFrame();
+        ModificarEmpleadoFrame mef = new ModificarEmpleadoFrame();
         
         mef.setVisible(true);
         mef.setLocationRelativeTo(null);

@@ -2,9 +2,9 @@
 
 package com.mycompany.teachstorelj;
 
+import GUI.MainFrame;
 import Clases.*;
 import MeException.*;
-import GUI.*;
 
 public class TeachStoreLJ { 
     

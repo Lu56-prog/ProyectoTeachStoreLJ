@@ -229,22 +229,13 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarProducto;
-    private javax.swing.JButton btnEliminarSDigital;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnInicio1;
     private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos1;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaProducto;
-    private javax.swing.JTable tablaProducto1;
     // End of variables declaration//GEN-END:variables
 }

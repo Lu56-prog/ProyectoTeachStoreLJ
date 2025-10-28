@@ -22,7 +22,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
         
         for(ProductoFisico producto: productosFisicos){
-            comboEmpleados.addItem(producto);
+            comboProductos.addItem(producto);
         }
     }
 
@@ -38,7 +38,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        comboEmpleados = new javax.swing.JComboBox<>();
+        comboProductos = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
         btnModificarProducto = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
@@ -69,13 +69,13 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         jLabel104.setBackground(new java.awt.Color(255, 255, 255));
         jLabel104.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel104.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel104.setText("Modificar Empleado");
+        jLabel104.setText("Modificar Producto");
 
-        comboEmpleados.setBackground(new java.awt.Color(59, 63, 66));
-        comboEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        comboEmpleados.addActionListener(new java.awt.event.ActionListener() {
+        comboProductos.setBackground(new java.awt.Color(59, 63, 66));
+        comboProductos.setForeground(new java.awt.Color(255, 255, 255));
+        comboProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEmpleadosActionPerformed(evt);
+                comboProductosActionPerformed(evt);
             }
         });
 
@@ -266,7 +266,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel103)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(comboEmpleados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
@@ -282,7 +282,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel104)
                 .addGap(18, 18, 18)
-                .addComponent(comboEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(10, Short.MAX_VALUE))
@@ -302,9 +302,9 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadosActionPerformed
+    private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
         //Segun el producto elegio aparece la informacion, si desea modificar simplemente borra y coloca el nuevo dato
-        ProductoFisico productoElegido = (ProductoFisico) comboEmpleados.getSelectedItem();
+        ProductoFisico productoElegido = (ProductoFisico) comboProductos.getSelectedItem();
         
         txtNombre.setText(productoElegido.getNombre());
         
@@ -318,7 +318,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         txtStock.setText(String.valueOf(productoElegido.getStock()));
         txtUbicacion.setText(productoElegido.getUbicacion());
         txtDescuento.setText(String.valueOf(productoElegido.getDescuento()));
-    }//GEN-LAST:event_comboEmpleadosActionPerformed
+    }//GEN-LAST:event_comboProductosActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
         //Abstraemos cada dato ingresado por el usaurio
@@ -345,7 +345,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         String ubicacionProducto = txtUbicacion.getText();
         int descuento = Integer.parseInt(txtDescuento.getText());
         
-        ProductoFisico productoModificar = (ProductoFisico) comboEmpleados.getSelectedItem();
+        ProductoFisico productoModificar = (ProductoFisico) comboProductos.getSelectedItem();
         
         //Segun los nuevos datos modificamos el producto
         try{
@@ -377,7 +377,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnModificarProducto;
     private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<ProductoFisico> comboEmpleados;
+    private javax.swing.JComboBox<ProductoFisico> comboProductos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
