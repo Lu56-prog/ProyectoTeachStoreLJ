@@ -24,7 +24,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         
         for(Empleado tecnico: empleados){
             if(tecnico.getCargo().equals("Tecnico")){
-                comboTecnicos.addItem(tecnico.toString());
+                comboTecnicos.addItem(tecnico);
             }
         }
     }
@@ -290,7 +290,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Servicio Digital Creado", "Creacion Producto", JOptionPane.HEIGHT);
             //Al agregar el producto la pagina se actualiza
             dispose();
-            recargarPagina.recargarAgregarProducto();
+            recargarPagina.recargarAgregarSDigital();
         } catch (CampoVacioException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
         } catch(TiempoNoPermitidoException e){
@@ -320,7 +320,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarSDigital;
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<String> comboTecnicos;
+    private javax.swing.JComboBox<Empleado> comboTecnicos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

@@ -6,17 +6,29 @@ import MeException.*;
 import java.time.Duration;
 
 public class ServicioDigital extends Producto {
-    private Duration duracionEstimada;  
-    private String descripcion;         
-    private Tecnico tecnicoResponsable;  
+    private static int contador = 1;
+    protected String id;
+    protected Duration duracionEstimada;  
+    protected  String descripcion;         
+    protected  Tecnico tecnicoResponsable;  
     // Constructor
     public ServicioDigital(String nombre, double precio, String categoria, Duration duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException, TiempoNoPermitidoException{
         super(nombre, precio, categoria);
+        setId();
         setDuracionEstimada(duracionEstimada);
         setDescripcion(descripcion);
         setTecnicoResponsable(tecnicoResponsable);
     }
 
+    public String getId() {
+        return id;
+    }
+
+    private void setId() {
+        String id = ("SR-DIGITAL-00" + contador);
+        contador = contador + 1;
+        this.id = id;
+    }
     
     public Duration getDuracionEstimada() {
         return duracionEstimada;
@@ -75,7 +87,7 @@ public class ServicioDigital extends Producto {
 
     @Override
     public String toString() {
-        return "Servicio: " + this.nombre + " (" + this.duracionEstimada + ")";
+        return this.nombre + " -> " + this.id;
     }
 
 }

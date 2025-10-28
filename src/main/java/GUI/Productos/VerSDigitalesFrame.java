@@ -19,6 +19,9 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
     
     public VerSDigitalesFrame() {
         initComponents();
+        
+        //Se actualiza la tabla
+        actualizarTabla();
     }
 
     /**
@@ -62,13 +65,13 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
 
         tablaSDigitales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Precio", "Categoria", "Duracion (min)", "Descripcion", "Técnico Responsable"
+                "Nombre", "Precio", "Categoria", "Duracion (min)", "Descripcion", "Técnico Responsable", "Codigo"
             }
         ));
         jScrollPane1.setViewportView(tablaSDigitales);
@@ -177,36 +180,30 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel6)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(12, 12, 12)
-                                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addGap(8, 8, 8)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,85 +297,27 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
     private void actualizarTabla(){
         //Actualizamos al tabla segun los filtros deseados
         mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
+        String encabezado [] = {"Nombre", "Precio", "Categoria", "Duracion", "Descripcion", "Tecnico Responsable", "Codigo"};
         mt.setColumnIdentifiers(encabezado);
         
         tablaSDigitales.setModel(mt);
         
-        List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
+        List<ServicioDigital> serviciosDigitales = TeachStoreLJ.inventario.listaSDigitales;
         
         
-        for(ProductoFisico producto : productosFisicos) {
-           String nombre = producto.getNombre();
-           double precio = producto.getPrecio();
+        for(ServicioDigital servicio : serviciosDigitales) {
+           String nombre = servicio.getNombre();
+           double precio = servicio.getPrecio();
            DecimalFormat fm = new DecimalFormat("#, ###");
            String precioFormateado = fm.format(precio);
-           String categoria = producto.getCategoria();
-           String marca = producto.getMarca();
-           int stock = producto.getStock();
-           String codigoBarras = producto.getCodigoBarras();
-           String ubicacion = producto.getUbicacion();
-           double descuento = producto.getDescuento();
+           String categoria = servicio.getCategoria();
+           String duracion = servicio.getDuracionEstimada().toString();
+           String descripcion = servicio.getDescripcion();
+           Tecnico tecnicoR = servicio.getTecnicoResponsable();
+           String id = servicio.getId();
            
-           //Validar rango de precio
-           String eleccionPrecio = comboPrecio.getSelectedItem().toString();
-           boolean controladorPrecio;
-           if(eleccionPrecio.equals("Todos")){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
-               controladorPrecio = true;
-           } else{
-               controladorPrecio = false;
-           }
            
-           //Validar categoria escogida
-           String eleccioCategoria = comboCategoria.getSelectedItem().toString();
-           boolean controlCategoria = false;
-           if(eleccioCategoria.equals("Todos") || eleccioCategoria.equals(categoria)){
-               controlCategoria = true;
-           }
-           
-           //Validar stock elegido
-           String eleccionStock = comboStock.getSelectedItem().toString();
-           boolean controlStock = false;
-           if(eleccionStock.equals("Todos")){
-               controlStock = true;
-           } else if (eleccionStock.equals("Stock bajo") && stock <= 5){
-               controlStock = true;
-           }
-           
-           //Validar descuentoe elegido
-           String eleccionDescuento = comboDescuento.getSelectedItem().toString();
-           boolean controlDescuento = false;
-           if(eleccionDescuento.equals("Todos")){
-               controlDescuento = true;
-           } else if (eleccionDescuento.equals("Con descuento") && descuento > 0){
-               controlDescuento = true;
-           } else if (eleccionDescuento.equals("Sin descuento") && descuento == 0){
-               controlDescuento = true;
-           }
-           
-           //Mostrar tabla según busqueda, si el producto cumple con cada caracteristica se mostrara
-           if(nombre.startsWith(txtNombre.getText()) && 
-                   marca.startsWith(txtMarca.getText()) && 
-                   controladorPrecio &&
-                   controlCategoria &&
-                   controlStock &&
-                   codigoBarras.startsWith(txtCodigo.getText()) &&
-                   ubicacion.startsWith(txtUbicacion.getText()) &&
-                   controlDescuento){
-               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
-           }
+           mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
         }
     }
 

@@ -4,14 +4,14 @@ package Clases;
 import java.time.LocalDate;
 
 public abstract class Empleado extends Usuario{
-    private String cargo;
-    private String profesion;
-    private double salario;
-    private LocalDate fechaIngreso;
-    private String jornadaLaboral;
+    protected String cargo;
+    protected  String profesion;
+    protected  double salario;
+    protected  LocalDate fechaIngreso;
+    protected  String jornadaLaboral;
 
-    public Empleado(String id, String nombre, int cedula, String telefono,String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
-        super(id, nombre, cedula, telefono, correo);
+    public Empleado( String nombre, int cedula, String telefono,String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
+        super(nombre, cedula, telefono, correo);
         this.cargo = cargo;
         this.profesion = profesion;
         this.salario = salario;
@@ -62,6 +62,8 @@ public abstract class Empleado extends Usuario{
     //Sobreescribimos el metodo toString() para los comoBox
     @Override
     public String toString(){
-        return ("Identificacion: " + this.cedula + " Nombre: " + this.nombre);
+        return (this.getId() + " -> " + this.getNombre());
     }
+    
+    
 }
