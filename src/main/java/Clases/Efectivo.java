@@ -1,6 +1,6 @@
 
 package Clases;
-
+import MeException.*;
 public class Efectivo extends MetodoPago {
     protected double totalRecibido;
     protected double totalDevuelto;
@@ -17,6 +17,10 @@ public class Efectivo extends MetodoPago {
     }
 
     public void setTotalRecibido(double totalRecibido) {
+        
+        if (totalRecibido < totalPagar){
+            throw new PagoEfectivoRechazadoException ("pago rechazado, Efectivo menor a total a pagar");
+        }
         this.totalRecibido = totalRecibido;
     }
 
