@@ -2,6 +2,7 @@
 package Clases;
 
 import MeException.*;
+import javax.swing.JOptionPane;
 
 public abstract class Producto{
     protected  String nombre;
@@ -30,8 +31,8 @@ public abstract class Producto{
     }
 
     protected void setPrecio(double precio) {
-        if(precio<=0){
-            throw new NumeroMenorACero("El precio no puede ser menor a 0");
+        if(precio<=0 || precio >= 99999999){
+            throw new NumeroFueraDeLimites("El precio esta fuera de sus limites");
         }
         this.precio = precio;
     }

@@ -6,7 +6,7 @@ package GUI.Productos;
 
 import Clases.*;
 import MeException.CampoVacioException;
-import MeException.NumeroMenorACero;
+import MeException.NumeroFueraDeLimites;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;
@@ -356,7 +356,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
             recargarPagina.recargarModificarProducto();
         } catch (CampoVacioException ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
-        } catch(NumeroMenorACero ex){
+        } catch(NumeroFueraDeLimites ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarProductoActionPerformed

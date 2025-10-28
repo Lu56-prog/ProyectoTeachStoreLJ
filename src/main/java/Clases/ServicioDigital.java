@@ -3,14 +3,14 @@
 package Clases;
 
 import MeException.*;
-import java.time.LocalTime;
+import java.time.Duration;
 
 public class ServicioDigital extends Producto {
-    private LocalTime duracionEstimada;  
+    private Duration duracionEstimada;  
     private String descripcion;         
     private Tecnico tecnicoResponsable;  
     // Constructor
-    public ServicioDigital(String nombre, double precio, String categoria, LocalTime duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException {
+    public ServicioDigital(String nombre, double precio, String categoria, Duration duracionEstimada, String descripcion,Tecnico tecnicoResponsable) throws CampoVacioException {
         super(nombre, precio, categoria);
         setDuracionEstimada(duracionEstimada);
         setDescripcion(descripcion);
@@ -18,14 +18,12 @@ public class ServicioDigital extends Producto {
     }
 
     
-    public LocalTime getDuracionEstimada() {
+    public Duration getDuracionEstimada() {
         return duracionEstimada;
     }
 
-    private void setDuracionEstimada(LocalTime duracionEstimada) {
-        if (duracionEstimada == null) {
-            throw new CampoVacioException("La duración estimada no puede ser nula.");
-        }
+    private void setDuracionEstimada(Duration duracionEstimada) {
+ 
         this.duracionEstimada = duracionEstimada;
     }
 
@@ -64,7 +62,7 @@ public class ServicioDigital extends Producto {
                 "\nTécnico Responsable: " + this.tecnicoResponsable);
     }
 
-    public void modificarServicio(String nombre, double precio, String categoria, LocalTime duracionEstimada, String descripcion, Tecnico tecnicoResponsable) {
+    public void modificarServicio(String nombre, double precio, String categoria, Duration duracionEstimada, String descripcion, Tecnico tecnicoResponsable) {
         setNombre(nombre);
         setPrecio(precio);
         setCategoria(categoria);

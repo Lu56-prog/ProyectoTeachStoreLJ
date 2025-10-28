@@ -48,7 +48,7 @@ public class ProductoFisico  extends Producto{
 
     private void setStock(int stock) {
         if(stock < 0){
-            throw new NumeroMenorACero("El Stock no puede ser menor a 0");
+            throw new NumeroFueraDeLimites("El Stock no puede ser menor a 0");
         }
         this.stock = stock;
     }
@@ -80,7 +80,7 @@ public class ProductoFisico  extends Producto{
 
     private void setDescuento(int descuento) {
         if(descuento < 0){
-            throw new NumeroMenorACero("El descuento no puede ser menor a 0");
+            throw new NumeroFueraDeLimites("El descuento no puede ser menor a 0");
         }
         this.descuento = descuento;
     }

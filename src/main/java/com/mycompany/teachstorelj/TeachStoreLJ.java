@@ -9,9 +9,11 @@ import MeException.*;
 public class TeachStoreLJ { 
     
     public static Inventario inventario;
+    public static CajaEmpleados empleados;
 
     public static void main(String[] args) {
         inventario = new Inventario();
+        empleados = new CajaEmpleados();
         
        inventario.listaProductos.add(new ProductoFisico("Laptop ASUS", 2500000, "Computadoras", "Samsung", 3, "Bodega 1", 5));
        inventario.listaProductos.add(new ProductoFisico("Mouse Logitech", 120000, "Accesorios", "Logitech", 30, "Bodega 2", 10));

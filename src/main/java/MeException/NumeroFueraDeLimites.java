@@ -4,9 +4,9 @@
  */
 package MeException;
 
-public class NumeroMenorACero extends RuntimeException {
+public class NumeroFueraDeLimites extends RuntimeException {
 
-    public NumeroMenorACero(String message) {
+    public NumeroFueraDeLimites(String message) {
         super(message);
     }
     

@@ -15,6 +15,7 @@ import GUI.Productos.ServicioDigitalFrame;
 import GUI.Productos.InventarioFrame;
 import GUI.Clientes.*;
 import GUI.Empleados.*;
+import javax.swing.JOptionPane;
 
 
 
@@ -172,5 +173,31 @@ public class Frames {
         
         vef.setVisible(true);
         vef.setLocationRelativeTo(null);
+    }
+    
+      //Como el txt nos devuleve un String tenemos que pasar los datos a números
+    //Y eso nos puede lanzar la excepcion NumberFormatException
+    public double convertirPrecio(String precioTexto){
+        precioTexto = precioTexto.replace(".", "");
+        precioTexto = precioTexto.replace(",", "");
+        double precioConvertido = 0;
+        //Nos aseguramos de que el precio sea un número
+        try {
+            precioConvertido = Double.parseDouble(precioTexto); 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
+        }
+        return precioConvertido;
+    }
+    
+    public int convertirEntero(String numero, String mensaje){
+        int numeroConvertido = -1;
+        try {
+            numeroConvertido = Integer.parseInt(numero);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verifica que " + mensaje + " sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return numeroConvertido;
     }
 }

@@ -7,6 +7,7 @@ package GUI.Productos;
 import Clases.*;
 import MeException.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AgregarSDigitalesFrame extends javax.swing.JFrame {
@@ -15,6 +16,15 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     
     public AgregarSDigitalesFrame() {
         initComponents();
+        
+        //Cargamos los tecnico y agregamos el comboBox tecnicos
+        List<Empleado> empleados = TeachStoreLJ.empleados.listaEmpleados;
+        
+        for(ProductoFisico tecnico: empleados){
+            if(tecnico.getCategoria() == "Tecnico"){
+                comboTecnicos.addItem(tecnico);
+            }
+        }
     }
 
     /**
@@ -39,10 +49,10 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         comboCategoria = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtStock = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         btnAgregarSDigital = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboTecnicos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -82,9 +92,10 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel9.setText("Duracion");
+        jLabel9.setText("Duracion (Minutos)");
 
         txtMarca.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        txtMarca.setText("30");
 
         comboCategoria.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
         comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantemiento y reparación", "Software y sistemas", "Redes y conectividad", "Asesoria y soporte técnico" }));
@@ -104,10 +115,10 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(238, 238, 238));
         jLabel11.setText("Descripcion");
 
-        txtStock.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
-        txtStock.addActionListener(new java.awt.event.ActionListener() {
+        txtDescripcion.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStockActionPerformed(evt);
+                txtDescripcionActionPerformed(evt);
             }
         });
 
@@ -133,7 +144,12 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        comboTecnicos.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        comboTecnicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTecnicosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,11 +170,11 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -222,8 +238,8 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addComponent(btnAgregarSDigital, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,7 +267,14 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboCategoriaActionPerformed
 
     private void btnAgregarSDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSDigitalActionPerformed
-
+       //Abstraemos los datos registrados proe l usuario
+       String nombre = txtNombre.getText();
+       String precioTexto = txtPrecio.getText();
+       precioTexto = precioTexto.replace(".", "");
+       precioTexto = precioTexto.replace(",", "");
+       double precio = recargarPagina.convertirPrecio(txtPrecio.getText());
+       String categoria = comboCategoria.getSelectedItem().toString();
+       String descripcion = txtDescripcion.getText();
     }//GEN-LAST:event_btnAgregarSDigitalActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -260,16 +283,20 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
 
-    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockActionPerformed
+    }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void comboTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTecnicosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTecnicosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarSDigital;
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboTecnicos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -279,9 +306,9 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

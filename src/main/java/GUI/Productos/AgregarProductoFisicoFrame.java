@@ -344,27 +344,12 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
 
         //Abstraemos los datos registrados por el usuario
         String nombreProducto = txtNombre.getText();
-        String precioTexto = txtPrecio.getText();
-        precioTexto = precioTexto.replace(".", "");
-        precioTexto = precioTexto.replace(",", "");
-        double precioProducto = -1;
-        //Nos aseguramos de que el precio sea un número
-        try {
-            precioProducto = Double.parseDouble(precioTexto); 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que precio sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
+        double precioProducto = recargarPagina.convertirPrecio(txtPrecio.getText());
         String categoriaProducto = comboCategoria.getSelectedItem().toString();
         String marcaProducto = txtMarca.getText();
-        int stockProducto = -1;
-        //Nos aseguramos que el stock sea un numero
-        try {
-            stockProducto = Integer.parseInt(txtStock.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Verifica que Stock sea un número", "ERROR PRECIO", JOptionPane.ERROR_MESSAGE);
-        }
+        int stockProducto = recargarPagina.convertirEntero(txtStock.getText(), "stock");
         String ubicacionProducto = txtUbicacion.getText();
-        int descuento = Integer.parseInt(txtDescuento.getText());
+        int descuento = recargarPagina.convertirEntero(txtDescuento.getText(), "descuento");
         
         
         try{
@@ -381,7 +366,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
         } catch (CampoVacioException ex){
             //Verificamos que ningun campo este vacio
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
-        } catch(NumeroMenorACero ex){
+        } catch(NumeroFueraDeLimites ex){
             //Verificamos que ningun número sobrepase el rango
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR NUMERO MENOR A 0", JOptionPane.ERROR_MESSAGE);
         }
