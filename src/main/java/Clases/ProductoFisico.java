@@ -91,7 +91,6 @@ public class ProductoFisico  extends Producto{
         setCategoria(categoria);
         setMarca(marca);
         setStock(stock);
-        setCodigoBarras();
         setUbicacion(ubicacion);
         setDescuento(descuento);
     }

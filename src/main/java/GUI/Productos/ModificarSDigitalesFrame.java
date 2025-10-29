@@ -316,7 +316,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
         
         txtPrecio.setText(precioFormateado);
         comboCategoria.setSelectedItem(servicioElegido.getCategoria());
-        txtDuracion.setText(servicioElegido.getDuracionEstimada().toString());
+        txtDuracion.setText(String.valueOf(servicioElegido.getDuracionEstimada().toMinutes())); 
         txtDescripcion.setText(servicioElegido.getDescripcion());
         
         comboTecnicos2.setSelectedItem(servicioElegido.getTecnicoResponsable());

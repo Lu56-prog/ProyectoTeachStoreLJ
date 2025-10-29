@@ -311,7 +311,7 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
            DecimalFormat fm = new DecimalFormat("#, ###");
            String precioFormateado = fm.format(precio);
            String categoria = servicio.getCategoria();
-           String duracion = servicio.getDuracionEstimada().toString();
+           String duracion = (String.valueOf(servicio.getDuracionEstimada().toMinutes()));
            String descripcion = servicio.getDescripcion();
            Tecnico tecnicoR = servicio.getTecnicoResponsable();
            String id = servicio.getId();

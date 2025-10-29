@@ -114,7 +114,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnEliminarSDigital, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -216,7 +216,7 @@ private void actualizarTabla(){
         DecimalFormat fm = new DecimalFormat("#, ###");
         String precioFormateado = fm.format(precio);
         String categoria = servicioEliminar.getCategoria();
-        String duracion = servicioEliminar.getDuracionEstimada().toString();
+        String duracion = (String.valueOf(servicioEliminar.getDuracionEstimada().toMinutes()));
         String descripcion = servicioEliminar.getDescripcion();
         Tecnico tecnicoR = servicioEliminar.getTecnicoResponsable();
         String id = servicioEliminar.getId();

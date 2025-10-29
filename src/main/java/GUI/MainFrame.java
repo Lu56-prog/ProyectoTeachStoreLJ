@@ -191,7 +191,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInventarioActionPerformed
 
     private void BtnCrearCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearCompraActionPerformed
-
+        //Boton para ir a generar nuevo ticket
+        dispose();
+        recargarPagina.recargarCrearTicket();
     }//GEN-LAST:event_BtnCrearCompraActionPerformed
 
     private void btnSalirbtnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirbtnInicio

@@ -6,6 +6,7 @@ import GUI.MainFrame;
 import GUI.Productos.*;
 import GUI.Clientes.*;
 import GUI.Empleados.*;
+import GUI.ProcesoCompra.*;
 import javax.swing.JOptionPane;
 
 
@@ -166,7 +167,22 @@ public class Frames {
         vef.setLocationRelativeTo(null);
     }
     
-      //Como el txt nos devuleve un String tenemos que pasar los datos a números
+    //ventas
+    public void recargarCrearTicket(){
+        GenerarTicketFrame gtf = new GenerarTicketFrame();
+        
+        gtf.setVisible(true);
+        gtf.setLocationRelativeTo(null);
+    }
+    
+    public void recargarMetodosPago(){
+        MetodoDePagoFrame mdpf = new MetodoDePagoFrame();
+        
+        mdpf.setVisible(true);
+        mdpf.setLocationRelativeTo(null);
+    }
+    
+    //Como el txt nos devuleve un String tenemos que pasar los datos a números
     //Y eso nos puede lanzar la excepcion NumberFormatException
     public double convertirPrecio(String precioTexto){
         precioTexto = precioTexto.replace(".", "");
