@@ -28,6 +28,10 @@ public class TeachStoreLJ {
         usuarios.listaEmpleados.add(new Tecnico("María Gómez", "9876543210", "3105674321", "mariagomez@hotmail.com", "Técnico", "Ingeniero Electrónico", 2200000, "Medio tiempo"));
         usuarios.listaEmpleados.add(new Supervisor("Carlos López", "1234567890", "3206549871", "carloslopez@yahoo.com", "Supervisor", "Tecnólogo en Sistemas", 2500000, "Tiempo completo"));
         
+        usuarios.listaClientes.add(new Cliente("Juan Pérez", "1023456789", "3004567890", "juanperez@gmail.com", "Calle 45 #23-10"));
+        usuarios.listaClientes.add(new Cliente("María Gómez", "9876543210", "3105674321", "mariagomez@hotmail.com", "Carrera 12 #45-67"));
+        usuarios.listaClientes.add(new Cliente("Carlos López", "1234567890", "3206549871", "carloslopez@yahoo.com", "Avenida 80 #30-20"));
+        
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         mainFrame.setLocationRelativeTo(null);
