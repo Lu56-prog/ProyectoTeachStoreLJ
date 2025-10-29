@@ -258,6 +258,8 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
         } catch(CorreoNoValidoException ex4){
             JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
         }
+        dispose();
+        recargarPagina.recargarAgregarEmpleado();
         
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 

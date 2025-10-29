@@ -8,11 +8,9 @@ public class Supervisor extends Empleado{
     protected int descuentoAutorizado;
     protected  int ventaMayoresAutorizadas;
 
-    public Supervisor( String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int descuentoAutorizado, int ventaMayoresAutorizadas) {
-        super(nombre, cedula, telefono, correo, cargo, profesion, salario, fechaIngreso, jornadaLaboral);
+    public Supervisor( String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, String jornadaLaboral) {
+        super(nombre, cedula, telefono, correo, cargo, profesion, salario, jornadaLaboral);
         setId();
-        this.descuentoAutorizado = descuentoAutorizado;
-        this.ventaMayoresAutorizadas = ventaMayoresAutorizadas;
     }
 
     public int getDescuentoAutorizado() {
@@ -31,10 +29,4 @@ public class Supervisor extends Empleado{
         this.ventaMayoresAutorizadas = ventaMayoresAutorizadas;
     }
     
-    @Override
-    protected void setId(){
-        String id = ("EM-SUPERVISOR-00" + contador);
-        contador = contador + 1;
-        this.id = id;
-    }
 }

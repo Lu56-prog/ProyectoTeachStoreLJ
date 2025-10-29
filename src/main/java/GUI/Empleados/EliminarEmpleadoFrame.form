@@ -265,7 +265,7 @@
                           <Component id="jLabel105" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="comboProductos2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboEmpleados" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel18" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -285,7 +285,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel106" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="comboProductos2" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboEmpleados" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel18" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -322,7 +322,7 @@
             <Property name="text" type="java.lang.String" value="Eliminar Empleado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboProductos2">
+        <Component class="javax.swing.JComboBox" name="comboEmpleados">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="42" green="3f" red="3b" type="rgb"/>
@@ -335,10 +335,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboProductos2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboEmpleadosActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ProductoFisico&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Empleado&gt;"/>
           </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel18">
@@ -359,7 +359,7 @@
                                   <Component id="jScrollPane4" alignment="1" pref="889" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="btnEliminarProducto3" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Component id="btnEliminarEmpleado" min="-2" pref="105" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
@@ -378,7 +378,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnEliminarProducto3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="btnEliminarEmpleado" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnInicio3" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -387,7 +387,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnEliminarProducto3">
+            <Component class="javax.swing.JButton" name="btnEliminarEmpleado">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="52" green="f1" red="27" type="rgb"/>
@@ -406,7 +406,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarProducto3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarEmpleadoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInicio3">
@@ -438,10 +438,10 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tablaProducto3">
+                <Component class="javax.swing.JTable" name="tablaEmpleados">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="1">
+                      <Table columnCount="9" rowCount="1">
                         <Column editable="true" title="Nombre" type="java.lang.Object"/>
                         <Column editable="true" title="Identificacion" type="java.lang.Object"/>
                         <Column editable="true" title="Telefono" type="java.lang.Object"/>
@@ -450,6 +450,7 @@
                         <Column editable="true" title="Salario" type="java.lang.Object"/>
                         <Column editable="true" title="Profesion" type="java.lang.Object"/>
                         <Column editable="true" title="Jornada Laboral" type="java.lang.Object"/>
+                        <Column editable="true" title="Id" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>

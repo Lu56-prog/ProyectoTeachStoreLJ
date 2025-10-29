@@ -295,7 +295,51 @@ public class AgregarEmpleadoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoActionPerformed
-
+        //Abstraemos los datos registrados por el usuario
+        String nombre = txtNombre.getText();
+        String cedula = txtIdentificacion.getText();
+        String telefono = txtTelefono.getText();
+        String email = txtCorreo.getText();
+        String cargo = comboCargo1.getSelectedItem().toString();
+        double salario = recargarPagina.convertirPrecio(txtSalario.getText());
+        String profesion = txtProfesion.getText();
+        String jornada = comboJornada.getSelectedItem().toString();
+        
+        //Creamos el empleado y guardamos
+        try{
+            switch (cargo) {
+                case "Tecnico":
+                    Tecnico tecnico = new Tecnico(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
+                    TeachStoreLJ.usuarios.listaEmpleados.add(tecnico);
+                    JOptionPane.showMessageDialog(null, "Tecnico Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    break;
+                case "Cajero":
+                    Cajero cajero = new Cajero(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
+                    TeachStoreLJ.usuarios.listaEmpleados.add(cajero);
+                    JOptionPane.showMessageDialog(null, "Cajero Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    break;
+                 case "Supervisor":
+                    Supervisor supervisor = new Supervisor(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
+                    TeachStoreLJ.usuarios.listaEmpleados.add(supervisor);
+                    JOptionPane.showMessageDialog(null, "Supervisor Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            dispose();
+            recargarPagina.recargarAgregarEmpleado();
+       }  catch (CampoVacioException ex){
+                //Verificamos que ningun campo este vacio
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
+       } catch(IdentificacionNoValidaException ex2){
+                JOptionPane.showMessageDialog(null, ex2.getMessage(), "ERROR IDENTIFICACION", JOptionPane.ERROR_MESSAGE);
+       } catch(TelefonoNoValidoException ex3){
+                JOptionPane.showMessageDialog(null, ex3.getMessage(), "ERROR TELEFONO", JOptionPane.ERROR_MESSAGE);
+        } catch(CorreoNoValidoException ex4){
+                JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+       } catch(SalarioNoValidoException ex5){
+                JOptionPane.showMessageDialog(null, ex5.getMessage(), "ERROR SALARIO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_btnAgregarEmpleadoActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -305,7 +349,7 @@ public class AgregarEmpleadoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicio
 
     private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_comboCategoriaActionPerformed
 
     private void comboJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboJornadaActionPerformed

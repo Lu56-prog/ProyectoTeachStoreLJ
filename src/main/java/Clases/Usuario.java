@@ -39,8 +39,8 @@ public abstract class Usuario {
     }
 
     private  void setCedula(String cedula) {
-        if(cedula.trim().length() != 10){
-            throw new IdentificacionNoValidaException("Su identificación a sido rechazada, número de caracteres permitido 10");
+        if(cedula.trim().length() > 10){
+            throw new IdentificacionNoValidaException("Su identificación a sido rechazada, número de caracteres permitido 10 o 8");
         }
         this.cedula = cedula;
     }

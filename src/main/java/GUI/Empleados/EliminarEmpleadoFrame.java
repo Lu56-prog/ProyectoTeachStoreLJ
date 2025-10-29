@@ -21,6 +21,13 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
     
     public EliminarEmpleadoFrame() {
         initComponents();
+        
+        //Cargamos los empleados en el comboBox
+        List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
+        
+        for(Empleado empleado: empleados){
+            comboEmpleados.addItem(empleado);
+        }
     }
 
     /**
@@ -44,12 +51,12 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
         jPanel17 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
         jLabel106 = new javax.swing.JLabel();
-        comboProductos2 = new javax.swing.JComboBox<>();
+        comboEmpleados = new javax.swing.JComboBox<>();
         jPanel18 = new javax.swing.JPanel();
-        btnEliminarProducto3 = new javax.swing.JButton();
+        btnEliminarEmpleado = new javax.swing.JButton();
         btnInicio3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablaProducto3 = new javax.swing.JTable();
+        tablaEmpleados = new javax.swing.JTable();
 
         jPanel12.setBackground(new java.awt.Color(30, 30, 46));
 
@@ -182,24 +189,24 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
         jLabel106.setForeground(new java.awt.Color(238, 238, 238));
         jLabel106.setText("Eliminar Empleado");
 
-        comboProductos2.setBackground(new java.awt.Color(59, 63, 66));
-        comboProductos2.setForeground(new java.awt.Color(255, 255, 255));
-        comboProductos2.addActionListener(new java.awt.event.ActionListener() {
+        comboEmpleados.setBackground(new java.awt.Color(59, 63, 66));
+        comboEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        comboEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductos2ActionPerformed(evt);
+                comboEmpleadosActionPerformed(evt);
             }
         });
 
         jPanel18.setBackground(new java.awt.Color(59, 63, 66));
 
-        btnEliminarProducto3.setBackground(new java.awt.Color(39, 241, 82));
-        btnEliminarProducto3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnEliminarProducto3.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminarProducto3.setText("Eliminar");
-        btnEliminarProducto3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnEliminarProducto3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarEmpleado.setBackground(new java.awt.Color(39, 241, 82));
+        btnEliminarEmpleado.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnEliminarEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarEmpleado.setText("Eliminar");
+        btnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarProducto3ActionPerformed(evt);
+                btnEliminarEmpleadoActionPerformed(evt);
             }
         });
 
@@ -214,15 +221,15 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
             }
         });
 
-        tablaProducto3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral"
+                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id"
             }
         ));
-        jScrollPane4.setViewportView(tablaProducto3);
+        jScrollPane4.setViewportView(tablaEmpleados);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -236,7 +243,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                             .addGroup(jPanel18Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnEliminarProducto3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(btnInicio3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +255,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEliminarProducto3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnInicio3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -264,7 +271,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel105)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(comboProductos2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboEmpleados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
@@ -280,7 +287,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(comboProductos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -313,28 +320,57 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
 
-    private void comboProductos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductos2ActionPerformed
-       
-    }//GEN-LAST:event_comboProductos2ActionPerformed
+    private void comboEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadosActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboEmpleadosActionPerformed
 
-    private void btnEliminarProducto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProducto3ActionPerformed
+    private void btnEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoActionPerformed
+        //Segun el empleado elegido se elimina de la lista
+        Empleado empleadoEliminar = (Empleado) comboEmpleados.getSelectedItem();
         
-    }//GEN-LAST:event_btnEliminarProducto3ActionPerformed
+        TeachStoreLJ.usuarios.listaEmpleados.remove (empleadoEliminar);
+        
+        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Eliminacion Empleado", JOptionPane.HEIGHT);
+        
+        dispose();
+        recargarPagina.recargarEliminarEmpleado();
+    }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed
 
     private void btnInicio3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio3
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio3
 
-
+    private void actualizarTabla(){
+        //Cada que escoge un cliente se muestra la info de este en la tabla
+        mt.setRowCount(0);
+        String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+        mt.setColumnIdentifiers(encabezado);
+        
+        tablaEmpleados.setModel(mt);
+        
+        //DATOS CLIENTE
+        Empleado empleadoElegido = (Empleado) comboEmpleados.getSelectedItem();
+        String nombre = empleadoElegido.getNombre();
+        String cedula = empleadoElegido.getCedula();
+        String telefono = empleadoElegido.getTelefono();
+        String email = empleadoElegido.getCorreo();
+        String cargo = empleadoElegido.getCargo();
+        double salario = empleadoElegido.getSalario();
+        String profesion = empleadoElegido.getProfesion();
+        String jornada = empleadoElegido.getJornadaLaboral();
+        String id = empleadoElegido.getId();
+        
+        mt.addRow(new Object[] {nombre, cedula, telefono, email, cargo, salario, profesion, jornada, id});
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarEmpleado;
     private javax.swing.JButton btnEliminarProducto;
-    private javax.swing.JButton btnEliminarProducto3;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnInicio3;
+    private javax.swing.JComboBox<Empleado> comboEmpleados;
     private javax.swing.JComboBox<ProductoFisico> comboProductos;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos2;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel105;
@@ -345,7 +381,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tablaEmpleados;
     private javax.swing.JTable tablaProducto;
-    private javax.swing.JTable tablaProducto3;
     // End of variables declaration//GEN-END:variables
 }

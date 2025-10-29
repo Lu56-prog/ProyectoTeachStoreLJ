@@ -20,7 +20,6 @@ public class Cliente extends Usuario{
     }
 
     private void setDireccion(String direccion2) {
-        System.out.println("PROBANDO3 " + direccion2);
         if(direccion2.trim().isEmpty()){
             this.direccion = "No registrada";
         } else{
@@ -63,7 +62,7 @@ public class Cliente extends Usuario{
                 "\nID: " + this.id);
     }
     
-    public void modificarCliente(String nombre, String cedula, String telefono, String correo, String direcion){
+    public void modificarCliente(String nombre, String cedula, String telefono, String correo, String direccion){
         modificarUsuario(nombre, cedula, telefono, correo);
         setDireccion(direccion);
     }

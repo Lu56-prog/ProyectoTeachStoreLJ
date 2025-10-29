@@ -324,15 +324,15 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboClientesActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
-        //Segun el producto elegido se elimina de la lista
+        //Segun el cliente elegido se elimina de la lista
         Cliente clienteEliminar = (Cliente) comboClientes.getSelectedItem();
         
         TeachStoreLJ.usuarios.listaClientes.remove(clienteEliminar);
         
-        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Eliminacion Cliente", JOptionPane.HEIGHT);
         
         dispose();
-        recargarPagina.recargarEliminarProducto();
+        recargarPagina.recargarEliminarCliente();
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btnInicio3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio3

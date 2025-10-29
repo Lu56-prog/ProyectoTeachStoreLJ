@@ -5,16 +5,21 @@
 package GUI.Empleados;
 
 import Clases.*;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Lucerito
- */
+import Clases.*;
+import java.util.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
+import java.text.DecimalFormat;
+import javax.swing.table.DefaultTableModel;
+
 public class VerEmpleadosFrame extends javax.swing.JFrame {
-
+    DefaultTableModel mt  = new DefaultTableModel();
     Frames recargarPagina = new Frames();
     public VerEmpleadosFrame() {
         initComponents();
+        
+        actualizarTabla();
     }
 
     /**
@@ -57,13 +62,13 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
 
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral"
+                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id     "
             }
         ));
         jScrollPane1.setViewportView(tablaEmpleados);
@@ -290,7 +295,28 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboDescuentoActionPerformed
 
     public void actualizarTabla(){
-        
+        mt.setRowCount(0);
+           String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+           mt.setColumnIdentifiers(encabezado);
+
+           tablaEmpleados.setModel(mt);
+
+           //DATOS CLIENTE
+           List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
+
+           for(Empleado empleado: empleados){
+                String nombre = empleado.getNombre();
+                String cedula = empleado.getCedula();
+                String telefono = empleado.getTelefono();
+                String email = empleado.getCorreo();
+                String cargo = empleado.getCargo();
+                double salario = empleado.getSalario();
+                String profesion = empleado.getProfesion();
+                String jornada = empleado.getJornadaLaboral();
+                String id = empleado.getId();
+               
+               mt.addRow(new Object[] {nombre, cedula, telefono, email, cargo, salario, profesion, jornada, id});
+           }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;

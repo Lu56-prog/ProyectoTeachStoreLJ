@@ -290,9 +290,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
        Cliente clienteModificar = (Cliente) comboClientes.getSelectedItem();
        
        try{
-           System.out.println("PROBANDO " + direccion);
            clienteModificar.modificarCliente(nombre, cedula, telefono, email, direccion);
-           System.out.println("PROBANDO2 " + direccion);
            clienteModificar.mostrarInfo();
            JOptionPane.showMessageDialog(null, "Cliente Modificado", "Creacion Producto", JOptionPane.HEIGHT);
            dispose();

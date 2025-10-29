@@ -8,11 +8,9 @@ public class Cajero extends Empleado{
     protected  int ventaDelDia;
     protected double totalVendidoDia;
 
-    public Cajero(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int ventaDelDia, double totalVendidoDia) {
-        super(nombre, cedula, telefono, correo, cargo, profesion, salario, fechaIngreso, jornadaLaboral);
+    public Cajero(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, String jornadaLaboral) {
+        super(nombre, cedula, telefono, correo, cargo, profesion, salario, jornadaLaboral);
         setId();
-        this.ventaDelDia = ventaDelDia;
-        this.totalVendidoDia = totalVendidoDia;
     }
 
     public int getVentaDelDia() {
@@ -31,10 +29,4 @@ public class Cajero extends Empleado{
         this.totalVendidoDia = totalVendidoDia;
     }
     
-    @Override
-    public void setId(){
-        String id = ("EM-CAJERO-00" + contador);
-        contador = contador + 1;
-        this.id = id;
-    }
 }

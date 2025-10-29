@@ -6,7 +6,11 @@ package GUI.Empleados;
 
 import Clases.*;
 import MeException.CampoVacioException;
+import MeException.CorreoNoValidoException;
+import MeException.IdentificacionNoValidaException;
 import MeException.NumeroFueraDeLimitesException;
+import MeException.SalarioNoValidoException;
+import MeException.TelefonoNoValidoException;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;
@@ -19,6 +23,12 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
     public ModificarEmpleadoFrame() {
         initComponents();
         
+        //Cargamos los empleados en el comboBox
+        List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
+        
+        for(Empleado empleado: empleados){
+            comboEmpleados.addItem(empleado);
+        }
     }
 
     /**
@@ -316,11 +326,49 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadosActionPerformed
+        //Segun el Empleado elegido se carga los datos de este
+        Empleado empleadoElegido = (Empleado) comboEmpleados.getSelectedItem();
         
+        txtNombre.setText(empleadoElegido.getNombre());
+        txtIdentificacion.setText(empleadoElegido.getCedula());
+        txtTelefono.setText(empleadoElegido.getTelefono());
+        txtCorreo.setText(empleadoElegido.getCorreo());
+        comboCargo1.setSelectedItem(empleadoElegido.getCargo());
+        txtSalario.setText(String.valueOf(empleadoElegido.getSalario()));
+        txtProfesion.setText(empleadoElegido.getProfesion());
+        comboJornada.setSelectedItem(empleadoElegido.getJornadaLaboral());
     }//GEN-LAST:event_comboEmpleadosActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
-        
+        //Abstramos cada dato, y se actualiza el cliente
+       String nombre = txtNombre.getText();
+       String cedula = txtIdentificacion.getText();
+       String telefono = txtTelefono.getText();
+       String email = txtCorreo.getText();
+       String cargo = comboCargo1.getSelectedItem().toString();
+       double salario = recargarPagina.convertirPrecio(txtSalario.getText());
+       String profesion = txtProfesion.getText();
+       String jornadaa = comboJornada.getSelectedItem().toString();
+       
+       Empleado empleadoModificar = (Empleado) comboEmpleados.getSelectedItem();
+       
+       try{
+           empleadoModificar.modificarEmpleado(nombre, cedula, telefono, email, cargo, profesion, salario, jornadaa);
+           JOptionPane.showMessageDialog(null, "Cliente Modificado", "Modificar Empleado", JOptionPane.HEIGHT);
+           dispose();
+           recargarPagina.recargarModificarEmpleado();
+       }  catch (CampoVacioException ex){
+                //Verificamos que ningun campo este vacio
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
+       } catch(IdentificacionNoValidaException ex2){
+                JOptionPane.showMessageDialog(null, ex2.getMessage(), "ERROR IDENTIFICACION", JOptionPane.ERROR_MESSAGE);
+       } catch(TelefonoNoValidoException ex3){
+                JOptionPane.showMessageDialog(null, ex3.getMessage(), "ERROR TELEFONO", JOptionPane.ERROR_MESSAGE);
+        } catch(CorreoNoValidoException ex4){
+                JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+       } catch(SalarioNoValidoException ex5){
+                JOptionPane.showMessageDialog(null, ex5.getMessage(), "ERROR SALARIO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
@@ -343,7 +391,7 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnModificarProducto;
     private javax.swing.JComboBox<String> comboCargo1;
-    private javax.swing.JComboBox<ProductoFisico> comboEmpleados;
+    private javax.swing.JComboBox<Empleado> comboEmpleados;
     private javax.swing.JComboBox<String> comboJornada;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel103;
