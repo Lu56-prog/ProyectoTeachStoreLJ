@@ -298,7 +298,7 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
 
     private void comboSDigitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSDigitalesActionPerformed
         //Cargamos los tecnico y agregamos el comboBox tecnicos
-        List<Empleado> empleados = TeachStoreLJ.empleados.listaEmpleados;
+        List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
         
         for(Empleado tecnico: empleados){
             if(tecnico.getCargo().equals("Tecnico")){

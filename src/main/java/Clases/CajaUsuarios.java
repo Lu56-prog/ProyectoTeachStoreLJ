@@ -4,11 +4,13 @@ package Clases;
 import java.util.*;
 
 
-public class CajaEmpleados {
+public class CajaUsuarios {
     public List<Empleado> listaEmpleados;
+    public List<Cliente> listaClientes;
 
-    public CajaEmpleados() {
+    public CajaUsuarios() {
         this.listaEmpleados = new ArrayList<>();
+        this.listaClientes = new ArrayList<>();
     }
     
     

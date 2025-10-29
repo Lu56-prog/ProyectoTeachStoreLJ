@@ -1,5 +1,6 @@
 
 package Clases;
+import MeException.*;
 
 public class Cliente extends Usuario{
     private static int contador = 1;
@@ -8,21 +9,23 @@ public class Cliente extends Usuario{
     protected  int comprasAcumuladas;
     protected String historialCompras;
 
-    public Cliente(String nombre, int cedula, String telefono, String correo, String direccion, int puntosAcumulados, int comprasAcumuladas, String historialCompras) {
+    public Cliente(String nombre, String cedula, String telefono, String correo, String direccion) {
         super(nombre, cedula, telefono, correo);
         setId();
-        this.direccion = direccion;
-        this.puntosAcumulados = puntosAcumulados;
-        this.comprasAcumuladas = comprasAcumuladas;
-        this.historialCompras = historialCompras;
+        setDireccion(direccion);
     }
 
     public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    private void setDireccion(String direccion2) {
+        System.out.println("PROBANDO3 " + direccion2);
+        if(direccion2.trim().isEmpty()){
+            this.direccion = "No registrada";
+        } else{
+            this.direccion = direccion2;
+        }
     }
 
     public int getPuntosAcumulados() {
@@ -49,8 +52,24 @@ public class Cliente extends Usuario{
         this.historialCompras = historialCompras;
     }
     
+    public void mostrarInfo(){
+        System.out.println("""      
+                === Cliente ===
+                Nombre: """ + this.nombre +
+                "\nIdentificacion: $" + this.cedula +
+                "\nTelefono: " + this.telefono +
+                "\nCorreo Electronico: " + this.correo +
+                "\nDireccion: " + this.direccion +
+                "\nID: " + this.id);
+    }
+    
+    public void modificarCliente(String nombre, String cedula, String telefono, String correo, String direcion){
+        modificarUsuario(nombre, cedula, telefono, correo);
+        setDireccion(direccion);
+    }
+    
    @Override
-    public void setId(){
+    protected void setId(){
         String id = ("CLI-00" + contador);
         contador = contador + 1;
         this.id = id;

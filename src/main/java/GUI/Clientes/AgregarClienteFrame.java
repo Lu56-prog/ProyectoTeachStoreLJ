@@ -232,7 +232,32 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        //Abstraemos los datos registrados por el usuario
+        String nombre = txtNombre.getText();
+        String cedula = txtIdentificacion.getText();
+        String telefono = txtTelefono.getText();
+        String direccion = txtDireccion.getText();
+        String email = txtCorreo.getText();
 
+        
+        //Creamos el cliente y guardamos
+        try{
+            Cliente cliente = new Cliente(nombre, cedula, telefono, email, direccion);
+            cliente.mostrarInfo();
+            TeachStoreLJ.usuarios.listaClientes.add(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            dispose();
+            recargarPagina.recargarAgregarCliente();
+        } catch (CampoVacioException ex){
+            //Verificamos que ningun campo este vacio
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
+        } catch(IdentificacionNoValidaException ex2){
+            JOptionPane.showMessageDialog(null, ex2.getMessage(), "ERROR IDENTIFICACION", JOptionPane.ERROR_MESSAGE);
+        } catch(TelefonoNoValidoException ex3){
+            JOptionPane.showMessageDialog(null, ex3.getMessage(), "ERROR TELEFONO", JOptionPane.ERROR_MESSAGE);
+        } catch(CorreoNoValidoException ex4){
+            JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 

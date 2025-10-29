@@ -20,7 +20,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
         initComponents();
         
         //Cargamos los tecnico y agregamos el comboBox tecnicos
-        List<Empleado> empleados = TeachStoreLJ.empleados.listaEmpleados;
+        List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
         
         for(Empleado tecnico: empleados){
             if(tecnico.getCargo().equals("Tecnico")){

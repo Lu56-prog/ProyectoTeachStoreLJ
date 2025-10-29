@@ -17,6 +17,8 @@ public class VerClientesFrame extends javax.swing.JFrame {
     
     public VerClientesFrame() {
         initComponents();
+        
+        actualizarTabla();
     }
 
     /**
@@ -32,7 +34,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableProductos = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
@@ -57,18 +59,18 @@ public class VerClientesFrame extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(238, 238, 238));
         jLabel7.setText("Clientes");
 
-        tableProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion"
+                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"
             }
         ));
-        jScrollPane1.setViewportView(tableProductos);
+        jScrollPane1.setViewportView(tablaClientes);
 
         btnInicio.setBackground(new java.awt.Color(39, 241, 82));
         btnInicio.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -294,89 +296,26 @@ public class VerClientesFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_comboDescuentoActionPerformed
 
- private void actualizarTabla(){
-        //Actualizamos al tabla segun los filtros deseados
-        mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Precio", "Categoria", "Marca", "Stock", "Codigo", "Ubicacion", "Descuento"};
-        mt.setColumnIdentifiers(encabezado);
-        
-        tableProductos.setModel(mt);
-        
-        List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
-        
-        
-        for(ProductoFisico producto : productosFisicos) {
-           String nombre = producto.getNombre();
-           double precio = producto.getPrecio();
-           DecimalFormat fm = new DecimalFormat("#, ###");
-           String precioFormateado = fm.format(precio);
-           String categoria = producto.getCategoria();
-           String marca = producto.getMarca();
-           int stock = producto.getStock();
-           String codigoBarras = producto.getCodigoBarras();
-           String ubicacion = producto.getUbicacion();
-           double descuento = producto.getDescuento();
-           
-           //Validar rango de precio
-           String eleccionPrecio = comboPrecio.getSelectedItem().toString();
-           boolean controladorPrecio;
-           if(eleccionPrecio.equals("Todos")){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
-               controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
-               controladorPrecio = true;
-           } else{
-               controladorPrecio = false;
+    private void actualizarTabla(){
+           mt.setRowCount(0);
+           String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"};
+           mt.setColumnIdentifiers(encabezado);
+
+           tablaClientes.setModel(mt);
+
+           //DATOS CLIENTE
+           List<Cliente> clientes = TeachStoreLJ.usuarios.listaClientes;
+
+           for(Cliente cliente: clientes){
+               String nombre = cliente.getNombre();
+               String cedula = cliente.getCedula();
+               String telefono = cliente.getTelefono();
+               String direccion = cliente.getDireccion();
+               String email = cliente.getCorreo();
+               String id = cliente.getId();
+               
+               mt.addRow(new Object[] {nombre, cedula, telefono, email, direccion, id});
            }
-           
-           //Validar categoria escogida
-           String eleccioCategoria = comboCategoria.getSelectedItem().toString();
-           boolean controlCategoria = false;
-           if(eleccioCategoria.equals("Todos") || eleccioCategoria.equals(categoria)){
-               controlCategoria = true;
-           }
-           
-           //Validar stock elegido
-           String eleccionStock = comboStock.getSelectedItem().toString();
-           boolean controlStock = false;
-           if(eleccionStock.equals("Todos")){
-               controlStock = true;
-           } else if (eleccionStock.equals("Stock bajo") && stock <= 5){
-               controlStock = true;
-           }
-           
-           //Validar descuentoe elegido
-           String eleccionDescuento = comboDescuento.getSelectedItem().toString();
-           boolean controlDescuento = false;
-           if(eleccionDescuento.equals("Todos")){
-               controlDescuento = true;
-           } else if (eleccionDescuento.equals("Con descuento") && descuento > 0){
-               controlDescuento = true;
-           } else if (eleccionDescuento.equals("Sin descuento") && descuento == 0){
-               controlDescuento = true;
-           }
-           
-           //Mostrar tabla según busqueda, si el producto cumple con cada caracteristica se mostrara
-           if(nombre.startsWith(txtNombre.getText()) && 
-                   marca.startsWith(txtMarca.getText()) && 
-                   controladorPrecio &&
-                   controlCategoria &&
-                   controlStock &&
-                   codigoBarras.startsWith(txtCodigo.getText()) &&
-                   ubicacion.startsWith(txtUbicacion.getText()) &&
-                   controlDescuento){
-               mt.addRow(new Object[] {nombre, precioFormateado, categoria, marca, stock, codigoBarras, ubicacion, descuento});
-           }
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -389,7 +328,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableProductos;
+    private javax.swing.JTable tablaClientes;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombre;

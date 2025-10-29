@@ -10,7 +10,7 @@ public abstract class Empleado extends Usuario{
     protected  LocalDate fechaIngreso;
     protected  String jornadaLaboral;
 
-    public Empleado( String nombre, int cedula, String telefono,String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
+    public Empleado( String nombre, String cedula, String telefono,String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral) {
         super(nombre, cedula, telefono, correo);
         this.cargo = cargo;
         this.profesion = profesion;

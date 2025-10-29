@@ -3,7 +3,7 @@
 
 package Clases;
 
-
+import MeException.*;
         
 public abstract class MetodoPago {
     protected double totalPagar;

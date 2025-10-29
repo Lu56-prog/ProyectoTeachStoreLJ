@@ -1,39 +1,47 @@
 
 package Clases;
 
+import MeException.*;
+
 public abstract class Usuario {
     protected  String id;
     protected  String nombre;
-    protected  int cedula;
+    protected  String cedula;
     protected  String telefono;
     protected String correo;
 
-    public Usuario(String nombre, int cedula, String telefono, String correo) {
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.telefono = telefono;
-        this.correo = correo;
+    public Usuario(String nombre, String cedula, String telefono, String correo) {
+        setNombre(nombre);
+        setCedula(cedula);
+        setTelefono(telefono);
+        setCorreo(correo);
     }
 
     public String getId() {
         return id;
     }
 
-    public abstract void setId();
+    protected abstract void setId();
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    private  void setNombre(String nombre) {
+        if(nombre.trim().isEmpty()){
+            throw new CampoVacioException("El nombre no puede ser un campo vacio");
+        }
         this.nombre = nombre;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    private  void setCedula(String cedula) {
+        if(cedula.trim().length() != 10){
+            throw new IdentificacionNoValidaException("Su identificación a sido rechazada, número de caracteres permitido 10");
+        }
         this.cedula = cedula;
     }
 
@@ -41,7 +49,10 @@ public abstract class Usuario {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    private  void setTelefono(String telefono) {
+        if(telefono.trim().length() != 10){
+            throw new TelefonoNoValidoException("Telefono rechazado, número de caracteres permitidos 10");
+        }
         this.telefono = telefono;
     }
 
@@ -49,9 +60,22 @@ public abstract class Usuario {
         return correo;
     }
 
-    public void setCorreo(String correo) {
+    private void setCorreo(String correo) {
+        if (correo.toLowerCase().contains("@") == false){
+            throw new CorreoNoValidoException("Correo rechazado, recuerda el '@'");
+        } 
         this.correo = correo;
     }
     
+    public void modificarUsuario(String nombre, String cedula, String telefono, String correo){
+        setNombre(nombre);
+        setCedula(cedula);
+        setTelefono(telefono);
+        setCorreo(correo);
+    }
     
+    @Override
+    public String toString(){
+        return this.id + " -> " + this.nombre;
+    }
 }

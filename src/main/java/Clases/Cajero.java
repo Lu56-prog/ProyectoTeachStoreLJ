@@ -8,7 +8,7 @@ public class Cajero extends Empleado{
     protected  int ventaDelDia;
     protected double totalVendidoDia;
 
-    public Cajero(String nombre, int cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int ventaDelDia, double totalVendidoDia) {
+    public Cajero(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int ventaDelDia, double totalVendidoDia) {
         super(nombre, cedula, telefono, correo, cargo, profesion, salario, fechaIngreso, jornadaLaboral);
         setId();
         this.ventaDelDia = ventaDelDia;

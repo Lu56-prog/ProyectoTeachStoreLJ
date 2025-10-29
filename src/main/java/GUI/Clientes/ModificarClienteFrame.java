@@ -5,8 +5,7 @@
 package GUI.Clientes;
 
 import Clases.*;
-import MeException.CampoVacioException;
-import MeException.NumeroFueraDeLimitesException;
+import MeException.*;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;
@@ -17,6 +16,13 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
     Frames recargarPagina = new Frames();
     public ModificarClienteFrame() {
         initComponents();
+        
+        //Cargamos los clientes en el comboBox
+        List<Cliente> clientes = TeachStoreLJ.usuarios.listaClientes;
+        
+        for(Cliente cliente: clientes){
+            comboClientes.addItem(cliente);
+        }
     }
 
     /**
@@ -31,9 +37,9 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        comboProductos = new javax.swing.JComboBox<>();
+        comboClientes = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
-        btnModificarProducto = new javax.swing.JButton();
+        btnModificarCliente = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -61,24 +67,24 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
         jLabel102.setForeground(new java.awt.Color(238, 238, 238));
         jLabel102.setText("Modificar Cliente");
 
-        comboProductos.setBackground(new java.awt.Color(59, 63, 66));
-        comboProductos.setForeground(new java.awt.Color(255, 255, 255));
-        comboProductos.addActionListener(new java.awt.event.ActionListener() {
+        comboClientes.setBackground(new java.awt.Color(59, 63, 66));
+        comboClientes.setForeground(new java.awt.Color(255, 255, 255));
+        comboClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductosActionPerformed(evt);
+                comboClientesActionPerformed(evt);
             }
         });
 
         jPanel13.setBackground(new java.awt.Color(59, 63, 66));
 
-        btnModificarProducto.setBackground(new java.awt.Color(39, 241, 82));
-        btnModificarProducto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnModificarProducto.setForeground(new java.awt.Color(0, 0, 0));
-        btnModificarProducto.setText("Modificar");
-        btnModificarProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarCliente.setBackground(new java.awt.Color(39, 241, 82));
+        btnModificarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnModificarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarCliente.setText("Modificar");
+        btnModificarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnModificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarProductoActionPerformed(evt);
+                btnModificarClienteActionPerformed(evt);
             }
         });
 
@@ -165,9 +171,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
                                 .addComponent(txtTelefono)
                                 .addGap(38, 38, 38)))
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(27, 27, 27))
+                            .addComponent(jLabel9)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +180,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
                                 .addGap(68, 68, 68))
                             .addComponent(jLabel10))
                         .addGap(1, 1, 1)
-                        .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)))
                 .addContainerGap())
         );
@@ -208,7 +212,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -232,7 +236,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -244,7 +248,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel102)
                 .addGap(18, 18, 18)
-                .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -264,13 +268,46 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductosActionPerformed
+    private void comboClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClientesActionPerformed
+        //Segun el cliente elegido se carga los datos de este
+        Cliente clienteElegido = (Cliente) comboClientes.getSelectedItem();
         
-    }//GEN-LAST:event_comboProductosActionPerformed
+        txtNombre.setText(clienteElegido.getNombre());
+        txtIdentificacion.setText(clienteElegido.getCedula());
+        txtTelefono.setText(clienteElegido.getTelefono());
+        txtDireccion.setText(clienteElegido.getDireccion());
+        txtCorreo.setText(clienteElegido.getCorreo());
+    }//GEN-LAST:event_comboClientesActionPerformed
 
-    private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
+    private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
+       //Abstramos cada dato, y se actualiza el cliente
+       String nombre = txtNombre.getText();
+       String cedula = txtIdentificacion.getText();
+       String telefono = txtTelefono.getText();
+       String direccion = txtDireccion.getText();
+       String email = txtCorreo.getText();
        
-    }//GEN-LAST:event_btnModificarProductoActionPerformed
+       Cliente clienteModificar = (Cliente) comboClientes.getSelectedItem();
+       
+       try{
+           System.out.println("PROBANDO " + direccion);
+           clienteModificar.modificarCliente(nombre, cedula, telefono, email, direccion);
+           System.out.println("PROBANDO2 " + direccion);
+           clienteModificar.mostrarInfo();
+           JOptionPane.showMessageDialog(null, "Cliente Modificado", "Creacion Producto", JOptionPane.HEIGHT);
+           dispose();
+           recargarPagina.recargarModificarCliente();
+       } catch (CampoVacioException ex){
+            //Verificamos que ningun campo este vacio
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR CAMPO VACIO", JOptionPane.ERROR_MESSAGE);
+        } catch(IdentificacionNoValidaException ex2){
+            JOptionPane.showMessageDialog(null, ex2.getMessage(), "ERROR IDENTIFICACION", JOptionPane.ERROR_MESSAGE);
+        } catch(TelefonoNoValidoException ex3){
+            JOptionPane.showMessageDialog(null, ex3.getMessage(), "ERROR TELEFONO", JOptionPane.ERROR_MESSAGE);
+        } catch(CorreoNoValidoException ex4){
+            JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
         //Boton inicio
@@ -290,8 +327,8 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnModificarProducto;
-    private javax.swing.JComboBox<ProductoFisico> comboProductos;
+    private javax.swing.JButton btnModificarCliente;
+    private javax.swing.JComboBox<Cliente> comboClientes;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;

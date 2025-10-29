@@ -4,9 +4,14 @@
  */
 package MeException;
 
-public class PagoRechazadoException  extends RuntimeException {
+/**
+ *
+ * @author Lucerito
+ */
+public class TelefonoNoValidoException extends RuntimeException {
 
-    public PagoRechazadoException(String message) {
+    public TelefonoNoValidoException(String message) {
         super(message);
     }
+    
 }

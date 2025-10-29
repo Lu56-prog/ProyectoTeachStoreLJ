@@ -1,6 +1,8 @@
 
 package Clases;
+
 import MeException.*;
+
 public class Efectivo extends MetodoPago {
     protected double totalRecibido;
     protected double totalDevuelto;

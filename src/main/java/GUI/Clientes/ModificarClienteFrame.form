@@ -62,7 +62,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="comboProductos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="comboClientes" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -79,7 +79,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel102" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="comboProductos" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboClientes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -116,7 +116,7 @@
             <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboProductos">
+        <Component class="javax.swing.JComboBox" name="comboClientes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="42" green="3f" red="3b" type="rgb"/>
@@ -129,10 +129,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboProductosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboClientesActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ProductoFisico&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cliente&gt;"/>
           </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel13">
@@ -188,7 +188,7 @@
                                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="btnModificarProducto" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="btnModificarCliente" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -231,7 +231,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtCorreo" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnModificarProducto" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="btnModificarCliente" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnInicio" min="-2" pref="30" max="-2" attributes="0"/>
@@ -241,7 +241,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnModificarProducto">
+            <Component class="javax.swing.JButton" name="btnModificarCliente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="52" green="f1" red="27" type="rgb"/>
@@ -260,7 +260,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarProductoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarClienteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInicio">

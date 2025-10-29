@@ -8,7 +8,7 @@ public class Tecnico extends Empleado{
     private int serviciosDelDia;
     private boolean disponibilidad;
 
-    public Tecnico(String nombre, int cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int serviciosDelDia, boolean disponibilidad) {
+    public Tecnico(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, LocalDate fechaIngreso, String jornadaLaboral, int serviciosDelDia, boolean disponibilidad) {
         super(nombre, cedula, telefono, correo, cargo, profesion, salario, fechaIngreso, jornadaLaboral);
         setId();
         this.serviciosDelDia = serviciosDelDia;
@@ -32,7 +32,7 @@ public class Tecnico extends Empleado{
     }
     
     @Override
-    public void setId(){
+    protected void setId(){
         String id = ("EM-TECNICO-00" + contador);
         contador = contador + 1;
         this.id = id;
