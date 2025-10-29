@@ -1,13 +1,17 @@
 
+
+
 package Clases;
 
+
+        
 public abstract class MetodoPago {
-    private double totalPagar;
-    private  String metodoPago;
-    private  boolean estadoPago;
+    protected double totalPagar;
+    protected String metodoPago;
+    protected boolean estadoPago;
 
     public MetodoPago(double totalPagar, String metodoPago, boolean estadoPago) {
-        this.totalPagar = totalPagar;
+        setTotalPagar(totalPagar);
         this.metodoPago = metodoPago;
         this.estadoPago = estadoPago;
     }
@@ -17,7 +21,14 @@ public abstract class MetodoPago {
     }
 
     public void setTotalPagar(double totalPagar) {
+        
+        if (totalPagar < 10000){
+            throw new PagoRechazadoException( "Pago recharzado, monto no permitido" );
+        }
+        
         this.totalPagar = totalPagar;
+        
+        
     }
 
     public String getMetodoPago() {
