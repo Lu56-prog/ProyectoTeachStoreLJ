@@ -68,7 +68,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id     "
+                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id     "
             }
         ));
         jScrollPane1.setViewportView(tablaEmpleados);
@@ -296,7 +296,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
 
     public void actualizarTabla(){
         mt.setRowCount(0);
-           String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
            mt.setColumnIdentifiers(encabezado);
 
            tablaEmpleados.setModel(mt);

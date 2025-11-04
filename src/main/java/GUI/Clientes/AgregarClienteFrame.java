@@ -79,7 +79,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel8.setText("Telefono");
+        jLabel8.setText("Contacto");
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
@@ -258,9 +258,6 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
         } catch(CorreoNoValidoException ex4){
             JOptionPane.showMessageDialog(null, ex4.getMessage(), "ERROR CORREO ELECTRONICO", JOptionPane.ERROR_MESSAGE);
         }
-        dispose();
-        recargarPagina.recargarAgregarEmpleado();
-        
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio

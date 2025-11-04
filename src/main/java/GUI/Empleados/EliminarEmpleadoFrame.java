@@ -226,7 +226,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id"
+                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "Id"
             }
         ));
         jScrollPane4.setViewportView(tablaEmpleados);
@@ -330,7 +330,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
         
         TeachStoreLJ.usuarios.listaEmpleados.remove (empleadoEliminar);
         
-        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Eliminacion Empleado", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Empledo Eliminado", "Eliminacion Empleado", JOptionPane.HEIGHT);
         
         dispose();
         recargarPagina.recargarEliminarEmpleado();
@@ -344,7 +344,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
     private void actualizarTabla(){
         //Cada que escoge un cliente se muestra la info de este en la tabla
         mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+        String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
         mt.setColumnIdentifiers(encabezado);
         
         tablaEmpleados.setModel(mt);

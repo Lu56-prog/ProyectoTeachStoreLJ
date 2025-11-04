@@ -67,7 +67,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"
+                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"
             }
         ));
         jScrollPane1.setViewportView(tablaClientes);
@@ -298,7 +298,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
 
     private void actualizarTabla(){
            mt.setRowCount(0);
-           String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"};
+           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"};
            mt.setColumnIdentifiers(encabezado);
 
            tablaClientes.setModel(mt);

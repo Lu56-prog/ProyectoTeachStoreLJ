@@ -120,7 +120,7 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel8.setText("Telefono");
+        jLabel8.setText("Contacto");
 
         txtTelefono.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
 
@@ -354,7 +354,7 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
        
        try{
            empleadoModificar.modificarEmpleado(nombre, cedula, telefono, email, cargo, profesion, salario, jornadaa);
-           JOptionPane.showMessageDialog(null, "Cliente Modificado", "Modificar Empleado", JOptionPane.HEIGHT);
+           JOptionPane.showMessageDialog(null, "Empleado Modificado", "Modificar Empleado", JOptionPane.HEIGHT);
            dispose();
            recargarPagina.recargarModificarEmpleado();
        }  catch (CampoVacioException ex){

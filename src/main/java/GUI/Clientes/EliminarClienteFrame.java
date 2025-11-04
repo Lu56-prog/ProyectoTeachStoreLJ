@@ -225,7 +225,7 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"
+                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"
             }
         ));
         jScrollPane4.setViewportView(tablaClientes);
@@ -343,7 +343,7 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
     private void actualizarTabla(){
         //Cada que escoge un cliente se muestra la info de este en la tabla
         mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Identificacion", "Telefono", "Correo Electronico", "Direccion", "ID"};
+        String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"};
         mt.setColumnIdentifiers(encabezado);
         
         tablaClientes.setModel(mt);

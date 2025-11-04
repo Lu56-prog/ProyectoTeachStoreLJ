@@ -109,7 +109,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Be Vietnam Pro", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel8.setText("Telefono");
+        jLabel8.setText("Contacto");
 
         txtTelefono.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
