@@ -32,6 +32,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
         comboPrecio.addItem("$3.000.000 - $4.999.999");
         comboPrecio.addItem("$5.000.000 - $9.999.999");
         comboPrecio.addItem("$10.000.000 o más"); 
+        
     }
 
     /**
@@ -352,6 +353,7 @@ public class VerProductosFrame extends javax.swing.JFrame {
         tableProductos.setModel(mt);
         
         List<ProductoFisico> productosFisicos = TeachStoreLJ.inventario.listaProductos;
+        
         
         
         for(ProductoFisico producto : productosFisicos) {

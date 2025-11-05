@@ -22,6 +22,14 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         
         //Se actualiza la tabla
         actualizarTabla();
+        
+        //Agregamos los items al filtro de precio
+        comboPrecio.addItem("$0 - $499.999");
+        comboPrecio.addItem("$500.000 - $1.499.999");
+        comboPrecio.addItem("$1.500.000 - $2.999.999");
+        comboPrecio.addItem("$3.000.000 - $4.999.999");
+        comboPrecio.addItem("$5.000.000 - $9.999.999");
+        comboPrecio.addItem("$10.000.000 o más"); 
     }
 
     /**
@@ -40,13 +48,12 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         tablaSDigitales = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
         comboPrecio = new javax.swing.JComboBox<>();
         comboCategoria = new javax.swing.JComboBox<>();
-        comboStock = new javax.swing.JComboBox<>();
         txtCodigo = new javax.swing.JTextField();
         txtUbicacion = new javax.swing.JTextField();
         comboDescuento = new javax.swing.JComboBox<>();
+        comboDuracion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -100,19 +107,6 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
             }
         });
 
-        txtMarca.setBackground(new java.awt.Color(59, 63, 66));
-        txtMarca.setForeground(new java.awt.Color(255, 255, 255));
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
-            }
-        });
-        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMarcaKetReleased(evt);
-            }
-        });
-
         comboPrecio.setBackground(new java.awt.Color(59, 63, 66));
         comboPrecio.setForeground(new java.awt.Color(255, 255, 255));
         comboPrecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
@@ -124,19 +118,10 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
 
         comboCategoria.setBackground(new java.awt.Color(59, 63, 66));
         comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Mantemiento y reparación", "Software y sistemas", "Redes y conectividad", "Asesoria y soporte técnico", " " }));
         comboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCategoriaActionPerformed(evt);
-            }
-        });
-
-        comboStock.setBackground(new java.awt.Color(59, 63, 66));
-        comboStock.setForeground(new java.awt.Color(255, 255, 255));
-        comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Stock bajo" }));
-        comboStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboStockActionPerformed(evt);
             }
         });
 
@@ -171,6 +156,8 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
             }
         });
 
+        comboDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -187,23 +174,21 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                             .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,13 +200,14 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboCategoria)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboCategoria)
+                            .addComponent(comboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(comboPrecio)
-                        .addComponent(comboStock)
-                        .addComponent(txtCodigo)
-                        .addComponent(txtUbicacion)
-                        .addComponent(comboDescuento)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCodigo)
+                            .addComponent(comboDescuento)
+                            .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,14 +244,6 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_txtNombreKetReleased
 
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-        actualizarTabla();
-    }//GEN-LAST:event_txtMarcaActionPerformed
-
-    private void txtMarcaKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKetReleased
-        actualizarTabla();
-    }//GEN-LAST:event_txtMarcaKetReleased
-
     private void comboPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrecioActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_comboPrecioActionPerformed
@@ -273,10 +251,6 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
     private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_comboCategoriaActionPerformed
-
-    private void comboStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStockActionPerformed
-        actualizarTabla();
-    }//GEN-LAST:event_comboStockActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         actualizarTabla();
@@ -316,8 +290,40 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
            Tecnico tecnicoR = servicio.getTecnicoResponsable();
            String id = servicio.getId();
            
+           //Validacion para el precio solicitado
+          String eleccionPrecio = comboPrecio.getSelectedItem().toString();
+           boolean controladorPrecio;
+            if(eleccionPrecio.equals("Todos")){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
+               controladorPrecio = true;
+           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
+               controladorPrecio = true;
+           } else{
+               controladorPrecio = false;
+           }
            
-           mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
+           //Validar categoria escogida
+           String eleccioCategoria = comboCategoria.getSelectedItem().toString();
+           boolean controlCategoria = false;
+           if(eleccioCategoria.equals("Todos") || eleccioCategoria.equals(categoria)){
+               controlCategoria = true;
+           }
+           
+           if(nombre.startsWith(txtNombre.getText()) && 
+                   controladorPrecio &&
+                   controlCategoria
+                   ){
+               mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
+           }
         }
     }
 
@@ -325,15 +331,14 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JComboBox<String> comboDescuento;
+    private javax.swing.JComboBox<String> comboDuracion;
     private javax.swing.JComboBox<String> comboPrecio;
-    private javax.swing.JComboBox<String> comboStock;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaSDigitales;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
