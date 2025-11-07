@@ -86,7 +86,7 @@ public abstract class Empleado extends Usuario{
     @Override
     protected void setId(){
         String id = ("EMP-00" + contador);
-        contador = contador + 1;
         this.id = id;
+        contador = contador + 1;
     } 
 }

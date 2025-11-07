@@ -240,7 +240,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
                             .addGroup(jPanel18Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -344,7 +344,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
     private void actualizarTabla(){
         //Cada que escoge un cliente se muestra la info de este en la tabla
         mt.setRowCount(0);
-        String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+        String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "ID"};
         mt.setColumnIdentifiers(encabezado);
         
         tablaEmpleados.setModel(mt);

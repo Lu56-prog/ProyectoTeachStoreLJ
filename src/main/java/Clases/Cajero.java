@@ -4,13 +4,11 @@ package Clases;
 import java.time.LocalDate;
 
 public class Cajero extends Empleado{
-    private static int contador = 1;
     protected  int ventaDelDia;
     protected double totalVendidoDia;
 
     public Cajero(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, String jornadaLaboral) {
         super(nombre, cedula, telefono, correo, cargo, profesion, salario, jornadaLaboral);
-        setId();
     }
 
     public int getVentaDelDia() {

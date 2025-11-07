@@ -296,7 +296,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
 
     public void actualizarTabla(){
         mt.setRowCount(0);
-           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "ID"};
+           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Cargo", "Salario", "Profesion", "Jornada Laboral", "ID"};
            mt.setColumnIdentifiers(encabezado);
 
            tablaEmpleados.setModel(mt);
