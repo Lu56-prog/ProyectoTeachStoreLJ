@@ -37,13 +37,11 @@ public class VerClientesFrame extends javax.swing.JFrame {
         tablaClientes = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
-        comboPrecio = new javax.swing.JComboBox<>();
-        comboCategoria = new javax.swing.JComboBox<>();
-        comboStock = new javax.swing.JComboBox<>();
-        txtCodigo = new javax.swing.JTextField();
-        txtUbicacion = new javax.swing.JTextField();
-        comboDescuento = new javax.swing.JComboBox<>();
+        txtIdentificacion = new javax.swing.JTextField();
+        txtContacto = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,74 +94,69 @@ public class VerClientesFrame extends javax.swing.JFrame {
             }
         });
 
-        txtMarca.setBackground(new java.awt.Color(59, 63, 66));
-        txtMarca.setForeground(new java.awt.Color(255, 255, 255));
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+        txtIdentificacion.setBackground(new java.awt.Color(59, 63, 66));
+        txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
+                txtIdentificacionActionPerformed(evt);
             }
         });
-        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMarcaKetReleased(evt);
+                txtIdentificacionKetReleased(evt);
             }
         });
 
-        comboPrecio.setBackground(new java.awt.Color(59, 63, 66));
-        comboPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        comboPrecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
-        comboPrecio.addActionListener(new java.awt.event.ActionListener() {
+        txtContacto.setBackground(new java.awt.Color(59, 63, 66));
+        txtContacto.setForeground(new java.awt.Color(255, 255, 255));
+        txtContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPrecioActionPerformed(evt);
+                txtContactoActionPerformed(evt);
             }
         });
-
-        comboCategoria.setBackground(new java.awt.Color(59, 63, 66));
-        comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
-        comboCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCategoriaActionPerformed(evt);
-            }
-        });
-
-        comboStock.setBackground(new java.awt.Color(59, 63, 66));
-        comboStock.setForeground(new java.awt.Color(255, 255, 255));
-        comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Stock bajo" }));
-        comboStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboStockActionPerformed(evt);
-            }
-        });
-
-        txtCodigo.setBackground(new java.awt.Color(59, 63, 66));
-        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setText("PR-FISICO-00");
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCodigoKetReleased(evt);
+                txtContactoKetReleased(evt);
             }
         });
 
-        txtUbicacion.setBackground(new java.awt.Color(59, 63, 66));
-        txtUbicacion.setForeground(new java.awt.Color(255, 255, 255));
-        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUbicacionKetReleased(evt);
-            }
-        });
-
-        comboDescuento.setBackground(new java.awt.Color(59, 63, 66));
-        comboDescuento.setForeground(new java.awt.Color(255, 255, 255));
-        comboDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Con descuento", "Sin descuento" }));
-        comboDescuento.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.setBackground(new java.awt.Color(59, 63, 66));
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDescuentoActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
+            }
+        });
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoKetReleased(evt);
+            }
+        });
+
+        txtDireccion.setBackground(new java.awt.Color(59, 63, 66));
+        txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDireccionKetReleased(evt);
+            }
+        });
+
+        txtID.setBackground(new java.awt.Color(59, 63, 66));
+        txtID.setForeground(new java.awt.Color(255, 255, 255));
+        txtID.setText("CLI-00");
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIDKetReleased(evt);
             }
         });
 
@@ -175,37 +168,31 @@ public class VerClientesFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1170, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(12, 12, 12)
-                                        .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,16 +202,13 @@ public class VerClientesFrame extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboCategoria)
-                        .addComponent(comboPrecio)
-                        .addComponent(comboStock)
-                        .addComponent(txtCodigo)
-                        .addComponent(txtUbicacion)
-                        .addComponent(comboDescuento)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -260,41 +244,45 @@ public class VerClientesFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_txtNombreKetReleased
 
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+    private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtMarcaActionPerformed
+    }//GEN-LAST:event_txtIdentificacionActionPerformed
 
-    private void txtMarcaKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKetReleased
+    private void txtIdentificacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_txtMarcaKetReleased
+    }//GEN-LAST:event_txtIdentificacionKetReleased
 
-    private void comboPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrecioActionPerformed
+    private void txtContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactoActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboPrecioActionPerformed
+    }//GEN-LAST:event_txtContactoActionPerformed
 
-    private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
+    private void txtContactoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_comboCategoriaActionPerformed
+    }//GEN-LAST:event_txtContactoKetReleased
 
-    private void comboStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStockActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboStockActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtCorreoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtCorreoKetReleased
 
-    private void txtCodigoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKetReleased
-        actualizarTabla();
-    }//GEN-LAST:event_txtCodigoKetReleased
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+       actualizarTabla();
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void txtUbicacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKetReleased
+    private void txtDireccionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_txtUbicacionKetReleased
+    }//GEN-LAST:event_txtDireccionKetReleased
 
-    private void comboDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDescuentoActionPerformed
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboDescuentoActionPerformed
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtIDKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtIDKetReleased
 
     private void actualizarTabla(){
            mt.setRowCount(0);
@@ -314,24 +302,30 @@ public class VerClientesFrame extends javax.swing.JFrame {
                String email = cliente.getCorreo();
                String id = cliente.getId();
                
-               mt.addRow(new Object[] {nombre, cedula, telefono, email, direccion, id});
+               if(nombre.startsWith(txtNombre.getText()) &&
+                  cedula.startsWith(txtIdentificacion.getText()) &&
+                  telefono.startsWith(txtContacto.getText()) &&
+                  email.startsWith(txtCorreo.getText()) &&
+                  direccion.startsWith(txtDireccion.getText()) &&
+                  id.startsWith(txtID.getText()) 
+                       ){
+                   mt.addRow(new Object[] {nombre, cedula, telefono, email, direccion, id});
+               }
            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
-    private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<String> comboDescuento;
-    private javax.swing.JComboBox<String> comboPrecio;
-    private javax.swing.JComboBox<String> comboStock;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaClientes;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtContacto;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }

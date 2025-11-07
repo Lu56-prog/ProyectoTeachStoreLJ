@@ -5,8 +5,7 @@
 package GUI.Productos;
 
 import Clases.*;
-import MeException.CampoVacioException;
-import MeException.NumeroFueraDeLimitesException;
+import MeException.*;
 import java.util.*;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;

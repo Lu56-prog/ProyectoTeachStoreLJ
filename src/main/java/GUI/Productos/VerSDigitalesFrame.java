@@ -30,6 +30,23 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         comboPrecio.addItem("$3.000.000 - $4.999.999");
         comboPrecio.addItem("$5.000.000 - $9.999.999");
         comboPrecio.addItem("$10.000.000 o más"); 
+        
+        //Agregamos los items para el filtro de duracion
+        comboDuracion.addItem("30-59 (MIN)");
+        comboDuracion.addItem("60-89 (MIN)");
+        comboDuracion.addItem("90-119 (MIN)");
+        comboDuracion.addItem("120-149 (MIN)");
+        comboDuracion.addItem("150-179 (MIN)");
+        comboDuracion.addItem("180 o más (MIN)");
+        
+        //Cargamos los tecnico y agregamos el comboBox tecnicos
+        List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
+        
+        for(Empleado tecnico: empleados){
+            if(tecnico.getCargo().equals("Tecnico")){
+                comboTecnicos.addItem(tecnico.toString());
+            }
+        }
     }
 
     /**
@@ -50,9 +67,9 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         comboPrecio = new javax.swing.JComboBox<>();
         comboCategoria = new javax.swing.JComboBox<>();
+        txtDescripcion = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
-        txtUbicacion = new javax.swing.JTextField();
-        comboDescuento = new javax.swing.JComboBox<>();
+        comboTecnicos = new javax.swing.JComboBox<>();
         comboDuracion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -118,16 +135,29 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
 
         comboCategoria.setBackground(new java.awt.Color(59, 63, 66));
         comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Mantemiento y reparación", "Software y sistemas", "Redes y conectividad", "Asesoria y soporte técnico", " " }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Mantenimiento y reparación", "Software y sistemas", "Redes y conectividad", "Asesoria y soporte técnico", " " }));
         comboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCategoriaActionPerformed(evt);
             }
         });
 
+        txtDescripcion.setBackground(new java.awt.Color(59, 63, 66));
+        txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionActionPerformed(evt);
+            }
+        });
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescripcionKetReleased(evt);
+            }
+        });
+
         txtCodigo.setBackground(new java.awt.Color(59, 63, 66));
         txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setText("PR-FISICO-00");
+        txtCodigo.setText("SR-DIGITAL-00");
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -139,24 +169,23 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
             }
         });
 
-        txtUbicacion.setBackground(new java.awt.Color(59, 63, 66));
-        txtUbicacion.setForeground(new java.awt.Color(255, 255, 255));
-        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUbicacionKetReleased(evt);
-            }
-        });
-
-        comboDescuento.setBackground(new java.awt.Color(59, 63, 66));
-        comboDescuento.setForeground(new java.awt.Color(255, 255, 255));
-        comboDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Con descuento", "Sin descuento" }));
-        comboDescuento.addActionListener(new java.awt.event.ActionListener() {
+        comboTecnicos.setBackground(new java.awt.Color(59, 63, 66));
+        comboTecnicos.setForeground(new java.awt.Color(255, 255, 255));
+        comboTecnicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        comboTecnicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDescuentoActionPerformed(evt);
+                comboTecnicosActionPerformed(evt);
             }
         });
 
+        comboDuracion.setBackground(new java.awt.Color(59, 63, 66));
+        comboDuracion.setForeground(new java.awt.Color(255, 255, 255));
         comboDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        comboDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDuracionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,11 +211,11 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(comboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(comboTecnicos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -200,14 +229,13 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboCategoria)
-                            .addComponent(comboDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboCategoria, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(comboPrecio)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodigo)
-                            .addComponent(comboDescuento)
-                            .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDescripcion)
+                            .addComponent(comboTecnicos)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboDuracion))
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,21 +280,29 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_comboCategoriaActionPerformed
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void txtDescripcionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtDescripcionKetReleased
 
     private void txtCodigoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKetReleased
         actualizarTabla();
     }//GEN-LAST:event_txtCodigoKetReleased
 
-    private void txtUbicacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKetReleased
+    private void comboTecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTecnicosActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtUbicacionKetReleased
+    }//GEN-LAST:event_comboTecnicosActionPerformed
 
-    private void comboDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDescuentoActionPerformed
-        actualizarTabla();
-    }//GEN-LAST:event_comboDescuentoActionPerformed
+    private void comboDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDuracionActionPerformed
+         actualizarTabla();
+    }//GEN-LAST:event_comboDuracionActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void actualizarTabla(){
         //Actualizamos al tabla segun los filtros deseados
@@ -295,17 +331,17 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
            boolean controladorPrecio;
             if(eleccionPrecio.equals("Todos")){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$0 - $499.999") && precio > 0 && precio < 499999){
+           } else if(eleccionPrecio.equals("$0 - $499.999") && precio >= 0 && precio <= 499999){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio > 500000 && precio < 1499999){
+           } else if(eleccionPrecio.equals("$500.000 - $1.499.999") && precio >= 500000 && precio <= 1499999){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio > 1500000 && precio < 2999999){
+           } else if(eleccionPrecio.equals("$1.500.000 - $2.999.999") && precio >= 1500000 && precio <= 2999999){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio > 3000000 && precio < 4999999){
+           } else if(eleccionPrecio.equals("$3.000.000 - $4.999.99") && precio >= 3000000 && precio <= 4999999){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio > 5000000 && precio < 9999999){
+           } else if(eleccionPrecio.equals("$5.000.000 - $9.999.999") && precio >= 5000000 && precio <= 9999999){
                controladorPrecio = true;
-           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio > 510000000){
+           } else if(eleccionPrecio.equals("$10.000.000 o má") && precio >= 510000000){
                controladorPrecio = true;
            } else{
                controladorPrecio = false;
@@ -318,9 +354,43 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
                controlCategoria = true;
            }
            
+           //Validar duracion escogida
+           String eleccionDuracion = comboDuracion.getSelectedItem().toString();
+           boolean controlDuracion;
+           int numDuracion = Integer.parseInt(duracion);
+           if(eleccionDuracion.equals("Todos")){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("30-59 (MIN)") && numDuracion >= 30 && numDuracion <= 59){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("60-89 (MIN)") && numDuracion >= 60 && numDuracion <= 89){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("90-119 (MIN)") && numDuracion >= 90 && numDuracion <= 119){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("120-149 (MIN)") && numDuracion >= 120 && numDuracion <= 149){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("150-179 (MIN)") && numDuracion >= 150 && numDuracion <= 179){
+               controlDuracion  = true;
+           } else if(eleccionDuracion.equals("180 o más (MIN)") && numDuracion >= 180){
+               controlDuracion  = true;
+           } else{
+               controlDuracion  = false;
+           }
+         
+          
+           //Validar combo tecnicos
+           String eleccionTecnicos = comboTecnicos.getSelectedItem().toString();
+           boolean controlTecnico = false;
+           if(eleccionTecnicos.equals("Todos") || eleccionTecnicos.equals(tecnicoR.toString())){
+               controlCategoria = true;
+           }
+
            if(nombre.startsWith(txtNombre.getText()) && 
                    controladorPrecio &&
-                   controlCategoria
+                   controlCategoria &&
+                   controlDuracion &&
+                   descripcion.startsWith(txtDescripcion.getText()) &&
+                   controlTecnico &&
+                   id.startsWith(txtCodigo.getText())
                    ){
                mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
            }
@@ -330,16 +400,16 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<String> comboDescuento;
     private javax.swing.JComboBox<String> comboDuracion;
     private javax.swing.JComboBox<String> comboPrecio;
+    private javax.swing.JComboBox<String> comboTecnicos;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaSDigitales;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }

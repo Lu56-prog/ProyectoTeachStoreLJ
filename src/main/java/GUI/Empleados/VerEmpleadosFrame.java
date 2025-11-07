@@ -38,13 +38,14 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
         tablaEmpleados = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
-        comboPrecio = new javax.swing.JComboBox<>();
-        comboCategoria = new javax.swing.JComboBox<>();
-        comboStock = new javax.swing.JComboBox<>();
-        txtCodigo = new javax.swing.JTextField();
-        txtUbicacion = new javax.swing.JTextField();
-        comboDescuento = new javax.swing.JComboBox<>();
+        comboJornada = new javax.swing.JComboBox<>();
+        txtIdentificacion = new javax.swing.JTextField();
+        txtContacto = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
+        txtProfesion = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        comboCargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,74 +98,100 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
             }
         });
 
-        txtMarca.setBackground(new java.awt.Color(59, 63, 66));
-        txtMarca.setForeground(new java.awt.Color(255, 255, 255));
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+        comboJornada.setBackground(new java.awt.Color(59, 63, 66));
+        comboJornada.setForeground(new java.awt.Color(255, 255, 255));
+        comboJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Tiempo Completo", "Medio Tiempo" }));
+        comboJornada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
+                comboJornadaActionPerformed(evt);
             }
         });
-        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+
+        txtIdentificacion.setBackground(new java.awt.Color(59, 63, 66));
+        txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdentificacionActionPerformed(evt);
+            }
+        });
+        txtIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMarcaKetReleased(evt);
+                txtIdentificacionKetReleased(evt);
             }
         });
 
-        comboPrecio.setBackground(new java.awt.Color(59, 63, 66));
-        comboPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        comboPrecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
-        comboPrecio.addActionListener(new java.awt.event.ActionListener() {
+        txtContacto.setBackground(new java.awt.Color(59, 63, 66));
+        txtContacto.setForeground(new java.awt.Color(255, 255, 255));
+        txtContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPrecioActionPerformed(evt);
+                txtContactoActionPerformed(evt);
             }
         });
-
-        comboCategoria.setBackground(new java.awt.Color(59, 63, 66));
-        comboCategoria.setForeground(new java.awt.Color(255, 255, 255));
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computadoras", "SmartPhones", "Accesorios", "Perifericos", "Componentes", "Servicios Tecnicos" }));
-        comboCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCategoriaActionPerformed(evt);
-            }
-        });
-
-        comboStock.setBackground(new java.awt.Color(59, 63, 66));
-        comboStock.setForeground(new java.awt.Color(255, 255, 255));
-        comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Stock bajo" }));
-        comboStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboStockActionPerformed(evt);
-            }
-        });
-
-        txtCodigo.setBackground(new java.awt.Color(59, 63, 66));
-        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setText("PR-FISICO-00");
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCodigoKetReleased(evt);
+                txtContactoKetReleased(evt);
             }
         });
 
-        txtUbicacion.setBackground(new java.awt.Color(59, 63, 66));
-        txtUbicacion.setForeground(new java.awt.Color(255, 255, 255));
-        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUbicacionKetReleased(evt);
-            }
-        });
-
-        comboDescuento.setBackground(new java.awt.Color(59, 63, 66));
-        comboDescuento.setForeground(new java.awt.Color(255, 255, 255));
-        comboDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Con descuento", "Sin descuento" }));
-        comboDescuento.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.setBackground(new java.awt.Color(59, 63, 66));
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDescuentoActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
+            }
+        });
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoKetReleased(evt);
+            }
+        });
+
+        txtSalario.setBackground(new java.awt.Color(59, 63, 66));
+        txtSalario.setForeground(new java.awt.Color(255, 255, 255));
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
+            }
+        });
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSalarioKetReleased(evt);
+            }
+        });
+
+        txtProfesion.setBackground(new java.awt.Color(59, 63, 66));
+        txtProfesion.setForeground(new java.awt.Color(255, 255, 255));
+        txtProfesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProfesionActionPerformed(evt);
+            }
+        });
+        txtProfesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtProfesionKetReleased(evt);
+            }
+        });
+
+        txtId.setBackground(new java.awt.Color(59, 63, 66));
+        txtId.setForeground(new java.awt.Color(255, 255, 255));
+        txtId.setText("EMP-00");
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIdKetReleased(evt);
+            }
+        });
+
+        comboCargo.setBackground(new java.awt.Color(59, 63, 66));
+        comboCargo.setForeground(new java.awt.Color(255, 255, 255));
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Cajero", "Tecnico", "Supervisor", " " }));
+        comboCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCargoActionPerformed(evt);
             }
         });
 
@@ -175,35 +202,39 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 1184, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(comboPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(12, 12, 12)
-                                .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboStock, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 58, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(comboJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,16 +244,16 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboCategoria)
-                        .addComponent(comboPrecio)
-                        .addComponent(comboStock)
-                        .addComponent(txtCodigo)
-                        .addComponent(txtUbicacion)
-                        .addComponent(comboDescuento)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -258,41 +289,61 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_txtNombreKetReleased
 
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+    private void comboJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboJornadaActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtMarcaActionPerformed
+    }//GEN-LAST:event_comboJornadaActionPerformed
 
-    private void txtMarcaKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKetReleased
+    private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtMarcaKetReleased
+    }//GEN-LAST:event_txtIdentificacionActionPerformed
 
-    private void comboPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrecioActionPerformed
+    private void txtIdentificacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_comboPrecioActionPerformed
+    }//GEN-LAST:event_txtIdentificacionKetReleased
 
-    private void comboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoriaActionPerformed
+    private void txtContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactoActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_comboCategoriaActionPerformed
+    }//GEN-LAST:event_txtContactoActionPerformed
 
-    private void comboStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStockActionPerformed
+    private void txtContactoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_comboStockActionPerformed
+    }//GEN-LAST:event_txtContactoKetReleased
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void txtCodigoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKetReleased
+    private void txtCorreoKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_txtCodigoKetReleased
+    }//GEN-LAST:event_txtCorreoKetReleased
 
-    private void txtUbicacionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKetReleased
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
         actualizarTabla();
-    }//GEN-LAST:event_txtUbicacionKetReleased
+    }//GEN-LAST:event_txtSalarioActionPerformed
 
-    private void comboDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDescuentoActionPerformed
+    private void txtSalarioKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKetReleased
         actualizarTabla();
-    }//GEN-LAST:event_comboDescuentoActionPerformed
+    }//GEN-LAST:event_txtSalarioKetReleased
+
+    private void txtProfesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfesionActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_txtProfesionActionPerformed
+
+    private void txtProfesionKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProfesionKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtProfesionKetReleased
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtIdKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKetReleased
+        actualizarTabla();
+    }//GEN-LAST:event_txtIdKetReleased
+
+    private void comboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargoActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboCargoActionPerformed
 
     public void actualizarTabla(){
         mt.setRowCount(0);
@@ -300,6 +351,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
            mt.setColumnIdentifiers(encabezado);
 
            tablaEmpleados.setModel(mt);
+           
 
            //DATOS CLIENTE
            List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
@@ -311,27 +363,54 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                 String email = empleado.getCorreo();
                 String cargo = empleado.getCargo();
                 double salario = empleado.getSalario();
+                DecimalFormat fm = new DecimalFormat("#, ###");
+                String salarioFormateado = fm.format(salario);
                 String profesion = empleado.getProfesion();
                 String jornada = empleado.getJornadaLaboral();
                 String id = empleado.getId();
-               
-               mt.addRow(new Object[] {nombre, cedula, telefono, email, cargo, salario, profesion, jornada, id});
+                
+                //Validar cargo para empleado segun filtro
+                String eleccionEmpleado = comboCargo.getSelectedItem().toString();
+                boolean controlCargo = false;
+                if(eleccionEmpleado.equals("Todos") || eleccionEmpleado.equals(cargo)){
+                    controlCargo = true;
+                }
+                
+                //Validar jornada laboral segun filtro
+                String eleccionJornada = comboJornada.getSelectedItem().toString();
+                boolean controlJornada = false;
+                if (eleccionJornada.equals("Todos") || eleccionJornada.equals(jornada)){
+                    controlJornada = true;
+                }
+                
+               if(nombre.startsWith(txtNombre.getText()) &&
+                    cedula.startsWith(txtIdentificacion.getText()) &&
+                    telefono.startsWith(txtContacto.getText()) &&
+                    email.startsWith(txtCorreo.getText()) &&
+                    controlCargo &&
+                    salarioFormateado.startsWith(txtSalario.getText()) &&
+                    profesion.startsWith(txtProfesion.getText()) &&
+                    controlJornada &&
+                    id.startsWith(txtId.getText())){
+                   mt.addRow(new Object[] {nombre, cedula, telefono, email, cargo, salarioFormateado, profesion, jornada, id});
+               }
            }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
-    private javax.swing.JComboBox<String> comboCategoria;
-    private javax.swing.JComboBox<String> comboDescuento;
-    private javax.swing.JComboBox<String> comboPrecio;
-    private javax.swing.JComboBox<String> comboStock;
+    private javax.swing.JComboBox<String> comboCargo;
+    private javax.swing.JComboBox<String> comboJornada;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaEmpleados;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtContacto;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtUbicacion;
+    private javax.swing.JTextField txtProfesion;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
