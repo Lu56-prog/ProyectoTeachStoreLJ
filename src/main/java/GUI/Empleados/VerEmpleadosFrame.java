@@ -20,6 +20,15 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
         initComponents();
         
         actualizarTabla();
+        
+        //Agregamos los items al filtro de salario
+        comboSalario.addItem("Minimo");
+        comboSalario.addItem("$1.500.000 $1.999.999");
+        comboSalario.addItem("$2.000.000 - $2.999.999");
+        comboSalario.addItem("$3.000.000 - $4.999.999");
+        comboSalario.addItem("$5.000.000 - $9.999.999");
+        comboSalario.addItem("$10.000.000 o más"); 
+        
     }
 
     /**
@@ -42,10 +51,10 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
         txtIdentificacion = new javax.swing.JTextField();
         txtContacto = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        txtSalario = new javax.swing.JTextField();
         txtProfesion = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         comboCargo = new javax.swing.JComboBox<>();
+        comboSalario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,19 +155,6 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
             }
         });
 
-        txtSalario.setBackground(new java.awt.Color(59, 63, 66));
-        txtSalario.setForeground(new java.awt.Color(255, 255, 255));
-        txtSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalarioActionPerformed(evt);
-            }
-        });
-        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSalarioKetReleased(evt);
-            }
-        });
-
         txtProfesion.setBackground(new java.awt.Color(59, 63, 66));
         txtProfesion.setForeground(new java.awt.Color(255, 255, 255));
         txtProfesion.addActionListener(new java.awt.event.ActionListener() {
@@ -195,6 +191,20 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
             }
         });
 
+        comboSalario.setBackground(new java.awt.Color(59, 63, 66));
+        comboSalario.setForeground(new java.awt.Color(255, 255, 255));
+        comboSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        comboSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSalarioActionPerformed(evt);
+            }
+        });
+        comboSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                VerEmpleadosFrame.this.keyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,9 +236,9 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(comboSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(comboJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -250,10 +260,10 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                     .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -317,14 +327,6 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
         actualizarTabla();
     }//GEN-LAST:event_txtCorreoKetReleased
 
-    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
-        actualizarTabla();
-    }//GEN-LAST:event_txtSalarioActionPerformed
-
-    private void txtSalarioKetReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKetReleased
-        actualizarTabla();
-    }//GEN-LAST:event_txtSalarioKetReleased
-
     private void txtProfesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfesionActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_txtProfesionActionPerformed
@@ -344,6 +346,14 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
     private void comboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargoActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_comboCargoActionPerformed
+
+    private void comboSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSalarioActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_comboSalarioActionPerformed
+
+    private void keyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyReleased
+       actualizarTabla();
+    }//GEN-LAST:event_keyReleased
 
     public void actualizarTabla(){
         mt.setRowCount(0);
@@ -376,6 +386,27 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                     controlCargo = true;
                 }
                 
+                //Validar salario
+                String eleccionSalario = comboSalario.getSelectedItem().toString();
+                boolean controladorSalario = false;
+                if(eleccionSalario.equals("Todos")){
+               controladorSalario = true;
+                } else if(eleccionSalario.equals("Minimo") && salario == 1423500){
+                    controladorSalario = true;
+                } else if(eleccionSalario.equals("$1.500.000 $1.999.999") && salario >= 1500000 && salario <= 1999999){
+                    controladorSalario = true;
+                } else if(eleccionSalario.equals("$2.000.000 - $2.999.999") && salario >= 2000000 && salario <= 2999999){
+                    controladorSalario = true;
+                } else if(eleccionSalario.equals("$3.000.000 - $4.999.99") && salario >= 3000000 && salario <= 4999999){
+                    controladorSalario = true;
+                } else if(eleccionSalario.equals("$5.000.000 - $9.999.999") && salario >= 5000000 && salario <= 9999999){
+                    controladorSalario = true;
+                } else if(eleccionSalario.equals("$10.000.000 o má") && salario >= 510000000){
+                    controladorSalario = true;
+                } else{
+                    controladorSalario = false;
+                }
+                
                 //Validar jornada laboral segun filtro
                 String eleccionJornada = comboJornada.getSelectedItem().toString();
                 boolean controlJornada = false;
@@ -388,7 +419,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
                     telefono.startsWith(txtContacto.getText()) &&
                     email.startsWith(txtCorreo.getText()) &&
                     controlCargo &&
-                    salarioFormateado.startsWith(txtSalario.getText()) &&
+                    controladorSalario &&
                     profesion.startsWith(txtProfesion.getText()) &&
                     controlJornada &&
                     id.startsWith(txtId.getText())){
@@ -400,6 +431,7 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboJornada;
+    private javax.swing.JComboBox<String> comboSalario;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -411,6 +443,5 @@ public class VerEmpleadosFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtProfesion;
-    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }

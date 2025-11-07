@@ -8,7 +8,7 @@ import Clases.Frames;
 
 import Clases.*;
 import java.util.*;
-import com.mycompany.teachstorelj.TeachStoreLJ;
+import com.mycompany.teachstorelj.*;
 import java.text.DecimalFormat;
 import javax.swing.table.DefaultTableModel;
 
@@ -380,18 +380,17 @@ public class VerSDigitalesFrame extends javax.swing.JFrame {
            //Validar combo tecnicos
            String eleccionTecnicos = comboTecnicos.getSelectedItem().toString();
            boolean controlTecnico = false;
-           if(eleccionTecnicos.equals("Todos") || eleccionTecnicos.equals(tecnicoR.toString())){
-               controlCategoria = true;
-           }
+            if(eleccionTecnicos.equalsIgnoreCase("Todos") || eleccionTecnicos.equalsIgnoreCase(tecnicoR.toString())){
+                controlTecnico = true;
+            }
 
            if(nombre.startsWith(txtNombre.getText()) && 
                    controladorPrecio &&
                    controlCategoria &&
                    controlDuracion &&
                    descripcion.startsWith(txtDescripcion.getText()) &&
-                   controlTecnico &&
-                   id.startsWith(txtCodigo.getText())
-                   ){
+                   id.startsWith(txtCodigo.getText()) &&
+                   controlTecnico){
                mt.addRow(new Object[] {nombre, precioFormateado, categoria, duracion, descripcion, tecnicoR, id});
            }
         }
