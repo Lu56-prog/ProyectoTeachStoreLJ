@@ -67,6 +67,13 @@ public class Cliente extends Usuario{
         setDireccion(direccion);
     }
     
+    
+    public String listaCSV (){
+        return this.nombre + "," + this.cedula + "," + this.telefono +
+                "," + this.correo + "," + this.direccion + "," + this.id;
+    }
+    
+    
    @Override
     protected void setId(){
         String id = ("CLI-00" + contador);

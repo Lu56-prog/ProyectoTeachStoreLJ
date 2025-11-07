@@ -5,6 +5,7 @@
 package GUI;
 
 import Clases.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
 
 public class MainFrame extends javax.swing.JFrame {
     
@@ -198,6 +199,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnSalirbtnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirbtnInicio
         //Salir del sistema
+        TeachStoreLJ.csv.guardarCSVClientes();
+        System.out.println("ARCHIVO GUARDADO");
         System.exit(0);
     }//GEN-LAST:event_btnSalirbtnInicio
 

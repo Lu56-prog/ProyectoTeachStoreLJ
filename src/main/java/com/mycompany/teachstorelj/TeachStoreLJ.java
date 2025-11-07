@@ -12,6 +12,7 @@ public class TeachStoreLJ {
     
     public static Inventario inventario;
     public static CajaUsuarios usuarios;
+    public static CSV2000 csv;
 
     public static void main(String[] args) {
         inventario = new Inventario();
@@ -36,7 +37,10 @@ public class TeachStoreLJ {
         inventario.listaSDigitales.add(new ServicioDigital("Revisión y reparación de equipos de red",180000.0,"Mantenimiento y reparación",Duration.ofMinutes(180),"Incluye diagnóstico completo de routers, switches y cableado estructurado.",(Tecnico) usuarios.listaEmpleados.get(0)));
         inventario.listaSDigitales.add(new ServicioDigital("Instalación de sistema operativo y configuración básica",150000.0,"Software y sistemas",Duration.ofMinutes(90),"Instalación de Windows o Linux con optimización inicial del sistema.", (Tecnico) usuarios.listaEmpleados.get(1)));
         inventario.listaSDigitales.add(new ServicioDigital("Configuración de red doméstica o empresarial",220000.0,"Redes y conectividad",Duration.ofMinutes(30),"Montaje, conexión y configuración de red LAN o WiFi.",(Tecnico) usuarios.listaEmpleados.get(0)));
-
+        
+        
+        
+        
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         mainFrame.setLocationRelativeTo(null);
