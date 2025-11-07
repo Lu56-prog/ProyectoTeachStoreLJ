@@ -5,7 +5,7 @@
 package GUI;
 
 import Clases.*;
-import com.mycompany.teachstorelj.TeachStoreLJ;
+import com.mycompany.teachstorelj.*;
 
 public class MainFrame extends javax.swing.JFrame {
     

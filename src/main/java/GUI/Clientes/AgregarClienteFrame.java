@@ -6,7 +6,7 @@ package GUI.Clientes;
 
 import Clases.*;
 import MeException.*;
-import com.mycompany.teachstorelj.TeachStoreLJ;
+import com.mycompany.teachstorelj.*;
 import javax.swing.JOptionPane;
 
 public class AgregarClienteFrame extends javax.swing.JFrame {

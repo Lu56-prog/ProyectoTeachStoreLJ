@@ -17,6 +17,7 @@ public class TeachStoreLJ {
     public static void main(String[] args) {
         inventario = new Inventario();
         usuarios = new CajaUsuarios();
+        csv = new CSV2000();
         
         inventario.listaProductos.add(new ProductoFisico("Laptop ASUS", 2500000, "Computadoras", "Samsung", 3, "Bodega 1", 5));
         inventario.listaProductos.add(new ProductoFisico("Mouse Logitech", 120000, "Accesorios", "Logitech", 30, "Bodega 2", 10));
