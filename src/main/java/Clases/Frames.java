@@ -7,6 +7,7 @@ import GUI.Productos.*;
 import GUI.Clientes.*;
 import GUI.Empleados.*;
 import GUI.ProcesoCompra.*;
+import static java.awt.Frame.*;
 import javax.swing.JOptionPane;
 
 
@@ -168,9 +169,24 @@ public class Frames {
     }
     
     //ventas
+    public void recargarRegistrarCajero(){
+        RegistroCajeroFrame rcf = new RegistroCajeroFrame();
+        
+        rcf.setVisible(true);
+        rcf.setLocationRelativeTo(null);
+    }
+    
+    public void recargarRegistrarCliente(){
+        RegistroClienteFrame rcf = new RegistroClienteFrame();
+        
+        rcf.setVisible(true);
+        rcf.setLocationRelativeTo(null);
+    }
+    
     public void recargarCrearTicket(){
         GenerarTicketFrame gtf = new GenerarTicketFrame();
         
+        gtf.setExtendedState(MAXIMIZED_BOTH);
         gtf.setVisible(true);
         gtf.setLocationRelativeTo(null);
     }

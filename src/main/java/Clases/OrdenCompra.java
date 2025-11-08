@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class OrdenCompra {
     private String estado;
+    private Empleado cajero;
+    private Cliente cliente;
     private  ArrayList<ProductoFisico> listaProductosFisicos;
     private  ArrayList<ServicioDigital> listaProductosDigitales;
     private  double subtotal;
@@ -16,16 +18,7 @@ public class OrdenCompra {
 
     private static final double PORCENTAJE_IVA = 0.19;
     
-    public OrdenCompra( String estado, ArrayList<ProductoFisico> listaProductosFisicos, ArrayList<ServicioDigital> listaProductosDigitales, double subtotal, double descuentoPorLotes, double descuentoPorFidelidad, double descuentoPuntos, double iva, double total) {
-        this.estado = estado;
-        this.listaProductosFisicos = listaProductosFisicos;
-        this.listaProductosDigitales = listaProductosDigitales;
-        this.subtotal = subtotal;
-        this.descuentoPorLotes = descuentoPorLotes;
-        this.descuentoPorFidelidad = descuentoPorFidelidad;
-        this.descuentoPuntos = descuentoPuntos;
-        this.iva = iva;
-        this.total = total; 
+    public OrdenCompra() {
     }
 
     public ArrayList<ProductoFisico> getListaProductosFisicos() {
@@ -90,6 +83,22 @@ public class OrdenCompra {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public Empleado getCajero() {
+        return cajero;
+    }
+
+    public void setCajero(Empleado cajero) {
+        this.cajero = cajero;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     

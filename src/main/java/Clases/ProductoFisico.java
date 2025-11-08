@@ -95,8 +95,12 @@ public class ProductoFisico  extends Producto{
         setDescuento(descuento);
     }
     
+    public void modificarStock(int stock){
+        setStock(stock);
+    }
+    
     @Override
     public String toString() {
-        return this.codigoBarras + " -> " + this.nombre;
+        return this.nombre + " -> " + this.codigoBarras;
     }
 }

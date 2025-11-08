@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 //Falta heredar de orden de compra
-public class Factura extends OrdenCompra {
+public class Factura {
     private  String idFactura;
     private  String codigoLicencia;
     private  Date fechaRegistro;
@@ -13,15 +13,7 @@ public class Factura extends OrdenCompra {
     private  String cajeroVenta;
     private  MetodoPago metodoPago;
 
-    public Factura(String idFactura, String codigoLicencia, Date fechaRegistro, Date horaRegistro, String cajeroVenta, MetodoPago metodoPago, String estado, ArrayList<ProductoFisico> listaProductosFisicos, ArrayList<ServicioDigital> listaProductosDigitales, double subtotal, double descuentoPorLotes, double descuentoPorFidelidad, double descuentoPuntos, double iva, double total) {
-        super(estado, listaProductosFisicos, listaProductosDigitales, subtotal, descuentoPorLotes, descuentoPorFidelidad, descuentoPuntos, iva, total);
-        this.idFactura = idFactura;
-        this.codigoLicencia = codigoLicencia;
-        this.fechaRegistro = fechaRegistro;
-        this.horaRegistro = horaRegistro;
-        this.cajeroVenta = cajeroVenta;
-        this.metodoPago = metodoPago;
-    }
+
 
     public String getIdFactura() {
         return idFactura;

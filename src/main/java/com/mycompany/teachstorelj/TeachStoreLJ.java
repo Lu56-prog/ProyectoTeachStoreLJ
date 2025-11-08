@@ -15,7 +15,7 @@ public class TeachStoreLJ {
     public static CSV2000 csv;
 
     public static void main(String[] args) {
-        inventario = new Inventario();
+        inventario = new Inventario(); 
         usuarios = new CajaUsuarios();
         csv = new CSV2000();
         
@@ -27,11 +27,12 @@ public class TeachStoreLJ {
 
         usuarios.listaEmpleados.add(new Tecnico( "Juan Pérez", "1023456789", "3124567890", "juanperez@techstore.com", "Tecnico", "Ingeniero en Telecomunicaciones", 2800000, "Tiempo Completo"));
         usuarios.listaEmpleados.add(new Tecnico("María Gómez", "1019876543", "3109876543", "mariagomez@techstore.com", "Tecnico", "Tecnóloga en Electrónica", 2400000, "Medio Tiempo"));
-        usuarios.listaEmpleados.add(new Cajero("Marta", "1023456788", "3004567890", "juanperez@gmail.com", "Cajero", "Administrador", 1800000, "Tiempo Completo"));
+        usuarios.listaEmpleados.add(new Cajero("Lucero", "1011396530", "3004567890", "juanperez@gmail.com", "Cajero", "Administrador", 1800000, "Tiempo Completo"));
+        usuarios.listaEmpleados.add(new Cajero("Julian", "1011396531", "3004567890", "juanperez@gmail.com", "Cajero", "Administrador", 1800000, "Tiempo Completo"));
         usuarios.listaEmpleados.add(new Tecnico("Gerturiz", "9876543210", "3105674321", "mariagomez@hotmail.com", "Tecnico", "Ingeniero Electrónico", 2200000, "Medio Tiempo"));
         usuarios.listaEmpleados.add(new Supervisor("Carlos López", "1234567890", "3206549871", "carloslopez@yahoo.com", "Supervisor", "Tecnólogo en Sistemas", 2500000, "Tiempo Completo"));
         
-        usuarios.listaClientes.add(new Cliente("Juan Pérez", "1023456789", "3004567890", "juanperez@gmail.com", "Calle 45 #23-10"));
+        usuarios.listaClientes.add(new Cliente("Mariana", "1011396530", "3004567890", "juanperez@gmail.com", "Calle 45 #23-10"));
         usuarios.listaClientes.add(new Cliente("María Gómez", "9876543210", "3105674321", "mariagomez@hotmail.com", "Carrera 12 #45-67"));
         usuarios.listaClientes.add(new Cliente("Carlos López", "1234567890", "3206549871", "carloslopez@yahoo.com", "Avenida 80 #30-20"));
         
