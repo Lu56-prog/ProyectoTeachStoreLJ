@@ -77,6 +77,13 @@ public abstract class Empleado extends Usuario{
         setJornadaLaboral(jornadaLaboral);
     }
     
+    public String listaCSV (){
+        return this.nombre + "," + this.cedula + "," + this.telefono +
+                "," + this.correo + "," + this.cargo + "," + this.salario + "," + 
+                this.profesion + "," + this.jornadaLaboral + "," + this.id;
+        
+    }
+    
     //Sobreescribimos el metodo toString() para los comoBox
     @Override
     public String toString(){

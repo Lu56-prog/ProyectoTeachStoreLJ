@@ -44,5 +44,28 @@ public class CSV2000  {
         
     }
     
+                public void guardarCSVEmpleados (){
+        String Employee = "empleado.csv";
+        
+        try {
+            FileWriter csv = new FileWriter (Employee);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "NOMBRE,IDENTIFICAION,CONTACTO,CORREO ELECTRONICO,CARGO,SALARIO,PROFESION,JORNADA LABORAL,ID";
+                writeCSV.write(encabezado);
+                List<Empleado>empleados = TeachStoreLJ.usuarios.listaClientes;
+                
+                 for (Empleado empleado: empleado) {
+                    writeCSV.newLine();
+                    String datosEmpleados = empleado.listaCSV();
+                    writeCSV.write(datosEmpleado);
+                    
+                    //CERRAR EL CSV
+                    writeCSV.flush();
+                }   
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     
 }
