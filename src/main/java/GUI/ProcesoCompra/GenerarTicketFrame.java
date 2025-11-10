@@ -9,7 +9,7 @@ import Clases.Frames;
 import Clases.*;
 import com.mycompany.teachstorelj.*;
 import java.text.DecimalFormat;
-import java.util.List;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,7 +42,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         
         //Agregar encabezados a la tabla
         modeloProductoVenta.setRowCount(0);
-        String encabezado [] = {"Producto", "Precio U/N", "Cantidad", "Total"};
+        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"};
         modeloProductoVenta.setColumnIdentifiers(encabezado);
         
         //Para poder agrear los productos a la lista:
@@ -68,11 +68,11 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtIva = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtDescuentoProductos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -80,7 +80,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaProductoVenta = new javax.swing.JTable();
         btnBorrarProductoVenta = new javax.swing.JButton();
@@ -154,24 +154,24 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Subtotal");
 
-        jTextField2.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        txtSubtotal.setBackground(new java.awt.Color(153, 153, 153));
+        txtSubtotal.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Impuestos");
 
-        jTextField3.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        txtIva.setBackground(new java.awt.Color(153, 153, 153));
+        txtIva.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Descuento Por Producto");
+        jLabel7.setText("Descuento Por Productos");
 
-        jTextField5.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuentoProductos.setBackground(new java.awt.Color(153, 153, 153));
+        txtDescuentoProductos.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
@@ -202,8 +202,8 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Total a pagar");
 
-        jTextField9.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotal.setBackground(new java.awt.Color(153, 153, 153));
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
 
         jScrollPane4.setBackground(new java.awt.Color(70, 73, 75));
         jScrollPane4.setForeground(new java.awt.Color(70, 73, 75));
@@ -213,7 +213,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Precio U/N", "Cantidad", "Total"
+                "Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"
             }
         ));
         jScrollPane4.setViewportView(tablaProductoVenta);
@@ -259,41 +259,6 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(125, 125, 125))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel11))
-                                    .addComponent(jTextField9))))
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btnBorrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,7 +266,45 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                                 .addComponent(btnEditarCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCantidadProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDescuentoProductos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane4)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                        .addGap(438, 438, 438)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(14, 14, 14))
+                                    .addComponent(txtIva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jTextField8)
+                                .addGap(438, 438, 438)
+                                .addComponent(txtTotal)))
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +313,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,25 +323,28 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDescuentoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(28, 28, 28))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -346,7 +352,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -381,13 +387,13 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
 
         tablaProductoFisico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Producto", "Precio", "Disponible"
+                "Producto", "Precio", "Descuento %", "Disponible"
             }
         ));
         jScrollPane1.setViewportView(tablaProductoFisico);
@@ -455,7 +461,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelProductoFisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         btnInicio1.setBackground(new java.awt.Color(39, 241, 82));
@@ -572,7 +578,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -594,6 +600,12 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicio
 
     private void btnInicio1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio1
+        JOptionPane.showMessageDialog(null, "AL VOLVER AL INICIO REINICIAS LA COMPRA", "REINICIANDO COMPRA", JOptionPane.WARNING_MESSAGE);
+        //Pasamos a actualizar el stock
+        for(Map.Entry<ProductoFisico, Integer> par : RegistroCajeroFrame.ticket.getDicProductosFisicos().entrySet()){
+            actualizarStockProducto(par.getKey(), 0, par.getValue());
+        }
+        
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio1
@@ -616,17 +628,27 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboProductoActionPerformed
 
     private void btnAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar
-
         int seleccion = tablaProductoFisico.getSelectedRow();
         int cantidadProducto = Integer.parseInt(txtCantidadProducto.getText());
         if(seleccion != -1){
             ProductoFisico productoFisico = (ProductoFisico) tablaProductoFisico.getValueAt(seleccion, 0);
             if(cantidadProducto > 0){
-                actualizarTablaVenta(productoFisico, cantidadProducto);
-                txtCantidadProducto.setText("1");
- 
-                //Al agregar el producto se debe actualizar el stock
-                actualizarStockProducto(productoFisico, cantidadProducto,0);
+                if(RegistroCajeroFrame.ticket.getDicProductosFisicos().containsKey(productoFisico)){
+                    JOptionPane.showMessageDialog(null, "EL PRODUCTO YA ESTA AGREGADO", "PRODUCTO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    actualizarTablaVenta(productoFisico, cantidadProducto);
+                    txtCantidadProducto.setText("1");
+                            
+                    //Agregamos el producto a la OrdenCompra       
+                    RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadProducto);
+                    
+                    //Al agregar el producto se debe actualizar el stock
+                    actualizarStockProducto(productoFisico, cantidadProducto,0);
+                    
+                    //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
+                    actualizarTablaProductosFisicos();
+                    actualizarPanel();
+                }
                 
             } else{
                 JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
@@ -634,7 +656,6 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         } else{
             JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
         }
-        actualizarTablaProductosFisicos();
     }//GEN-LAST:event_btnAgregar
 
     private void txtCantidadProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadProductoActionPerformed
@@ -646,13 +667,18 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
        
        if(seleccion != -1){
            ProductoFisico producto = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
-           int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 2).toString());
+           int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
            
            borrarProducto(seleccion);
+           //Se borra el produco de la OrdenCompra
+           RegistroCajeroFrame.ticket.getDicProductosFisicos().remove(producto);
            
            //Se debe actualizar el stock
            actualizarStockProducto(producto, 0, cantidadAntigua);
-           actualizarTablaProductosFisicos();
+           
+           //Cada que borramos debemos actualizar al tabla y toda la parte del pago
+            actualizarTablaProductosFisicos();
+            actualizarPanel();
        } else{
            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
        }
@@ -664,29 +690,37 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         int seleccion = tablaProductoVenta.getSelectedRow();
         
         if(seleccion != -1){
-            int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 2).toString());
+            int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
         
             //Actualizar tambien total por cantidad
             ProductoFisico productoFisico = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
             double precio = productoFisico.getPrecio();
-            double nuevoTotal = cantidadNueva*precio;
+            double descuento =  precio * ((double)productoFisico.getDescuento()/100);
+            double precioDescuento =  precio - descuento;
+            double nuevoTotal = cantidadNueva*precioDescuento;
             
             if (cantidadNueva > 0){
-                modeloProductoVenta.setValueAt(cantidadNueva, seleccion, 2);
-                modeloProductoVenta.setValueAt(fm.format(nuevoTotal), seleccion, 3);
+                modeloProductoVenta.setValueAt(cantidadNueva, seleccion, 3);
+                modeloProductoVenta.setValueAt(fm.format(nuevoTotal), seleccion, 4);
                 
                 tablaProductoVenta.clearSelection();
                 txtCantidadProductoVenta.setText("0");
                 
+                //Editamos en ordenCompra
+                RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadNueva);
+                
                 //Al editar la cantidad del producto debe actualizarse el stock
                 actualizarStockProducto(productoFisico, cantidadNueva, cantidadAntigua);
+                
+                //Cada que editamos debemos actualizar al tabla y toda la parte del pago
+                actualizarTablaProductosFisicos();
+                actualizarPanel();
             } else{
                 JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
             }
        } else{
            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
        }
-        actualizarTablaProductosFisicos();
     }//GEN-LAST:event_btnEditarCantidadVenta
 
     private void txtCantidadProductoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadProductoVentaActionPerformed
@@ -695,25 +729,29 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     
     private void actualizarTablaProductosFisicos(){
         modeloProductoFisico.setRowCount(0);
-        String encabezado [] = {"Producto", "Precio U/N", "Disponible"};
+        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Disponible", };
         modeloProductoFisico.setColumnIdentifiers(encabezado);
         
         tablaProductoFisico.setModel(modeloProductoFisico);
         for(ProductoFisico producto:listaProductos){
             double precio = producto.getPrecio();
+            String descuento = producto.getDescuento() + "%";
             int stock = producto.getStock();
             
-            modeloProductoFisico.addRow(new Object[] {producto, fm.format(precio), stock});
+            modeloProductoFisico.addRow(new Object[] {producto, fm.format(precio), descuento, stock});
            
         }
     }
     
-    private void actualizarTablaVenta(Producto producto, int cantidad){
+    private void actualizarTablaVenta(ProductoFisico producto, int cantidad){
         tablaProductoVenta.setModel(modeloProductoVenta);
         double precio = producto.getPrecio();
-        double total = precio * cantidad;
+        double descuento =  precio * ((double)producto.getDescuento()/100);
+        double precioDescuento =  precio - descuento;
+        String descuentoVer = producto.getDescuento() + "%";
+        double total = precioDescuento * cantidad;
             
-        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), cantidad, fm.format(total)});
+        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad, fm.format(total)});
     }
     
     private void borrarProducto(int seleccion){
@@ -726,8 +764,37 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         
         producto.modificarStock(nuevoStock);
     }
+    
+    private void actualizarSubtotal(){
+        RegistroCajeroFrame.ticket.setSubtotal();
+        double subtotal = RegistroCajeroFrame.ticket.getSubtotal();
+        txtSubtotal.setText(fm.format(subtotal));
+    }
+    
+    private void actualizarImpuestos(){
+        RegistroCajeroFrame.ticket.setIva();
+        double impuesto = RegistroCajeroFrame.ticket.getIva();
+        txtIva.setText(fm.format(impuesto));
+    }
 
-
+    private void actualizarTotal(){
+        RegistroCajeroFrame.ticket.setTotal();
+        double total = RegistroCajeroFrame.ticket.getTotal();
+        txtTotal.setText(fm.format(total));
+    }
+    
+    private void actualizarDescuentoPorProductos(){
+        RegistroCajeroFrame.ticket.setDescuentoPorLotes();
+        double descuentoPorLotes = RegistroCajeroFrame.ticket.getDescuentoPorLotes();
+        txtDescuentoProductos.setText(fm.format(descuentoPorLotes));
+    }
+    
+    private void actualizarPanel(){
+        actualizarSubtotal();
+        actualizarImpuestos();
+        actualizarDescuentoPorProductos();
+        actualizarTotal();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrarProductoVenta;
@@ -756,13 +823,9 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel panelEscogerProductos;
     private javax.swing.JPanel panelProductoFisico;
     private javax.swing.JTable tablaProductoFisico;
@@ -771,5 +834,9 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidadProducto;
     private javax.swing.JTextField txtCantidadProductoVenta;
     private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtDescuentoProductos;
+    private javax.swing.JTextField txtIva;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

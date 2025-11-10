@@ -151,6 +151,7 @@ public class RegistroCajeroFrame extends javax.swing.JFrame {
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
         //Boton volver a inicio
+        JOptionPane.showMessageDialog(null, "AL VOLVER AL INICIO REINICIAS LA COMPRA", "REINICIANDO COMPRA", JOptionPane.WARNING_MESSAGE);
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio

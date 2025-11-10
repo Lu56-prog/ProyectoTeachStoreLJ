@@ -5,6 +5,7 @@
 package GUI.ProcesoCompra;
 
 import Clases.*;
+import javax.swing.JOptionPane;
 
 
 public class MetodoDePagoFrame extends javax.swing.JFrame {
@@ -641,6 +642,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
+        JOptionPane.showMessageDialog(null, "AL VOLVER AL INICIO REINICIAS LA COMPRA", "REINICIANDO COMPRA", JOptionPane.WARNING_MESSAGE);
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
