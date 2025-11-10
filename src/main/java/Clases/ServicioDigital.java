@@ -64,6 +64,12 @@ public class ServicioDigital extends Producto {
     }
 
  
+    public String listaCSV (){
+        return this.nombre + "," + this.precio + "," + this.categoria +
+                "," + this.descripcion + "," + this.tecnicoResponsable + "," + 
+                this.id;
+        
+    }
 
     public void mostrarInfo() {
         System.out.println("""      
