@@ -14,6 +14,7 @@ public class OrdenCompra {
     private  double descuentoPorLotes;
     private  double descuentoPorFidelidad;
     private  double descuentoPuntos;
+    private  double descuentoTotal;
     private  double iva;
     private double total;
 
@@ -49,10 +50,9 @@ public class OrdenCompra {
         double subtotal = 0;
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
-            double descuento =  precio * ((double)par.getKey().getDescuento()/100);
-            double precioDescuento =  precio - descuento;
             int cantidad = par.getValue();
-            subtotal = subtotal + (precioDescuento * cantidad);
+            double precioSinIva = precio / 1.19;
+            subtotal = subtotal + ((precioSinIva) * cantidad);
         }
         this.subtotal = subtotal;
     }
@@ -65,7 +65,8 @@ public class OrdenCompra {
         double descuentoPorLotes = 0;
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
-            double descuento =  precio * ((double)par.getKey().getDescuento()/100);
+            double precioSinIva = precio/1.19; 
+            double descuento =  precioSinIva * ((double)par.getKey().getDescuento()/100);
             int cantidad = par.getValue();
             descuentoPorLotes = descuentoPorLotes + (descuento * cantidad);
         }
@@ -76,7 +77,18 @@ public class OrdenCompra {
         return descuentoPorFidelidad;
     }
 
-    public void setDescuentoPorFidelidad(double descuentoPorFidelidad) {
+    public void setDescuentoPorFidelidad() {
+       double descuentoPorFidelidad = 0;
+        if(this.cliente != null){
+            int comprasAcomuladas = this.cliente.getComprasAcumuladas();
+            double descuento = 0;
+            if(comprasAcomuladas >= 3 && comprasAcomuladas <= 5){
+               descuento = 5;
+            } else if (comprasAcomuladas >= 6){
+                descuento = 10;
+            }
+            descuentoPorFidelidad = this.subtotal * (descuento/100);
+        }
         this.descuentoPorFidelidad = descuentoPorFidelidad;
     }
 
@@ -84,7 +96,15 @@ public class OrdenCompra {
         return descuentoPuntos;
     }
 
-    public void setDescuentoPuntos(double descuentoPuntos) {
+    public void setDescuentoPuntos() {
+        double descuentoPuntos = 0;
+        if(this.cliente != null){
+            int puntosCliente =  this.cliente.getPuntosAcumulados();
+            double puntosParaCompra = puntosCliente / 10;
+            descuentoPuntos = 100000 * puntosParaCompra;
+            int puntosTotal = puntosCliente - (int)(puntosParaCompra * 10);
+            this.cliente.setPuntosAcumulados(puntosTotal);
+        } 
         this.descuentoPuntos = descuentoPuntos;
     }
 
@@ -97,7 +117,7 @@ public class OrdenCompra {
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
             int cantidad = par.getValue();
-            double impuestoU = precio * 0.19;
+            double impuestoU = (precio/1.19)*0.19;
             double impuestoTotal = impuestoU * cantidad;
             iva = iva + impuestoTotal;
         }
@@ -109,7 +129,7 @@ public class OrdenCompra {
     }
 
     public void setTotal() {
-        double total = this.subtotal;
+        double total = (this.subtotal + this.iva) - descuentoTotal;
         this.total = total;
     }
 
@@ -127,6 +147,14 @@ public class OrdenCompra {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public double getDescuentoTotal() {
+        return descuentoTotal;
+    }
+
+    public void setDescuentoTotal() {
+        this.descuentoTotal = descuentoPorFidelidad + descuentoPuntos + descuentoPorLotes;
     }
     
     

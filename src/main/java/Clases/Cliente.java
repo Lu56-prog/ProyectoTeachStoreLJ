@@ -13,6 +13,8 @@ public class Cliente extends Usuario{
         super(nombre, cedula, telefono, correo);
         setId();
         setDireccion(direccion);
+        setPuntosAcumulados(puntosAcumulados);
+        setComprasAcumuladas(comprasAcumuladas);
     }
 
     public String getDireccion() {
@@ -32,7 +34,7 @@ public class Cliente extends Usuario{
     }
 
     public void setPuntosAcumulados(int puntosAcumulados) {
-        this.puntosAcumulados = puntosAcumulados;
+        this.puntosAcumulados = 13;
     }
 
     public int getComprasAcumuladas() {
@@ -40,7 +42,7 @@ public class Cliente extends Usuario{
     }
 
     public void setComprasAcumuladas(int comprasAcumuladas) {
-        this.comprasAcumuladas = comprasAcumuladas;
+        this.comprasAcumuladas = 4;
     }
 
     public String getHistorialCompras() {

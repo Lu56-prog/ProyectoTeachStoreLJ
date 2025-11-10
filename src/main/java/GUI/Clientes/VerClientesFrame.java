@@ -59,13 +59,13 @@ public class VerClientesFrame extends javax.swing.JFrame {
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"
+                "Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID", "Puntos Acomulados", "Compras Realizadas"
             }
         ));
         jScrollPane1.setViewportView(tablaClientes);
@@ -181,18 +181,18 @@ public class VerClientesFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(307, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +286,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
 
     private void actualizarTabla(){
            mt.setRowCount(0);
-           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID"};
+           String encabezado [] = {"Nombre", "Identificacion", "Contacto", "Correo Electronico", "Direccion", "ID", "Puntos Acomulados", "Compras Acomuladas"};
            mt.setColumnIdentifiers(encabezado);
 
            tablaClientes.setModel(mt);
@@ -301,6 +301,8 @@ public class VerClientesFrame extends javax.swing.JFrame {
                String direccion = cliente.getDireccion();
                String email = cliente.getCorreo();
                String id = cliente.getId();
+               int puntos = cliente.getPuntosAcumulados();
+               int compras = cliente.getComprasAcumuladas();
                
                if(nombre.startsWith(txtNombre.getText()) &&
                   cedula.startsWith(txtIdentificacion.getText()) &&
@@ -309,7 +311,7 @@ public class VerClientesFrame extends javax.swing.JFrame {
                   direccion.startsWith(txtDireccion.getText()) &&
                   id.startsWith(txtID.getText()) 
                        ){
-                   mt.addRow(new Object[] {nombre, cedula, telefono, email, direccion, id});
+                   mt.addRow(new Object[] {nombre, cedula, telefono, email, direccion, id, puntos, compras});
                }
            }
     }

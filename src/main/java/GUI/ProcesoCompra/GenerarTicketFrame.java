@@ -42,8 +42,17 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         
         //Agregar encabezados a la tabla
         modeloProductoVenta.setRowCount(0);
-        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"};
+        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total Sin Descuento", "Total"};
         modeloProductoVenta.setColumnIdentifiers(encabezado);
+        
+        //Ajustar espacios de columnas
+        tablaProductoVenta.getColumn("Producto").setPreferredWidth(15);
+        tablaProductoVenta.getColumn("Precio U/N").setPreferredWidth(90);
+        tablaProductoVenta.getColumn("Descuento %").setPreferredWidth(90);
+        tablaProductoVenta.getColumn("Cantidad").setPreferredWidth(90);
+        tablaProductoVenta.getColumn("Total Sin Descuento").setPreferredWidth(90);
+        tablaProductoVenta.getColumn("Total").setPreferredWidth(90);
+        
         
         //Para poder agrear los productos a la lista:
         actualizarTablaProductosFisicos();
@@ -74,11 +83,11 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDescuentoProductos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtDescuentoPorPuntos = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtDescuentoPorCompras = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtDescuentoTotal = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -178,24 +187,24 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Decuento Puntos");
 
-        jTextField6.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuentoPorPuntos.setBackground(new java.awt.Color(153, 153, 153));
+        txtDescuentoPorPuntos.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Descuento Fidelidad");
 
-        jTextField7.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuentoPorCompras.setBackground(new java.awt.Color(153, 153, 153));
+        txtDescuentoPorCompras.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Descuento Total");
 
-        jTextField8.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuentoTotal.setBackground(new java.awt.Color(153, 153, 153));
+        txtDescuentoTotal.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
@@ -213,7 +222,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"
+                "Producto", "Precio U/N", "Descuento %", "Cantidad", "Total Sin Descuento", "Total"
             }
         ));
         jScrollPane4.setViewportView(tablaProductoVenta);
@@ -269,28 +278,12 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtDescuentoProductos))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane4)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                                        .addGap(438, 438, 438)))
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
@@ -301,9 +294,24 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel11))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField8)
-                                .addGap(438, 438, 438)
-                                .addComponent(txtTotal)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDescuentoTotal)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDescuentoProductos, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(txtDescuentoPorPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(txtDescuentoPorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -335,23 +343,21 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDescuentoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDescuentoPorPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addGap(28, 28, 28))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel9)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtDescuentoPorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescuentoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -745,13 +751,16 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     
     private void actualizarTablaVenta(ProductoFisico producto, int cantidad){
         tablaProductoVenta.setModel(modeloProductoVenta);
-        double precio = producto.getPrecio();
-        double descuento =  precio * ((double)producto.getDescuento()/100);
-        double precioDescuento =  precio - descuento;
+        double precio = (producto.getPrecio());
+        double precioIva = (producto.getPrecio() / 1.19);
+        double iva = precioIva * 0.19;
+        double descuento =  precioIva * ((double)producto.getDescuento()/100);
+        double precioDescuento =  precioIva - descuento;
         String descuentoVer = producto.getDescuento() + "%";
-        double total = precioDescuento * cantidad;
+        double totalSinDescuento = precio * cantidad;
+        double totalConDescuento = (precioDescuento + iva )* cantidad;
             
-        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad, fm.format(total)});
+        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad, fm.format(totalSinDescuento),  fm.format(totalConDescuento)});
     }
     
     private void borrarProducto(int seleccion){
@@ -789,10 +798,31 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         txtDescuentoProductos.setText(fm.format(descuentoPorLotes));
     }
     
+    private void actualizarDescuentoPorPuntos(){
+        RegistroCajeroFrame.ticket.setDescuentoPuntos();
+        double descuentoPorPuntos = RegistroCajeroFrame.ticket.getDescuentoPuntos();
+        txtDescuentoPorPuntos.setText(fm.format(descuentoPorPuntos));
+    }
+    
+    private void actualizarDescuentoPorCompras(){
+        RegistroCajeroFrame.ticket.setDescuentoPorFidelidad();
+        double descuentoPorCompras =  RegistroCajeroFrame.ticket.getDescuentoPorFidelidad();
+        txtDescuentoPorCompras.setText(fm.format(descuentoPorCompras));
+    }
+    
+    private void actualizarDescuentoTotal(){
+        RegistroCajeroFrame.ticket.setDescuentoTotal();
+        double descuentoTotal =  RegistroCajeroFrame.ticket.getDescuentoTotal();
+        txtDescuentoTotal.setText(fm.format(descuentoTotal));
+    }
+    
     private void actualizarPanel(){
         actualizarSubtotal();
         actualizarImpuestos();
         actualizarDescuentoPorProductos();
+        actualizarDescuentoPorPuntos();
+        actualizarDescuentoPorCompras();
+        actualizarDescuentoTotal();
         actualizarTotal();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -823,9 +853,6 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JPanel panelEscogerProductos;
     private javax.swing.JPanel panelProductoFisico;
     private javax.swing.JTable tablaProductoFisico;
@@ -834,7 +861,10 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidadProducto;
     private javax.swing.JTextField txtCantidadProductoVenta;
     private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtDescuentoPorCompras;
+    private javax.swing.JTextField txtDescuentoPorPuntos;
     private javax.swing.JTextField txtDescuentoProductos;
+    private javax.swing.JTextField txtDescuentoTotal;
     private javax.swing.JTextField txtIva;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
