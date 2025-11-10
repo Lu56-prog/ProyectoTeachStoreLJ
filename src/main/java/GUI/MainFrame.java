@@ -201,6 +201,8 @@ public class MainFrame extends javax.swing.JFrame {
         //Salir del sistema
         TeachStoreLJ.csv.guardarCSVClientes();
         TeachStoreLJ.csv.guardarCSVEmpleados();
+        TeachStoreLJ.csv.guardarCSVProdutodigital();
+        TeachStoreLJ.csv.guardarCSVServicioDigital();
         System.out.println("ARCHIVO GUARDADO");
         System.exit(0);
     }//GEN-LAST:event_btnSalirbtnInicio

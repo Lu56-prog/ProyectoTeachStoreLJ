@@ -18,6 +18,7 @@ public class ProductoFisico  extends Producto{
         setCodigoBarras();
         setUbicacion(ubicacion);
         setDescuento(descuento);
+       
     }
     
     public void mostrarInfo(){
@@ -85,6 +86,12 @@ public class ProductoFisico  extends Producto{
         this.descuento = descuento;
     }
     
+     public String listaCSV (){
+        return this.nombre + "," + this.precio + "," + this.categoria +
+                "," + this.marca + "," + this.stock + "," + this.ubicacion + "," + this.descuento;
+    }
+     
+     
     public void modificarProducto(String nombre, double precio, String categoria, String marca, int stock, String ubicacion, int descuento){
         setNombre(nombre);
         setPrecio(precio);

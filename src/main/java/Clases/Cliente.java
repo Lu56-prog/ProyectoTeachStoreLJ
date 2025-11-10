@@ -76,6 +76,8 @@ public class Cliente extends Usuario{
     }
     
     
+    
+    
    @Override
     protected void setId(){
         String id = ("CLI-00" + contador);

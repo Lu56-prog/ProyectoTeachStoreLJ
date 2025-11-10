@@ -72,7 +72,7 @@ public class CSV2000  {
 
     public void guardarCSVServicioDigital(){
             
-        String servclient = "serviciosdigitales.csv";
+        String servclient = "serviciosDigitales.csv";
         
         try {
             FileWriter csv = new FileWriter (servclient);
@@ -101,7 +101,7 @@ public class CSV2000  {
 
     public void guardarCSVProdutodigital(){
             
-        String Product = "productodigital.csv";
+        String Product = "productoDigital.csv";
         
         try {
             FileWriter csv = new FileWriter (Product);
@@ -110,12 +110,12 @@ public class CSV2000  {
                 //encabezados
                 String encabezado = "NOMBRE,PRECIO,CATEGORIA,DURACION,DESCRIPCION,TECNICO RESPONSABLE,CODIGO";
                 writeCSV.write(encabezado);
-                List<ServicioDigital>serviciosDigitales = TeachStoreLJ.inventario.listaSDigitales;
+                List<ProductoFisico>productos = TeachStoreLJ.inventario.listaProductos;
                 
-                for ( ServicioDigital servicio: serviciosDigitales) {
+                for ( ProductoFisico producto : productos ) {
                     writeCSV.newLine();
-                    String serviciosdigitales = servicio.listaCSV();
-                    writeCSV.write(serviciosdigitales);
+                    String datosProducto = producto.listaCSV();
+                    writeCSV.write(datosProducto);
                     
                     //CERRAR EL CSV
                     writeCSV.flush();
