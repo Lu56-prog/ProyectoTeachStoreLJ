@@ -44,5 +44,85 @@ public class CSV2000  {
         
     }
     
+    public void guardarCSVEmpleados (){
+        String Employee = "empleado.csv";
+        
+        try {
+            FileWriter csv = new FileWriter (Employee);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "NOMBRE,IDENTIFICAION,CONTACTO,CORREO ELECTRONICO,CARGO,SALARIO,PROFESION,JORNADA LABORAL,ID";
+                writeCSV.write(encabezado);
+                List<Empleado>empleados = TeachStoreLJ.usuarios.listaEmpleados;
+                
+                 for (Empleado empleado: empleados) {
+                    writeCSV.newLine();
+                    String datosEmpleado = empleado.listaCSV();
+                    writeCSV.write(datosEmpleado);
+                    
+                    //CERRAR EL CSV
+                    writeCSV.flush();
+                }   
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+}
+
+    public void guardarCSVServicioDigital(){
+            
+        String servclient = "serviciosdigitales.csv";
+        
+        try {
+            FileWriter csv = new FileWriter (servclient);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "NOMBRE,PRECIO,CATEGORIA,DURACION,DESCRIPCION,TECNICO RESPONSABLE,CODIGO";
+                writeCSV.write(encabezado);
+                List<ServicioDigital>serviciosDigitales = TeachStoreLJ.inventario.listaSDigitales;
+                
+                for ( ServicioDigital servicio: serviciosDigitales) {
+                    writeCSV.newLine();
+                    String serviciosdigitales = servicio.listaCSV();
+                    writeCSV.write(serviciosdigitales);
+                    
+                    //CERRAR EL CSV
+                    writeCSV.flush();
+                }   
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            
+        }
+    } 
     
+    
+
+    public void guardarCSVProdutodigital(){
+            
+        String Product = "productodigital.csv";
+        
+        try {
+            FileWriter csv = new FileWriter (Product);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "NOMBRE,PRECIO,CATEGORIA,DURACION,DESCRIPCION,TECNICO RESPONSABLE,CODIGO";
+                writeCSV.write(encabezado);
+                List<ServicioDigital>serviciosDigitales = TeachStoreLJ.inventario.listaSDigitales;
+                
+                for ( ServicioDigital servicio: serviciosDigitales) {
+                    writeCSV.newLine();
+                    String serviciosdigitales = servicio.listaCSV();
+                    writeCSV.write(serviciosdigitales);
+                    
+                    //CERRAR EL CSV
+                    writeCSV.flush();
+                }   
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            
+        }
+    } 
 }

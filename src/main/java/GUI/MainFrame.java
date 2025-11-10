@@ -200,6 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnSalirbtnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirbtnInicio
         //Salir del sistema
         TeachStoreLJ.csv.guardarCSVClientes();
+        TeachStoreLJ.csv.guardarCSVEmpleados();
         System.out.println("ARCHIVO GUARDADO");
         System.exit(0);
     }//GEN-LAST:event_btnSalirbtnInicio
