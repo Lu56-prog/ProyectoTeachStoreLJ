@@ -7,9 +7,11 @@ package GUI.ProcesoCompra;
 import Clases.Frames;
 
 import Clases.*;
+import MeException.*;
 import com.mycompany.teachstorelj.*;
 import java.text.DecimalFormat;
-import java.time.Duration;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class GenerarTicketFrame extends javax.swing.JFrame {
     DecimalFormat fm = new DecimalFormat("#, ###");
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
     DefaultTableModel modeloProductoFisico  = new DefaultTableModel();
     DefaultTableModel modeloSDigital  = new DefaultTableModel();
     DefaultTableModel modeloProductoVenta  = new DefaultTableModel();
@@ -44,7 +47,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         
         //Agregar encabezados a la tabla de productos fisicos
         modeloProductoVenta.setRowCount(0);
-        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"};
+        String encabezado [] = {"Producto/SD", "Precio U/N", "Des %/Hora Fin", "Cantidad/Tecnico", "Total"};
         modeloProductoVenta.setColumnIdentifiers(encabezado);
 
         
@@ -62,9 +65,6 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnInicio = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -103,35 +103,11 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaServicioDigital = new javax.swing.JTable();
         btnInicio1 = new javax.swing.JButton();
-        btnInicio2 = new javax.swing.JButton();
+        btnGenerarCompra = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtCajero = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
-
-        btnInicio.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
-        btnInicio.setText("Inicio");
-        btnInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicio(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -221,7 +197,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto/SD", "Precio U/N", "Descuento %", "Cantidad/Tecnico", "Total"
+                "Producto/SD", "Precio U/N", "Descuento %/Hora inicio", "Cantidad/Tecnico", "Total"
             }
         ));
         jScrollPane4.setViewportView(tablaProductoVenta);
@@ -319,8 +295,8 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -536,14 +512,14 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
             }
         });
 
-        btnInicio2.setBackground(new java.awt.Color(39, 241, 82));
-        btnInicio2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnInicio2.setForeground(new java.awt.Color(0, 0, 0));
-        btnInicio2.setText("Generar Pago");
-        btnInicio2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnInicio2.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarCompra.setBackground(new java.awt.Color(39, 241, 82));
+        btnGenerarCompra.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnGenerarCompra.setForeground(new java.awt.Color(0, 0, 0));
+        btnGenerarCompra.setText("Generar Pago");
+        btnGenerarCompra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnGenerarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicio2(evt);
+                btnGenerarCompra(evt);
             }
         });
 
@@ -601,7 +577,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnGenerarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -629,7 +605,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGenerarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -660,25 +636,31 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInicio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio
-
-    }//GEN-LAST:event_btnInicio
-
     private void btnInicio1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio1
         JOptionPane.showMessageDialog(null, "AL VOLVER AL INICIO REINICIAS LA COMPRA", "REINICIANDO COMPRA", JOptionPane.WARNING_MESSAGE);
         //Pasamos a actualizar el stock
         for(Map.Entry<ProductoFisico, Integer> par : RegistroCajeroFrame.ticket.getDicProductosFisicos().entrySet()){
             actualizarStockProducto(par.getKey(), 0, par.getValue());
         }
+        //Y actualizar la disponibilidad de los tecnicos
+        for(Map.Entry<ServicioDigital, LocalDateTime> par : RegistroCajeroFrame.ticket.getDicServiciosDigitales().entrySet()){
+            ServicioDigital servicio = par.getKey();
+            Tecnico tecnico = servicio.getTecnicoResponsable();
+            tecnico.agendarServicio(LocalDateTime.now().minusMinutes(1));
+        }
         
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio1
 
-    private void btnInicio2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio2
-       dispose();
-       recargarPagina.recargarMetodosPago();
-    }//GEN-LAST:event_btnInicio2
+    private void btnGenerarCompra(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCompra
+       if(RegistroCajeroFrame.ticket.getDicProductosFisicos().isEmpty() && RegistroCajeroFrame.ticket.getDicServiciosDigitales().isEmpty()){
+            JOptionPane.showMessageDialog(null, "NO ES POSIBLE GENERAR COMPRA SIN PRODUCTOS", "COMPRA NO VALIDA", JOptionPane.ERROR_MESSAGE);
+       } else{
+            dispose();
+            recargarPagina.recargarMetodosPago(); 
+       }
+    }//GEN-LAST:event_btnGenerarCompra
 
     private void txtCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajeroActionPerformed
 
@@ -700,33 +682,37 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comboEleccionActionPerformed
 
     private void btnAgregarProductoFisico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoFisico
-        int seleccion = tablaProductoFisico.getSelectedRow();
-        int cantidadProducto = Integer.parseInt(txtCantidadProducto.getText());
-        if(seleccion != -1){
-            ProductoFisico productoFisico = (ProductoFisico) tablaProductoFisico.getValueAt(seleccion, 0);
-            if(cantidadProducto > 0){
-                if(RegistroCajeroFrame.ticket.getDicProductosFisicos().containsKey(productoFisico)){
-                    JOptionPane.showMessageDialog(null, "EL PRODUCTO YA ESTA AGREGADO", "PRODUCTO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    actualizarTablaVentaProducto(productoFisico, cantidadProducto);
-                    txtCantidadProducto.setText("1");
-                            
-                    //Agregamos el producto a la OrdenCompra       
-                    RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadProducto);
-                    
-                    //Al agregar el producto se debe actualizar el stock
-                    actualizarStockProducto(productoFisico, cantidadProducto,0);
-                    
-                    //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
-                    actualizarTablaProductosFisicos();
-                    actualizarPanel();
+        try{
+            int seleccion = tablaProductoFisico.getSelectedRow();
+            int cantidadProducto = Integer.parseInt(txtCantidadProducto.getText());
+            if(seleccion != -1){
+                ProductoFisico productoFisico = (ProductoFisico) tablaProductoFisico.getValueAt(seleccion, 0);
+                if(cantidadProducto > 0){
+                    if(RegistroCajeroFrame.ticket.getDicProductosFisicos().containsKey(productoFisico)){
+                        JOptionPane.showMessageDialog(null, "EL PRODUCTO YA ESTA AGREGADO", "PRODUCTO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        //Al agregar el producto se debe actualizar el stock
+                        actualizarStockProducto(productoFisico, cantidadProducto,0);
+                        
+                        actualizarTablaVentaProducto(productoFisico, cantidadProducto);
+                        txtCantidadProducto.setText("1");
+
+                        //Agregamos el producto a la OrdenCompra       
+                        RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadProducto);
+
+                        //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
+                        actualizarTablaProductosFisicos();
+                        actualizarPanel();
+                    }
+
+                } else{
+                    JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
                 }
-                
             } else{
-                JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
             }
-        } else{
-            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
+        } catch (NumeroFueraDeLimitesException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR STOCK", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarProductoFisico
 
@@ -738,19 +724,32 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
        int seleccion = tablaProductoVenta.getSelectedRow();
        
        if(seleccion != -1){
-           ProductoFisico producto = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
-           int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
-           
-           borrarProducto(seleccion);
-           //Se borra el produco de la OrdenCompra
-           RegistroCajeroFrame.ticket.getDicProductosFisicos().remove(producto);
-           
-           //Se debe actualizar el stock
-           actualizarStockProducto(producto, 0, cantidadAntigua);
-           
-           //Cada que borramos debemos actualizar al tabla y toda la parte del pago
-            actualizarTablaProductosFisicos();
-            actualizarPanel();
+           //Se coloca en un try - catch ya que primero intentara borrar un producto de la calse ProductoFisico y lo borra
+           //Si resulta que el objeto es un ServicioDigital, ira al catch y borrara el servicio digital
+           try{
+                ProductoFisico producto = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
+                int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
+
+                borrarProducto(seleccion);
+                //Se borra el produco de la OrdenCompra
+                RegistroCajeroFrame.ticket.getDicProductosFisicos().remove(producto);
+
+                //Se debe actualizar el stock
+                actualizarStockProducto(producto, 0, cantidadAntigua);
+
+                //Cada que borramos debemos actualizar al tabla y toda la parte del pago
+                 actualizarTablaProductosFisicos();
+           } catch (ClassCastException e){
+                ServicioDigital servicio = (ServicioDigital) tablaProductoVenta.getValueAt(seleccion, 0);
+                borrarProducto(seleccion);
+                
+                RegistroCajeroFrame.ticket.getDicServiciosDigitales().remove(servicio);
+                
+                //Se actualiza disponibilidad del tecnico
+                servicio.getTecnicoResponsable().agendarServicio(LocalDateTime.now().minusMinutes(1));
+                actualizarTablaServicioDigital();
+           }
+           actualizarPanel();
        } else{
            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
        }
@@ -762,33 +761,36 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         int seleccion = tablaProductoVenta.getSelectedRow();
         
         if(seleccion != -1){
-            int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
-        
             //Actualizar tambien total por cantidad
-            ProductoFisico productoFisico = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
-            double precio = productoFisico.getPrecio();
-            double descuento =  precio * ((double)productoFisico.getDescuento()/100);
-            double precioDescuento =  precio - descuento;
-            double nuevoTotal = cantidadNueva*precioDescuento;
-            
-            if (cantidadNueva > 0){
-                modeloProductoVenta.setValueAt(cantidadNueva, seleccion, 3);
-                modeloProductoVenta.setValueAt(fm.format(nuevoTotal), seleccion, 4);
-                
-                tablaProductoVenta.clearSelection();
-                txtCantidadProductoVenta.setText("0");
-                
-                //Editamos en ordenCompra
-                RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadNueva);
-                
-                //Al editar la cantidad del producto debe actualizarse el stock
-                actualizarStockProducto(productoFisico, cantidadNueva, cantidadAntigua);
-                
-                //Cada que editamos debemos actualizar al tabla y toda la parte del pago
-                actualizarTablaProductosFisicos();
-                actualizarPanel();
-            } else{
-                JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
+            try{
+                ProductoFisico productoFisico = (ProductoFisico) tablaProductoVenta.getValueAt(seleccion, 0);
+                int cantidadAntigua = Integer.parseInt(tablaProductoVenta.getValueAt(seleccion, 3).toString());
+                double nuevoTotal = productoFisico.getTotalProducto(cantidadNueva);
+
+
+                if (cantidadNueva > 0){
+                    //Al editar la cantidad del producto debe actualizarse el stock
+                    actualizarStockProducto(productoFisico, cantidadNueva, cantidadAntigua);
+                    
+                    modeloProductoVenta.setValueAt(cantidadNueva, seleccion, 3);
+                    modeloProductoVenta.setValueAt(fm.format(nuevoTotal), seleccion, 4);
+
+                    tablaProductoVenta.clearSelection();
+                    txtCantidadProductoVenta.setText("0");
+
+                    //Editamos en ordenCompra
+                    RegistroCajeroFrame.ticket.getDicProductosFisicos().put(productoFisico, cantidadNueva);
+
+                    //Cada que editamos debemos actualizar al tabla y toda la parte del pago
+                    actualizarTablaProductosFisicos();
+                    actualizarPanel();
+                } else{
+                    JOptionPane.showMessageDialog(null, "CANTIDAD DEL PRODUCTO MENOR O IGUAL A 0", "CANTIDAD NO VALIDA", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (ClassCastException e){
+                JOptionPane.showMessageDialog(null, "NO PUEDES EDITAR CANTIDAD DE SERVICIO DIGITAL", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
+            }  catch (NumeroFueraDeLimitesException e){
+                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR STOCK", JOptionPane.ERROR_MESSAGE);
             }
        } else{
            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
@@ -802,18 +804,24 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private void btnAgregarServicioDigital(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioDigital
         int seleccion = tablaServicioDigital.getSelectedRow();
         if(seleccion != -1){
-            ServicioDigital servicioDigital = (ServicioDigital) tablaProductoFisico.getValueAt(seleccion, 0);
-            if(RegistroCajeroFrame.ticket.getListaProductosDigitales().contains(servicioDigital)){
+            ServicioDigital servicioDigital = (ServicioDigital) tablaServicioDigital.getValueAt(seleccion, 0);
+            if(RegistroCajeroFrame.ticket.getDicServiciosDigitales().containsKey(servicioDigital)){
                     JOptionPane.showMessageDialog(null, "EL SERVICIO YA ESTA AGREGADO", "SERVICIO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
             }else{
-                actualizarTablaVentaServico(servicioDigital);
+                //Validamos que el tecnico este disponible
+                if(servicioDigital.getTecnicoResponsable().getDisponibilidad().equalsIgnoreCase("disponible")){
+                    actualizarTablaVentaServico(servicioDigital);
                             
-                //Agregamos el servicio a la OrdenCompra       
-                RegistroCajeroFrame.ticket.getListaProductosDigitales().add(servicioDigital);
+                    //Agregamos el servicio a la OrdenCompra
+                    LocalDateTime horaFinal = LocalDateTime.now().plus(servicioDigital.getDuracionEstimada());
+                    RegistroCajeroFrame.ticket.getDicServiciosDigitales().put(servicioDigital, horaFinal);
                     
-               //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
-               actualizarTablaServicioDigital();
-               actualizarPanel();
+                   //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
+                   actualizarTablaServicioDigital();
+                   actualizarPanel();
+                } else{
+                    JOptionPane.showMessageDialog(null, "EL TECNICO RESPONSABLE DEL SERVICIO NO ESTA DISPONIBLE", "ERROR DISPONIBILIDAD", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else{
             JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN SERVICIO", "SERVICIO NO VALIDO", JOptionPane.ERROR_MESSAGE);
@@ -830,6 +838,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
             double precio = producto.getPrecio();
             String descuento = producto.getDescuento() + "%";
             int stock = producto.getStock();
+            
             
             modeloProductoFisico.addRow(new Object[] {producto, fm.format(precio), descuento, stock});
            
@@ -856,30 +865,35 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private void actualizarTablaVentaProducto(ProductoFisico producto, int cantidad){
         tablaProductoVenta.setModel(modeloProductoVenta);
         double precio = (producto.getPrecio());
-        double precioIva = (producto.getPrecio() / 1.19);
-        double iva = precioIva * 0.19;
-        double descuento =  precioIva * ((double)producto.getDescuento()/100);
-        double precioDescuento =  precioIva - descuento;
         String descuentoVer = producto.getDescuento() + "%";
-        double totalConDescuento = (precioDescuento + iva )* cantidad;
+        double totalConDescuento = producto.getTotalProducto(cantidad);
             
         modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad,  fm.format(totalConDescuento)});
     }
     
     private void actualizarTablaVentaServico(ServicioDigital servicio){
+        tablaProductoVenta.setModel(modeloProductoVenta);
+        double precio = (servicio.getPrecio());
+        Tecnico tecnicoResponsable = servicio.getTecnicoResponsable();
+        LocalDateTime horaFinal = LocalDateTime.now().plus(servicio.getDuracionEstimada());
         
+        //Cambiamos la disponibilidad del tecnico
+        tecnicoResponsable.agendarServicio(horaFinal);
+        
+        modeloProductoVenta.addRow(new Object[] {servicio, fm.format(precio), horaFinal.format(formato), tecnicoResponsable,  fm.format(precio)});
     }
     
     private void borrarProducto(int seleccion){
         modeloProductoVenta.removeRow(seleccion);
     }
     
-    private void actualizarStockProducto(ProductoFisico producto, int cantidad, int cantidadAntigua){
+    public void actualizarStockProducto(ProductoFisico producto, int cantidad, int cantidadAntigua) throws NumeroFueraDeLimitesException{
         int stock = producto.getStock() + cantidadAntigua;
         int nuevoStock = stock - cantidad;
         
-        producto.modificarStock(nuevoStock);
+        producto.setStock(nuevoStock);
     }
+
     
     private void actualizarSubtotal(){
         RegistroCajeroFrame.ticket.setSubtotal();
@@ -923,7 +937,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         txtDescuentoTotal.setText(fm.format(descuentoTotal));
     }
     
-    private void actualizarPanel(){
+    public void actualizarPanel(){
         actualizarSubtotal();
         actualizarImpuestos();
         actualizarDescuentoPorProductos();
@@ -937,9 +951,8 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarServicioDigital;
     private javax.swing.JButton btnBorrarProductoVenta;
     private javax.swing.JButton btnEditarCantidadVenta;
-    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnGenerarCompra;
     private javax.swing.JButton btnInicio1;
-    private javax.swing.JButton btnInicio2;
     private javax.swing.JComboBox<String> comboEleccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -959,9 +972,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelEscogerProductos;
     private javax.swing.JPanel panelProductoFisico;
     private javax.swing.JPanel panelServicioDigital;

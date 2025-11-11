@@ -11,6 +11,7 @@ public class Factura {
     private  Date fechaRegistro;
     private  Date horaRegistro;
     private  String cajeroVenta;
+    private OrdenCompra ordenCompra;
     private  MetodoPago metodoPago;
 
 

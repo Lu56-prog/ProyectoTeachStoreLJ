@@ -8,9 +8,9 @@ import MeException.*;
 public abstract class MetodoPago {
     protected double totalPagar;
     protected String metodoPago;
-    protected boolean estadoPago;
+    protected String estadoPago;
 
-    public MetodoPago(double totalPagar, String metodoPago, boolean estadoPago) {
+    public MetodoPago(double totalPagar, String metodoPago, String estadoPago) {
         setTotalPagar(totalPagar);
         this.metodoPago = metodoPago;
         this.estadoPago = estadoPago;
@@ -39,11 +39,11 @@ public abstract class MetodoPago {
         this.metodoPago = metodoPago;
     }
 
-    public boolean isEstadoPago() {
+    public String isEstadoPago() {
         return estadoPago;
     }
 
-    public void setEstadoPago(boolean estadoPago) {
+    public void setEstadoPago(String estadoPago) {
         this.estadoPago = estadoPago;
     }
     

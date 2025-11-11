@@ -1,33 +1,36 @@
 
 package Clases;
 
+import MeException.*;
+
 public class TarjetaCredito extends MetodoPago {
-    protected int numero;
-    protected double cuotas;
+    protected long numero;
+    protected int cuotas;
     protected double totalRecargo;
 
-    public TarjetaCredito(int numero, double cuotas, double totalPagar, String metodoPago, boolean estadoPago) {
+    public TarjetaCredito(long numero, int cuotas, double totalPagar, String metodoPago, String estadoPago) {
         super(totalPagar, metodoPago, estadoPago);
-        this.numero = numero;
+        setNumero(numero);
         this.cuotas = cuotas;
-        setTotalRecargo();
     }
 
 
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
-               
+    public void setNumero(long numero) {
+        if(String.valueOf(numero).length() != 16){
+            throw new TarjetaRechazadaException("La tarjeta no cumple con el número de caracteres");
+        }       
         this.numero = numero;
     }
 
-    public double getCuotas() {
+    public int getCuotas() {
         return cuotas;
     }
 
-    public void setCuotas(double cuotas) {
+    public void setCuotas(int cuotas) {
         this.cuotas = cuotas;
     }
 
@@ -39,8 +42,9 @@ public class TarjetaCredito extends MetodoPago {
     }
 
     public void setTotalRecargo() {
-        
-        totalRecargo = totalPagar * Math.pow((1 + 0.05), cuotas);
+        System.out.println(this.totalPagar);
+        System.out.println(this.cuotas);
+        totalRecargo = this.totalPagar * Math.pow((1 + 0.05), this.cuotas);
         
         this.totalRecargo = totalRecargo;
     }

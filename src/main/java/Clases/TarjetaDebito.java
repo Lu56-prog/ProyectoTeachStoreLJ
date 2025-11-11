@@ -1,22 +1,27 @@
 
 package Clases;
 
+import MeException.TarjetaRechazadaException;
+
 
 public class TarjetaDebito extends MetodoPago {
-    protected int numero;
+    protected long numero;
 
-    public TarjetaDebito(int numero, double totalPagar, String metodoPago, boolean estadoPago) {
+    public TarjetaDebito(long numero, double totalPagar, String metodoPago, String estadoPago) {
         super(totalPagar, metodoPago, estadoPago);
-        this.numero = numero;
+        setNumero(numero);
     }
 
 
 
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(long numero) {
+        if(String.valueOf(numero).length() != 16){
+            throw new TarjetaRechazadaException("La tarjeta no cumple con el número de caracteres");
+        }  
         this.numero = numero;
     }
     

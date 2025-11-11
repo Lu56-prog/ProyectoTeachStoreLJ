@@ -7,10 +7,8 @@ public class Efectivo extends MetodoPago {
     protected double totalRecibido;
     protected double totalDevuelto;
 
-    public Efectivo(double totalRecibido, double totalDevuelto, double totalPagar, String metodoPago, boolean estadoPago) {
+    public Efectivo(double totalPagar, String metodoPago, String estadoPago) {
         super(totalPagar, metodoPago, estadoPago);
-        this.totalRecibido = totalRecibido;
-        this.totalDevuelto = totalDevuelto;
     }
 
 
@@ -21,7 +19,7 @@ public class Efectivo extends MetodoPago {
     public void setTotalRecibido(double totalRecibido) {
         
         if (totalRecibido < totalPagar){
-            throw new PagoEfectivoRechazadoException ("pago rechazado, Efectivo menor a total a pagar");
+            throw new PagoEfectivoRechazadoException ("Pago rechazado, Efectivo menor a total a pagar");
         }
         this.totalRecibido = totalRecibido;
     }

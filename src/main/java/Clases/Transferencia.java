@@ -1,32 +1,27 @@
 
 package Clases;
+import MeException.*;
 
 public class Transferencia extends MetodoPago {
-    protected int numeroReferencia;
-    protected  boolean confirmacion;
+    protected long numeroReferencia;
 
-    public Transferencia(int numeroReferencia, boolean confirmacion, double totalPagar, String metodoPago, boolean estadoPago) {
+    public Transferencia(long numeroReferencia, double totalPagar, String metodoPago, String estadoPago) {
         super(totalPagar, metodoPago, estadoPago);
-        this.numeroReferencia = numeroReferencia;
-        this.confirmacion = confirmacion;
+        setNumeroReferencia(numeroReferencia);
     }
 
     
-    public int getNumeroReferencia() {
+    public long getNumeroReferencia() {
         return numeroReferencia;
     }
 
-    public void setNumeroReferencia(int numeroReferencia) {
+    public void setNumeroReferencia(long numeroReferencia) {
+        if(String.valueOf(numeroReferencia).length() != 12){
+            throw new TransferenciaRechazadaException("La transferencia no cumple con el número de caracteres");
+        }  
         this.numeroReferencia = numeroReferencia;
     }
 
-    public boolean isConfirmacion() {
-        return confirmacion;
-    }
 
-    public void setConfirmacion(boolean confirmacion) {
-        this.confirmacion = confirmacion;
-    }
-    
     
 }

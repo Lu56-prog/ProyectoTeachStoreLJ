@@ -2,6 +2,7 @@
 package Clases;
 
 import MeException.*;
+import javax.swing.JOptionPane;
 
 public class ProductoFisico  extends Producto{
     private  static int contador = 1;
@@ -47,7 +48,7 @@ public class ProductoFisico  extends Producto{
         return stock;
     }
 
-    private void setStock(int stock) {
+    public void setStock(int stock) {
         if(stock < 0){
             throw new NumeroFueraDeLimitesException("El Stock no puede ser menor a 0");
         }
@@ -101,9 +102,15 @@ public class ProductoFisico  extends Producto{
         setUbicacion(ubicacion);
         setDescuento(descuento);
     }
+
     
-    public void modificarStock(int stock){
-        setStock(stock);
+    public double getTotalProducto(int cantidad){
+        //Primero multiplicamos por cantidad
+        double precio = this.precio * cantidad;
+        //Al precio se le saca el iva y se realiza el descuento
+        double descuento =  (precio/1.19) * ((double)this.descuento/100);
+        double nuevoTotal =  precio - descuento;
+        return nuevoTotal;
     }
     
     @Override

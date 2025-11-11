@@ -2,6 +2,7 @@
 package Clases;
 
 import GUI.ProcesoCompra.RegistroCajeroFrame;
+import java.time.*;
 import java.util.*;
 
 public class OrdenCompra {
@@ -9,7 +10,7 @@ public class OrdenCompra {
     private Empleado cajero;
     private Cliente cliente;
     private  HashMap<ProductoFisico, Integer> dicProductosFisicos;
-    private  ArrayList<ServicioDigital> listaProductosDigitales;
+    private  HashMap<ServicioDigital, LocalDateTime> dicServiciosDigitales;
     private  double subtotal;
     private  double descuentoPorLotes;
     private  double descuentoPorFidelidad;
@@ -23,7 +24,7 @@ public class OrdenCompra {
     public OrdenCompra() {
         this.estado = "GENERANDO";
         dicProductosFisicos = new HashMap<>();
-        listaProductosDigitales =  new ArrayList<>();
+        dicServiciosDigitales =  new HashMap<>();
     }
 
     public HashMap<ProductoFisico, Integer> getDicProductosFisicos() {
@@ -34,12 +35,12 @@ public class OrdenCompra {
         this.dicProductosFisicos = dicProductosFisicos;
     }
 
-    public ArrayList<ServicioDigital> getListaProductosDigitales() {
-        return listaProductosDigitales;
+    public HashMap<ServicioDigital, LocalDateTime> getDicServiciosDigitales() {
+        return this.dicServiciosDigitales;
     }
 
-    public void setListaProductosDigitales(ArrayList<ServicioDigital> listaProductosDigitales) {
-        this.listaProductosDigitales = listaProductosDigitales;
+     public void setDicServiciosDigitales(HashMap<ServicioDigital, LocalDateTime> dicServiciosDigitales) {
+        this.dicServiciosDigitales = dicServiciosDigitales;
     }
 
     public double getSubtotal() {
@@ -48,11 +49,18 @@ public class OrdenCompra {
 
     public void setSubtotal() {
         double subtotal = 0;
+        //Se debe sumar productos fisicos
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
             int cantidad = par.getValue();
             double precioSinIva = precio / 1.19;
             subtotal = subtotal + ((precioSinIva) * cantidad);
+        }
+        //Y servicios digitales
+        for(Map.Entry<ServicioDigital, LocalDateTime> par : this.dicServiciosDigitales.entrySet()){
+            ServicioDigital servicio = par.getKey();
+            double precio = servicio.getPrecio();
+            subtotal = subtotal + (precio / 1.19);
         }
         this.subtotal = subtotal;
     }
@@ -63,6 +71,7 @@ public class OrdenCompra {
 
     public void setDescuentoPorLotes() {
         double descuentoPorLotes = 0;
+        //Solo el producto fisico es validado para descuento
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
             double precioSinIva = precio/1.19; 
@@ -114,12 +123,20 @@ public class OrdenCompra {
 
     public void setIva() {
         double iva = 0;
+        //Se saca el iva a cada producto fisico
         for(Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()){
             double precio = par.getKey().getPrecio();
             int cantidad = par.getValue();
             double impuestoU = (precio/1.19)*0.19;
             double impuestoTotal = impuestoU * cantidad;
             iva = iva + impuestoTotal;
+        }
+        //Y a cada servicio digital
+        for(Map.Entry<ServicioDigital, LocalDateTime> par : this.dicServiciosDigitales.entrySet()){
+            ServicioDigital servicio = par.getKey();
+            double precio = servicio.getPrecio();
+            double impuesto = (precio/1.19) * 0.19;
+            iva = iva + impuesto;
         }
         this.iva = iva;
     }
