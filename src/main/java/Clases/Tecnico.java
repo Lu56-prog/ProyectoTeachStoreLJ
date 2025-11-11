@@ -5,10 +5,11 @@ import java.time.LocalDate;
 
 public class Tecnico extends Empleado{
     private int serviciosDelDia;
-    private boolean disponibilidad;
+    private String disponibilidad;
 
     public Tecnico(String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, String jornadaLaboral) {
         super(nombre, cedula, telefono, correo, cargo, profesion, salario, jornadaLaboral);
+        setDisponibilidad(disponibilidad);
     }
 
     public int getServiciosDelDia() {
@@ -19,12 +20,12 @@ public class Tecnico extends Empleado{
         this.serviciosDelDia = serviciosDelDia;
     }
 
-    public boolean isDisponibilidad() {
+    public String getDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = "Disponible";
     }
     
 

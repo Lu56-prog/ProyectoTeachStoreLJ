@@ -9,6 +9,7 @@ import Clases.Frames;
 import Clases.*;
 import com.mycompany.teachstorelj.*;
 import java.text.DecimalFormat;
+import java.time.Duration;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class GenerarTicketFrame extends javax.swing.JFrame {
     DecimalFormat fm = new DecimalFormat("#, ###");
     DefaultTableModel modeloProductoFisico  = new DefaultTableModel();
+    DefaultTableModel modeloSDigital  = new DefaultTableModel();
     DefaultTableModel modeloProductoVenta  = new DefaultTableModel();
 
     Frames recargarPagina = new Frames();
@@ -40,22 +42,15 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
             txtCliente.setText(cliente.toString());
         }
         
-        //Agregar encabezados a la tabla
+        //Agregar encabezados a la tabla de productos fisicos
         modeloProductoVenta.setRowCount(0);
-        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total Sin Descuento", "Total"};
+        String encabezado [] = {"Producto", "Precio U/N", "Descuento %", "Cantidad", "Total"};
         modeloProductoVenta.setColumnIdentifiers(encabezado);
+
         
-        //Ajustar espacios de columnas
-        tablaProductoVenta.getColumn("Producto").setPreferredWidth(15);
-        tablaProductoVenta.getColumn("Precio U/N").setPreferredWidth(90);
-        tablaProductoVenta.getColumn("Descuento %").setPreferredWidth(90);
-        tablaProductoVenta.getColumn("Cantidad").setPreferredWidth(90);
-        tablaProductoVenta.getColumn("Total Sin Descuento").setPreferredWidth(90);
-        tablaProductoVenta.getColumn("Total").setPreferredWidth(90);
-        
-        
-        //Para poder agrear los productos a la lista:
+        //Para poder agrear los productos y servicios digitales a la lista:
         actualizarTablaProductosFisicos();
+        actualizarTablaServicioDigital();
     }
 
     /**
@@ -96,13 +91,17 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         btnEditarCantidadVenta = new javax.swing.JButton();
         txtCantidadProductoVenta = new javax.swing.JTextField();
         panelEscogerProductos = new javax.swing.JPanel();
-        comboProducto = new javax.swing.JComboBox<>();
+        comboEleccion = new javax.swing.JComboBox<>();
         panelProductoFisico = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
+        btnAgregarProductoFisico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductoFisico = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         txtCantidadProducto = new javax.swing.JTextField();
+        panelServicioDigital = new javax.swing.JPanel();
+        btnAgregarServicioDigital = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaServicioDigital = new javax.swing.JTable();
         btnInicio1 = new javax.swing.JButton();
         btnInicio2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -222,7 +221,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Precio U/N", "Descuento %", "Cantidad", "Total Sin Descuento", "Total"
+                "Producto/SD", "Precio U/N", "Descuento %", "Cantidad/Tecnico", "Total"
             }
         ));
         jScrollPane4.setViewportView(tablaProductoVenta);
@@ -278,7 +277,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -308,7 +307,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9)
                                             .addComponent(txtDescuentoPorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(0, 190, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -321,7 +320,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,26 +364,26 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         panelEscogerProductos.setBackground(new java.awt.Color(70, 73, 75));
         panelEscogerProductos.setForeground(new java.awt.Color(70, 73, 75));
 
-        comboProducto.setBackground(new java.awt.Color(102, 102, 102));
-        comboProducto.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
-        comboProducto.setForeground(new java.awt.Color(255, 255, 255));
-        comboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto Fisico", "Servicio Digital" }));
-        comboProducto.addActionListener(new java.awt.event.ActionListener() {
+        comboEleccion.setBackground(new java.awt.Color(102, 102, 102));
+        comboEleccion.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        comboEleccion.setForeground(new java.awt.Color(255, 255, 255));
+        comboEleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto Fisico", "Servicio Digital" }));
+        comboEleccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboProductoActionPerformed(evt);
+                comboEleccionActionPerformed(evt);
             }
         });
 
         panelProductoFisico.setBackground(new java.awt.Color(62, 66, 68));
 
-        btnAgregar.setBackground(new java.awt.Color(39, 241, 82));
-        btnAgregar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarProductoFisico.setBackground(new java.awt.Color(39, 241, 82));
+        btnAgregarProductoFisico.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAgregarProductoFisico.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregarProductoFisico.setText("Agregar");
+        btnAgregarProductoFisico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarProductoFisico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar(evt);
+                btnAgregarProductoFisico(evt);
             }
         });
 
@@ -429,9 +428,9 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregarProductoFisico, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
         panelProductoFisicoLayout.setVerticalGroup(
             panelProductoFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,12 +440,58 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                     .addGroup(panelProductoFisicoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelProductoFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarProductoFisico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProductoFisicoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 19, Short.MAX_VALUE))
+        );
+
+        btnAgregarServicioDigital.setBackground(new java.awt.Color(39, 241, 82));
+        btnAgregarServicioDigital.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAgregarServicioDigital.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregarServicioDigital.setText("Agregar");
+        btnAgregarServicioDigital.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarServicioDigital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarServicioDigital(evt);
+            }
+        });
+
+        jScrollPane2.setBackground(new java.awt.Color(70, 73, 75));
+        jScrollPane2.setForeground(new java.awt.Color(70, 73, 75));
+
+        tablaServicioDigital.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Servicio Digital", "Precio", "Tecnico", "Duracion", "Disponible"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaServicioDigital);
+
+        javax.swing.GroupLayout panelServicioDigitalLayout = new javax.swing.GroupLayout(panelServicioDigital);
+        panelServicioDigital.setLayout(panelServicioDigitalLayout);
+        panelServicioDigitalLayout.setHorizontalGroup(
+            panelServicioDigitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelServicioDigitalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarServicioDigital, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+        );
+        panelServicioDigitalLayout.setVerticalGroup(
+            panelServicioDigitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelServicioDigitalLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregarServicioDigital, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelEscogerProductosLayout = new javax.swing.GroupLayout(panelEscogerProductos);
@@ -456,18 +501,28 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
             .addGroup(panelEscogerProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelEscogerProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboEleccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelProductoFisico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(panelEscogerProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelEscogerProductosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelServicioDigital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         panelEscogerProductosLayout.setVerticalGroup(
             panelEscogerProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEscogerProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelProductoFisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(panelEscogerProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEscogerProductosLayout.createSequentialGroup()
+                    .addContainerGap(46, Short.MAX_VALUE)
+                    .addComponent(panelServicioDigital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(69, 69, 69)))
         );
 
         btnInicio1.setBackground(new java.awt.Color(39, 241, 82));
@@ -528,10 +583,6 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -544,12 +595,18 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelEscogerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelEscogerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(72, 72, 72))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,9 +627,9 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                     .addComponent(panelEscogerProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -580,11 +637,13 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1416, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 637, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -629,11 +688,18 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void comboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboProductoActionPerformed
+    private void comboEleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEleccionActionPerformed
+        String eleccion = comboEleccion.getSelectedItem().toString();
+        if(eleccion.equals("Producto Fisico")){
+            panelProductoFisico.setVisible(true);
+            panelServicioDigital.setVisible(false);
+        } else if(eleccion.equals("Servicio Digital")){
+            panelProductoFisico.setVisible(false);
+            panelServicioDigital.setVisible(true);
+        }
+    }//GEN-LAST:event_comboEleccionActionPerformed
 
-    private void btnAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar
+    private void btnAgregarProductoFisico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoFisico
         int seleccion = tablaProductoFisico.getSelectedRow();
         int cantidadProducto = Integer.parseInt(txtCantidadProducto.getText());
         if(seleccion != -1){
@@ -642,7 +708,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
                 if(RegistroCajeroFrame.ticket.getDicProductosFisicos().containsKey(productoFisico)){
                     JOptionPane.showMessageDialog(null, "EL PRODUCTO YA ESTA AGREGADO", "PRODUCTO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    actualizarTablaVenta(productoFisico, cantidadProducto);
+                    actualizarTablaVentaProducto(productoFisico, cantidadProducto);
                     txtCantidadProducto.setText("1");
                             
                     //Agregamos el producto a la OrdenCompra       
@@ -662,7 +728,7 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         } else{
             JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN PRODUCTO", "PRODUCTO NO VALIDO", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnAgregar
+    }//GEN-LAST:event_btnAgregarProductoFisico
 
     private void txtCantidadProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadProductoActionPerformed
         // TODO add your handling code here:
@@ -732,6 +798,27 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private void txtCantidadProductoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadProductoVentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadProductoVentaActionPerformed
+
+    private void btnAgregarServicioDigital(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioDigital
+        int seleccion = tablaServicioDigital.getSelectedRow();
+        if(seleccion != -1){
+            ServicioDigital servicioDigital = (ServicioDigital) tablaProductoFisico.getValueAt(seleccion, 0);
+            if(RegistroCajeroFrame.ticket.getListaProductosDigitales().contains(servicioDigital)){
+                    JOptionPane.showMessageDialog(null, "EL SERVICIO YA ESTA AGREGADO", "SERVICIO YA REGISTRADO", JOptionPane.ERROR_MESSAGE);
+            }else{
+                actualizarTablaVentaServico(servicioDigital);
+                            
+                //Agregamos el servicio a la OrdenCompra       
+                RegistroCajeroFrame.ticket.getListaProductosDigitales().add(servicioDigital);
+                    
+               //Cada que agregamos debemos actualizar al tabla y toda la parte del pago
+               actualizarTablaServicioDigital();
+               actualizarPanel();
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "NO HAZ SELECCIONADO NINGUN SERVICIO", "SERVICIO NO VALIDO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAgregarServicioDigital
     
     private void actualizarTablaProductosFisicos(){
         modeloProductoFisico.setRowCount(0);
@@ -749,7 +836,24 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         }
     }
     
-    private void actualizarTablaVenta(ProductoFisico producto, int cantidad){
+    private void actualizarTablaServicioDigital(){
+        modeloSDigital.setRowCount(0);
+        String encabezado2 [] = {"Servicio Digital", "Precio", "Tecnico Responsable", "Duracion", "Disponible"};
+        modeloSDigital.setColumnIdentifiers(encabezado2);
+        
+        tablaServicioDigital.setModel(modeloSDigital);
+        for(ServicioDigital servicio:listaServiciosDigitales){
+            double precio = servicio.getPrecio();
+            Tecnico tecnico = servicio.getTecnicoResponsable();
+            String duracion = (String.valueOf(servicio.getDuracionEstimada().toMinutes()));
+            String disponible = tecnico.getDisponibilidad();
+            
+            modeloSDigital.addRow(new Object[] {servicio, fm.format(precio), tecnico, duracion, disponible});
+        }
+    }
+         
+    
+    private void actualizarTablaVentaProducto(ProductoFisico producto, int cantidad){
         tablaProductoVenta.setModel(modeloProductoVenta);
         double precio = (producto.getPrecio());
         double precioIva = (producto.getPrecio() / 1.19);
@@ -757,10 +861,13 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         double descuento =  precioIva * ((double)producto.getDescuento()/100);
         double precioDescuento =  precioIva - descuento;
         String descuentoVer = producto.getDescuento() + "%";
-        double totalSinDescuento = precio * cantidad;
         double totalConDescuento = (precioDescuento + iva )* cantidad;
             
-        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad, fm.format(totalSinDescuento),  fm.format(totalConDescuento)});
+        modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuentoVer, cantidad,  fm.format(totalConDescuento)});
+    }
+    
+    private void actualizarTablaVentaServico(ServicioDigital servicio){
+        
     }
     
     private void borrarProducto(int seleccion){
@@ -826,13 +933,14 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
         actualizarTotal();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarProductoFisico;
+    private javax.swing.JButton btnAgregarServicioDigital;
     private javax.swing.JButton btnBorrarProductoVenta;
     private javax.swing.JButton btnEditarCantidadVenta;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnInicio1;
     private javax.swing.JButton btnInicio2;
-    private javax.swing.JComboBox<String> comboProducto;
+    private javax.swing.JComboBox<String> comboEleccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -850,13 +958,16 @@ public class GenerarTicketFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelEscogerProductos;
     private javax.swing.JPanel panelProductoFisico;
+    private javax.swing.JPanel panelServicioDigital;
     private javax.swing.JTable tablaProductoFisico;
     private javax.swing.JTable tablaProductoVenta;
+    private javax.swing.JTable tablaServicioDigital;
     private javax.swing.JTextField txtCajero;
     private javax.swing.JTextField txtCantidadProducto;
     private javax.swing.JTextField txtCantidadProductoVenta;
