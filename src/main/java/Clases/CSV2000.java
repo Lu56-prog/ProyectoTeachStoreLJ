@@ -361,7 +361,7 @@ public class CSV2000  {
                     if(producto.getCantidadVenta() > 0){
                         writeCSV.newLine();
                         double totalVendido = producto.getCantidadVenta() * producto.getPrecio();
-                        String datos = producto.toString() + "," + producto.getCantidadVenta() + fm.format(totalVendido);
+                        String datos = producto.toString() + "," + producto.getCantidadVenta() + "," + fm.format(totalVendido);
                         String datosProducto = datos;
                         writeCSV.write(datosProducto);
 
@@ -375,7 +375,7 @@ public class CSV2000  {
                     if(servicio.getCantidadVenta() > 0){
                         writeCSV.newLine();
                         double totalVendido = servicio.getCantidadVenta() * servicio.getPrecio();
-                        String datos = servicio.toString() + "," + servicio.getCantidadVenta() + fm.format(totalVendido);
+                        String datos = servicio.toString() + "," + servicio.getCantidadVenta() + "," + fm.format(totalVendido);
                         String datosProducto = datos;
                         writeCSV.write(datosProducto);
 
