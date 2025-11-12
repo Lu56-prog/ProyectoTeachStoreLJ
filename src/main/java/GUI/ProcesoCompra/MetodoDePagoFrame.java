@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class MetodoDePagoFrame extends javax.swing.JFrame {
+    public static Factura factura;
 
     Frames recargarPagina = new Frames();
     DefaultTableModel modeloProductoVenta  = new DefaultTableModel();
@@ -22,11 +23,12 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
     Empleado cajero = RegistroCajeroFrame.ticket.getCajero();
     Cliente cliente = RegistroCajeroFrame.ticket.getCliente();
     
-    GenerarTicketFrame OrdenCompra = new GenerarTicketFrame();
+    GenerarTicketFrame ordenCompra = new GenerarTicketFrame();
     
     
     public MetodoDePagoFrame() {
         initComponents();
+        btnFacturar.setVisible(false);
         
         comboMetodosPago.setSelectedItem("Efectivo");
         
@@ -88,6 +90,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         txtValidarTransferencia = new javax.swing.JTextField();
         btnEnviar = new javax.swing.JButton();
+        btnFacturar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -444,6 +447,17 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
             }
         });
 
+        btnFacturar.setBackground(new java.awt.Color(39, 241, 82));
+        btnFacturar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnFacturar.setForeground(new java.awt.Color(0, 0, 0));
+        btnFacturar.setText("Facturar");
+        btnFacturar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturar(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -458,7 +472,10 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(comboMetodosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(panelDidactico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnEnviar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -471,7 +488,9 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelDidactico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -752,7 +771,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "AL VOLVER AL INICIO REINICIAS LA COMPRA", "REINICIANDO COMPRA", JOptionPane.WARNING_MESSAGE);
         //Pasamos a actualizar el stock
         for(Map.Entry<ProductoFisico, Integer> par : RegistroCajeroFrame.ticket.getDicProductosFisicos().entrySet()){
-            OrdenCompra.actualizarStockProducto(par.getKey(), 0, par.getValue());
+            ordenCompra.actualizarStockProducto(par.getKey(), 0, par.getValue());
         }
         //Y actualizar la disponibilidad de los tecnicos
         for(Map.Entry<ServicioDigital, LocalDateTime> par : RegistroCajeroFrame.ticket.getDicServiciosDigitales().entrySet()){
@@ -841,6 +860,11 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
 
     private void btnEnviar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar
         String seleccion = comboMetodosPago.getSelectedItem().toString();
+        String clienteFactura = "No registrado";
+        if(cliente != null){
+            clienteFactura = cliente.toString();
+        } 
+        
         double totalPagar = RegistroCajeroFrame.ticket.getTotal();
         switch (seleccion) {
             case "Efectivo":
@@ -852,6 +876,11 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                     efectivo.setTotalRecibido(efectivoRecibido);
                     efectivo.setTotalPagar(devuelta);
                     totalDevolver.setText(fm.format(devuelta));
+                    
+                    //Por ultimo se genera la factura (final)
+                    factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, efectivo);
+                    //Como todo sale bien con el pago ya puede facturar
+                    btnFacturar.setVisible(true);
                 } catch(PagoEfectivoRechazadoException e){
                     JOptionPane.showMessageDialog(null, e.getMessage(), "COMPRA NO VALIDA", JOptionPane.ERROR_MESSAGE);
                 }
@@ -864,6 +893,11 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    credito.setTotalRecargo();
                    txtRecargo.setText(fm.format(credito.getTotalRecargo()));
                    txtValidarCredito.setText("Tarjeta Aceptada");
+                   
+                   //Por ultimo se genera la factura (final)
+                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, credito);
+                    //Como todo sale bien con el pago ya puede facturar
+                    btnFacturar.setVisible(true);
                 } catch(TarjetaRechazadaException e){
                     JOptionPane.showMessageDialog(null, e.getMessage(), "COMPRA NO VALIDA", JOptionPane.ERROR_MESSAGE);
                     txtValidarCredito.setText("Tarjeta Rechazada");
@@ -878,6 +912,11 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    TarjetaDebito debito = new TarjetaDebito(numeroTarjeta, totalPagar, "Tarjeta Debito", "Pendiente");
                    txtDebitoTotal.setText(fm.format(totalPagar));
                    txtValidarDebito.setText("Tarjeta Aceptada");
+                   
+                   //Por ultimo se genera la factura (final)
+                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, debito);
+                    //Como todo sale bien con el pago ya puede facturar
+                    btnFacturar.setVisible(true);
                 } catch(TarjetaRechazadaException e){
                     JOptionPane.showMessageDialog(null, e.getMessage(), "COMPRA NO VALIDA", JOptionPane.ERROR_MESSAGE);
                     txtValidarDebito.setText("Tarjeta Rechazada");
@@ -891,6 +930,11 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    long numeroTransferencia = Long.parseLong(txtTransferencia.getText());
                    Transferencia transferencia = new Transferencia(numeroTransferencia, totalPagar, "Transferencia", "Pendiente");
                    txtValidarTransferencia.setText("Tarjeta Aceptada");
+                   
+                   //Por ultimo se genera la factura (final)
+                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, transferencia);
+                    //Como todo sale bien con el pago ya puede facturar
+                    btnFacturar.setVisible(true);
                 } catch(TransferenciaRechazadaException e){
                     JOptionPane.showMessageDialog(null, e.getMessage(), "COMPRA NO VALIDA", JOptionPane.ERROR_MESSAGE);
                     txtValidarTransferencia.setText("Transferencia Rechazada");
@@ -904,10 +948,16 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEnviar
 
+    private void btnFacturar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturar
+        dispose();
+        recargarPagina.recargarFactura();
+    }//GEN-LAST:event_btnFacturar
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnFacturar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JComboBox<String> comboCuotas;
     private javax.swing.JComboBox<String> comboMetodosPago;

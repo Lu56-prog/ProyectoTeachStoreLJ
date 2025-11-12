@@ -1,20 +1,23 @@
 
 package Clases;
 import MeException.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente extends Usuario{
     private static int contador = 1;
     protected  String direccion;
     protected  int puntosAcumulados;
     protected  int comprasAcumuladas;
-    protected String historialCompras;
+    private List<Factura> historialCompras;
 
     public Cliente(String nombre, String cedula, String telefono, String correo, String direccion) {
         super(nombre, cedula, telefono, correo);
+        this.historialCompras = new ArrayList<>();
         setId();
         setDireccion(direccion);
-        setPuntosAcumulados(puntosAcumulados);
-        setComprasAcumuladas(comprasAcumuladas);
+        setPuntosAcumulados();
+        setComprasAcumuladas();
     }
 
     public String getDireccion() {
@@ -33,23 +36,27 @@ public class Cliente extends Usuario{
         return puntosAcumulados;
     }
 
-    public void setPuntosAcumulados(int puntosAcumulados) {
-        this.puntosAcumulados = 13;
+    public void setPuntosAcumulados() {
+        int contPuntos = 0;
+        for(Factura compra:this.historialCompras){
+            contPuntos = contPuntos + ((int) compra.getOrdenCompra().getTotal() / 100000);
+        }
+        this.puntosAcumulados = this.puntosAcumulados + contPuntos;
     }
 
     public int getComprasAcumuladas() {
         return comprasAcumuladas;
     }
 
-    public void setComprasAcumuladas(int comprasAcumuladas) {
-        this.comprasAcumuladas = 4;
+    public void setComprasAcumuladas() {
+        this.comprasAcumuladas = this.historialCompras.size();
     }
 
-    public String getHistorialCompras() {
+    public List<Factura> getHistorialCompras() {
         return historialCompras;
     }
 
-    public void setHistorialCompras(String historialCompras) {
+    public void setHistorialCompras(List<Factura> historialCompras) {
         this.historialCompras = historialCompras;
     }
     

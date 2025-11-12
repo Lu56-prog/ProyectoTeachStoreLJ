@@ -1,51 +1,45 @@
 
 package Clases;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.*;
+
+
 
 //Falta heredar de orden de compra
 public class Factura {
+    private static int cont = 1;
     private  String idFactura;
-    private  String codigoLicencia;
-    private  Date fechaRegistro;
-    private  Date horaRegistro;
+    private  LocalDateTime horaRegistro;
+    private String cliente;
     private  String cajeroVenta;
     private OrdenCompra ordenCompra;
     private  MetodoPago metodoPago;
 
-
+    public Factura(String cliente, String cajeroVenta, OrdenCompra ordenCompra, MetodoPago metodoPago) {
+        setIdFactura();
+        setHoraRegistro();
+        this.cliente = cliente;
+        this.cajeroVenta = cajeroVenta;
+        this.ordenCompra = ordenCompra;
+        this.metodoPago = metodoPago;
+    }
 
     public String getIdFactura() {
         return idFactura;
     }
 
-    public void setIdFactura(String idFactura) {
+    public void setIdFactura() {
+        idFactura = "FACTURA - 00" + cont;
+        cont = cont + 1;
         this.idFactura = idFactura;
     }
 
-    public String getCodigoLicencia() {
-        return codigoLicencia;
-    }
-
-    public void setCodigoLicencia(String codigoLicencia) {
-        this.codigoLicencia = codigoLicencia;
-    }
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public Date getHoraRegistro() {
+    public LocalDateTime getHoraRegistro() {
         return horaRegistro;
     }
 
-    public void setHoraRegistro(Date horaRegistro) {
-        this.horaRegistro = horaRegistro;
+    public void setHoraRegistro() {
+        this.horaRegistro = LocalDateTime.now();
     }
 
     public String getCajeroVenta() {
@@ -63,6 +57,26 @@ public class Factura {
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
     }
+    
+    
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public OrdenCompra getOrdenCompra() {
+        return ordenCompra;
+    }
+
+    public void setOrdenCompra(OrdenCompra ordenCompra) {
+        this.ordenCompra = ordenCompra;
+    }
+    
+    
     
     
 }

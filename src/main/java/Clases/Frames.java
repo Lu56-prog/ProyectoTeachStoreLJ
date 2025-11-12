@@ -198,6 +198,13 @@ public class Frames {
         mdpf.setLocationRelativeTo(null);
     }
     
+    public void recargarFactura(){
+        FacturaFrame fm = new FacturaFrame();
+        
+        fm.setVisible(true);
+        fm.setLocationRelativeTo(null);
+    }
+    
     //Como el txt nos devuleve un String tenemos que pasar los datos a números
     //Y eso nos puede lanzar la excepcion NumberFormatException
     public double convertirPrecio(String precioTexto){

@@ -112,7 +112,7 @@ public class OrdenCompra {
             double puntosParaCompra = puntosCliente / 10;
             descuentoPuntos = 100000 * puntosParaCompra;
             int puntosTotal = puntosCliente - (int)(puntosParaCompra * 10);
-            this.cliente.setPuntosAcumulados(puntosTotal);
+            this.cliente.setPuntosAcumulados();
         } 
         this.descuentoPuntos = descuentoPuntos;
     }
