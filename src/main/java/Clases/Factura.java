@@ -9,17 +9,11 @@ import java.time.*;
 public class Factura {
     private static int cont = 1;
     private  String idFactura;
-    private  LocalDateTime horaRegistro;
-    private String cliente;
-    private  String cajeroVenta;
     private OrdenCompra ordenCompra;
     private  MetodoPago metodoPago;
 
-    public Factura(String cliente, String cajeroVenta, OrdenCompra ordenCompra, MetodoPago metodoPago) {
+    public Factura(OrdenCompra ordenCompra, MetodoPago metodoPago) {
         setIdFactura();
-        setHoraRegistro();
-        this.cliente = cliente;
-        this.cajeroVenta = cajeroVenta;
         this.ordenCompra = ordenCompra;
         this.metodoPago = metodoPago;
     }
@@ -34,21 +28,6 @@ public class Factura {
         this.idFactura = idFactura;
     }
 
-    public LocalDateTime getHoraRegistro() {
-        return horaRegistro;
-    }
-
-    public void setHoraRegistro() {
-        this.horaRegistro = LocalDateTime.now();
-    }
-
-    public String getCajeroVenta() {
-        return cajeroVenta;
-    }
-
-    public void setCajeroVenta(String cajeroVenta) {
-        this.cajeroVenta = cajeroVenta;
-    }
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
@@ -60,14 +39,6 @@ public class Factura {
     
     
 
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
     public OrdenCompra getOrdenCompra() {
         return ordenCompra;
     }
@@ -76,7 +47,9 @@ public class Factura {
         this.ordenCompra = ordenCompra;
     }
     
-    
+    public String listaCSVFactura(){
+        return this.ordenCompra.listaCSVOrdenCompra() + "," + this.metodoPago.listaCSVMetodoPago() + "," + this.idFactura;
+    }
     
     
 }

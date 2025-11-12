@@ -1,0 +1,7 @@
+NOMBRE,IDENTIFICAION,CONTACTO,CORREO ELECTRONICO,CARGO,PROFESION,SALARIO,JORNADA LABORAL,ID
+Juan Perez,1023456789,3124567890,juanperez@techstore.com,Tecnico,Ingeniero en Telecomunicaciones,2800000.0,Tiempo Completo,EMP-001
+Maria Gomez,1019876543,3109876543,mariagomez@techstore.com,Tecnico,Tecnóloga en Electrónica,2400000.0,Medio Tiempo,EMP-002
+Lucero,1011396530,3004567890,juanperez@gmail.com,Cajero,Administrador,1800000.0,Tiempo Completo,EMP-003,3,2400000.0
+Julian,1011396531,3004567890,juanperez@gmail.com,Cajero,Administrador,1800000.0,Tiempo Completo,EMP-004,2,1600000.0
+Gerturiz,9876543210,3105674321,mariagomez@hotmail.com,Tecnico,Ingeniero Electrónico,2200000.0,Medio Tiempo,EMP-005
+Carlos Lopez,1234567890,3206549871,carloslopez@yahoo.com,Supervisor,Tecnólogo en Sistemas,2500000.0,Tiempo Completo,EMP-006

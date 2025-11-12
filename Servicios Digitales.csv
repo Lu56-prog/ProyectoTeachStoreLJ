@@ -1,0 +1,5 @@
+NOMBRE,PRECIO,CATEGORIA,ID,DURACION,DESCRIPCION,TECNICO RESPONSABLE
+Revision y reparacion de equipos de red,180000.0,Mantenimiento y reparacion,SR-DIGITAL-001,PT3H,Incluye diagnostico completo de routers,EMP-007 -> 0
+Instalacion de sistema operativo y configuracion basica,150000.0,Software y sistemas,SR-DIGITAL-002,PT1H30M,Instalación de Windows o Linux con optimizacion inicial del sistema.,EMP-008 -> 0
+Configuracion de red domestica o empresarial,220000.0,Redes y conectividad,SR-DIGITAL-003,PT30M,Montaje,EMP-009 -> 0
+Reparacion,20000.0,Mantemiento y reparación,SR-DIGITAL-004,PT30M,a,EMP-0010 -> 0

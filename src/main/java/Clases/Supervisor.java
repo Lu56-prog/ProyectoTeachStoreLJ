@@ -4,19 +4,10 @@ package Clases;
 import java.time.LocalDate;
 
 public class Supervisor extends Empleado{
-    protected int descuentoAutorizado;
     protected  int ventaMayoresAutorizadas;
 
     public Supervisor( String nombre, String cedula, String telefono, String correo, String cargo, String profesion, double salario, String jornadaLaboral) {
         super(nombre, cedula, telefono, correo, cargo, profesion, salario, jornadaLaboral);
-    }
-
-    public int getDescuentoAutorizado() {
-        return descuentoAutorizado;
-    }
-
-    public void setDescuentoAutorizado(int descuentoAutorizado) {
-        this.descuentoAutorizado = descuentoAutorizado;
     }
 
     public int getVentaMayoresAutorizadas() {
@@ -24,7 +15,7 @@ public class Supervisor extends Empleado{
     }
 
     public void setVentaMayoresAutorizadas(int ventaMayoresAutorizadas) {
-        this.ventaMayoresAutorizadas = ventaMayoresAutorizadas;
+        this.ventaMayoresAutorizadas = this.ventaMayoresAutorizadas + ventaMayoresAutorizadas;
     }
     
 }

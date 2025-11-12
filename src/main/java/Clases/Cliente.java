@@ -16,8 +16,8 @@ public class Cliente extends Usuario{
         this.historialCompras = new ArrayList<>();
         setId();
         setDireccion(direccion);
-        setPuntosAcumulados();
-        setComprasAcumuladas();
+        setPuntosAcumulados(0);
+        setComprasAcumuladas(0);
     }
 
     public String getDireccion() {
@@ -36,20 +36,23 @@ public class Cliente extends Usuario{
         return puntosAcumulados;
     }
 
-    public void setPuntosAcumulados() {
+    public void setPuntosAcumulados(double totalCompras) {
         int contPuntos = 0;
-        for(Factura compra:this.historialCompras){
-            contPuntos = contPuntos + ((int) compra.getOrdenCompra().getTotal() / 100000);
-        }
+        contPuntos = contPuntos + ((int) totalCompras / 100000);
         this.puntosAcumulados = this.puntosAcumulados + contPuntos;
+    }
+    
+    
+    public void setPuntosAcumulados2(int totalCompras) {
+        this.puntosAcumulados = totalCompras;
     }
 
     public int getComprasAcumuladas() {
         return comprasAcumuladas;
     }
 
-    public void setComprasAcumuladas() {
-        this.comprasAcumuladas = this.historialCompras.size();
+    public void setComprasAcumuladas(int comprasAcumuladas) {
+        this.comprasAcumuladas = this.comprasAcumuladas + comprasAcumuladas;
     }
 
     public List<Factura> getHistorialCompras() {
@@ -79,7 +82,7 @@ public class Cliente extends Usuario{
     
     public String listaCSV (){
         return this.nombre + "," + this.cedula + "," + this.telefono +
-                "," + this.correo + "," + this.direccion + "," + this.id;
+                "," + this.correo + "," + this.direccion + "," + this.id + "," + this.puntosAcumulados + "," + comprasAcumuladas;
     }
     
     

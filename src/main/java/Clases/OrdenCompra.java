@@ -112,7 +112,7 @@ public class OrdenCompra {
             double puntosParaCompra = puntosCliente / 10;
             descuentoPuntos = 100000 * puntosParaCompra;
             int puntosTotal = puntosCliente - (int)(puntosParaCompra * 10);
-            this.cliente.setPuntosAcumulados();
+            this.cliente.setPuntosAcumulados2(puntosTotal);
         } 
         this.descuentoPuntos = descuentoPuntos;
     }
@@ -174,6 +174,31 @@ public class OrdenCompra {
         this.descuentoTotal = descuentoPorFidelidad + descuentoPuntos + descuentoPorLotes;
     }
     
+    public String convertirDicProductoString() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<ProductoFisico, Integer> par : this.dicProductosFisicos.entrySet()) {
+            sb.append(par.getKey().toString());
+            sb.append("=");
+            sb.append(par.getValue());
+            sb.append(" | ");
+        }
+        return sb.toString();
+    }
     
+    public String convertirDicSDigitalString() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<ServicioDigital, LocalDateTime> par : this.dicServiciosDigitales.entrySet()) {
+            sb.append(par.getKey().toString());
+            sb.append("=");
+            sb.append(par.getValue());
+            sb.append(" | ");
+        }
+        return sb.toString();
+    }
     
+    public String listaCSVOrdenCompra(){
+        return this.cajero + "," + this.cliente + "," + convertirDicProductoString() + "," + convertirDicSDigitalString()
+                + "," + this.subtotal + "," + this.descuentoPorLotes + "," + this.descuentoPorFidelidad + ","
+                + this.descuentoPuntos + "," + "," + this.descuentoTotal + "," + this.iva + "," + this.total;
+    }
 }

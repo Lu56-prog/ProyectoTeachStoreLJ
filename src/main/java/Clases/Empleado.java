@@ -79,8 +79,8 @@ public abstract class Empleado extends Usuario{
     
     public String listaCSV (){
         return this.nombre + "," + this.cedula + "," + this.telefono +
-                "," + this.correo + "," + this.cargo + "," + this.salario + "," + 
-                this.profesion + "," + this.jornadaLaboral + "," + this.id;
+                "," + this.correo + "," + this.cargo + "," + this.profesion + "," + 
+                this.salario + "," + this.jornadaLaboral + "," + this.id;
         
     }
     

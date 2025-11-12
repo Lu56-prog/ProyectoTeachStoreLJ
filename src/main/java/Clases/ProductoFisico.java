@@ -89,7 +89,7 @@ public class ProductoFisico  extends Producto{
     
      public String listaCSV (){
         return this.nombre + "," + this.precio + "," + this.categoria +
-                "," + this.marca + "," + this.stock + "," + this.ubicacion + "," + this.descuento;
+                "," + this.marca + "," + this.stock + "," + this.codigoBarras + "," +   this.ubicacion + "," + this.descuento;
     }
      
      

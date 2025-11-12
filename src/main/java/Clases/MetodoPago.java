@@ -22,7 +22,7 @@ public abstract class MetodoPago {
 
     public void setTotalPagar(double totalPagar) {
         
-        if (totalPagar < 10000){
+        if (totalPagar < 100){
             throw new PagoRechazadoException( "Pago recharzado, monto no permitido" );
         }
         
@@ -47,5 +47,7 @@ public abstract class MetodoPago {
         this.estadoPago = estadoPago;
     }
     
-    
+    public String listaCSVMetodoPago(){
+        return this.metodoPago + "," + this.estadoPago;
+    }
 }

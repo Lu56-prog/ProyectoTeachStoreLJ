@@ -6,6 +6,7 @@ package GUI.ProcesoCompra;
 
 import Clases.*;
 import MeException.*;
+import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -26,7 +27,6 @@ public class FacturaFrame extends javax.swing.JFrame {
     
     Factura factura = MetodoDePagoFrame.factura;
     
-    
     public FacturaFrame() {
         System.out.println(factura);
         initComponents();
@@ -36,14 +36,14 @@ public class FacturaFrame extends javax.swing.JFrame {
         actualizarFactura();
         
         //Registramos el cajero encargado
-        txtCajero.setText(cajero.toString());
+        txtCajero.setText(factura.getOrdenCompra().getCajero().toString());
         
         if(cliente == null){
             //Si no se registro cliente, aparecera como "No registrado"
             txtCliente.setText("No registrado");
         } else{
             //Si se a registrado cliente, lo registramos
-            txtCliente.setText(cliente.toString());
+            txtCliente.setText(factura.getOrdenCompra().getCliente().toString());
         }
         
         txtMetodoPago.setText(factura.getMetodoPago().getMetodoPago());
@@ -404,8 +404,8 @@ public class FacturaFrame extends javax.swing.JFrame {
         //Antes de irnos agregamos la factura al cliente y cajero correspondiente
         if (cliente != null){
             cliente.getHistorialCompras().add(factura);
-            cliente.setComprasAcumuladas();
-            cliente.setPuntosAcumulados();
+            cliente.setComprasAcumuladas(1);
+            cliente.setPuntosAcumulados(RegistroCajeroFrame.ticket.getTotal());
             
             System.out.println("DATOS CLIENTE");
             System.out.println(cliente.getPuntosAcumulados());
@@ -413,8 +413,8 @@ public class FacturaFrame extends javax.swing.JFrame {
             System.out.println(cliente.getHistorialCompras());
         }
         cajero.getHistorialVentas().add(factura);
-        cajero.setVentaDelDia();
-        cajero.setTotalVendidoDia();
+        cajero.setVentaDelDia(1);
+        cajero.setTotalVendidoDia(RegistroCajeroFrame.ticket.getTotal());
         
         
         System.out.println("DATOS CAJERO");

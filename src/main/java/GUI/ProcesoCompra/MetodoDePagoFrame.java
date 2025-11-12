@@ -878,7 +878,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                     totalDevolver.setText(fm.format(devuelta));
                     
                     //Por ultimo se genera la factura (final)
-                    factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, efectivo);
+                    factura = new Factura(RegistroCajeroFrame.ticket, efectivo);
                     //Como todo sale bien con el pago ya puede facturar
                     btnFacturar.setVisible(true);
                 } catch(PagoEfectivoRechazadoException e){
@@ -895,7 +895,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    txtValidarCredito.setText("Tarjeta Aceptada");
                    
                    //Por ultimo se genera la factura (final)
-                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, credito);
+                   factura = new Factura(RegistroCajeroFrame.ticket, credito);
                     //Como todo sale bien con el pago ya puede facturar
                     btnFacturar.setVisible(true);
                 } catch(TarjetaRechazadaException e){
@@ -914,7 +914,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    txtValidarDebito.setText("Tarjeta Aceptada");
                    
                    //Por ultimo se genera la factura (final)
-                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, debito);
+                   factura = new Factura(RegistroCajeroFrame.ticket, debito);
                     //Como todo sale bien con el pago ya puede facturar
                     btnFacturar.setVisible(true);
                 } catch(TarjetaRechazadaException e){
@@ -932,7 +932,7 @@ public class MetodoDePagoFrame extends javax.swing.JFrame {
                    txtValidarTransferencia.setText("Tarjeta Aceptada");
                    
                    //Por ultimo se genera la factura (final)
-                   factura = new Factura(clienteFactura, cajero.toString(), RegistroCajeroFrame.ticket, transferencia);
+                   factura = new Factura(RegistroCajeroFrame.ticket, transferencia);
                     //Como todo sale bien con el pago ya puede facturar
                     btnFacturar.setVisible(true);
                 } catch(TransferenciaRechazadaException e){
