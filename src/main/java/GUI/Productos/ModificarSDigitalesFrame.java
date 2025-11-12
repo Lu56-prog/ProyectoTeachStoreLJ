@@ -342,6 +342,8 @@ public class ModificarSDigitalesFrame extends javax.swing.JFrame {
         try{
             servicioModificar.modificarServicio(nombre, precio, categoria, duracion, descripcion, tecnicoResponsable);
             servicioModificar.mostrarInfo();
+            JOptionPane.showMessageDialog(null, "SE A MODIFICADO EL SERVICIO", "Servicio Modificado", JOptionPane.INFORMATION_MESSAGE);
+            
             dispose();
             recargarPagina.recargarModificarSDigital();
         } catch (CampoVacioException e) {

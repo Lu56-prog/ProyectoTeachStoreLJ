@@ -7,6 +7,7 @@ import GUI.Productos.*;
 import GUI.Clientes.*;
 import GUI.Empleados.*;
 import GUI.ProcesoCompra.*;
+import GUI.ReportesFrame;
 import static java.awt.Frame.*;
 import javax.swing.JOptionPane;
 
@@ -203,6 +204,13 @@ public class Frames {
         
         fm.setVisible(true);
         fm.setLocationRelativeTo(null);
+    }
+    
+    public void recargarPagReportes(){
+        ReportesFrame rm = new ReportesFrame();
+        
+        rm.setVisible(true);
+        rm.setLocationRelativeTo(null);
     }
     
     //Como el txt nos devuleve un String tenemos que pasar los datos a números

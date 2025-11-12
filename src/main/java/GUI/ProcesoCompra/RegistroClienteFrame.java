@@ -215,7 +215,7 @@ public class RegistroClienteFrame extends javax.swing.JFrame {
         for(Cliente cliente:listaClientes){
             if(cliente.getCedula().equals(documento)){
                 registroValido = true;
-                JOptionPane.showMessageDialog(null, "BIENVENIDO " + cliente.getNombre(), "REGISTRO CLIENTE EXICTOSO", JOptionPane.HEIGHT);
+                JOptionPane.showMessageDialog(null, "BIENVENIDO " + cliente.getNombre(), "REGISTRO CLIENTE EXICTOSO", JOptionPane.INFORMATION_MESSAGE);
                 //Agregamos al ticket el cliente que va a realizar la venta
                 RegistroCajeroFrame.ticket.setCliente(cliente);
                 dispose();

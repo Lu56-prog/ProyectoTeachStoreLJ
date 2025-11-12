@@ -167,7 +167,7 @@ public class RegistroCajeroFrame extends javax.swing.JFrame {
                 registroValido = true;
                 if(empleado.getCedula().equals(documento)){
                     if(empleado.getId().equals(codigo)){
-                       JOptionPane.showMessageDialog(null, "BIENVENIDO " + empleado.getNombre(), "REGISTRO CAJERO EXICTOSO", JOptionPane.HEIGHT);
+                        JOptionPane.showMessageDialog(null, "Bienvenido " + empleado.getNombre(), "REGISTRO CAJERO EXICTOSO", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                         recargarPagina.recargarRegistrarCliente();
                         //Agregamos al ticket el cajero encargado de la venta

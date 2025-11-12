@@ -337,7 +337,7 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
         try{
             productoModificar.modificarProducto(nombreProducto, precioProducto, categoriaProducto, marcaProducto, stockProducto, ubicacionProducto, descuento);
             productoModificar.mostrarInfo();
-            JOptionPane.showMessageDialog(null, "Producto Fisico Modificado", "Creacion Producto", JOptionPane.HEIGHT);
+            JOptionPane.showMessageDialog(null, "Producto Fisico Modificado", "Modificacion Producto", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             recargarPagina.recargarModificarProducto();
         } catch (CampoVacioException ex){

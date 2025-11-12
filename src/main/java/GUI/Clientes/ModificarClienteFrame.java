@@ -292,7 +292,7 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
        try{
            clienteModificar.modificarCliente(nombre, cedula, telefono, email, direccion);
            clienteModificar.mostrarInfo();
-           JOptionPane.showMessageDialog(null, "Cliente Modificado", "Creacion Producto", JOptionPane.HEIGHT);
+           JOptionPane.showMessageDialog(null, "Cliente Modificado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
            dispose();
            recargarPagina.recargarModificarCliente();
        } catch (CampoVacioException ex){

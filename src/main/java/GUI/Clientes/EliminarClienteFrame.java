@@ -329,7 +329,7 @@ public class EliminarClienteFrame extends javax.swing.JFrame {
         
         TeachStoreLJ.usuarios.listaClientes.remove(clienteEliminar);
         
-        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Eliminacion Cliente", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Cliente Eliminado", "Eliminacion Cliente", JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
         recargarPagina.recargarEliminarCliente();

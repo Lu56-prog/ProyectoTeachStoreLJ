@@ -189,7 +189,7 @@ public class EliminarProductoFrame extends javax.swing.JFrame {
         ProductoFisico productoEliminar = (ProductoFisico) comboProductos.getSelectedItem();
         
         TeachStoreLJ.inventario.listaProductos.remove(productoEliminar);
-        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Producto Fisico Eliminado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
         recargarPagina.recargarEliminarProducto();

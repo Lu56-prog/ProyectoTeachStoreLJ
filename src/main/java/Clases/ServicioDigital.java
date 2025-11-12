@@ -66,7 +66,7 @@ public class ServicioDigital extends Producto {
  
     public String listaCSV (){
         return this.nombre + "," + this.precio + "," + this.categoria + "," + this.id +
-                "," + this.duracionEstimada + "," + this.descripcion + "," + this.tecnicoResponsable;
+                "," + this.duracionEstimada + "," + this.descripcion + "," + this.tecnicoResponsable + "," + this.cantidadVenta;
         
     }
 

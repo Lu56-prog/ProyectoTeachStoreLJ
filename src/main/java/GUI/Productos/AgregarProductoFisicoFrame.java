@@ -358,7 +358,7 @@ public class AgregarProductoFisicoFrame extends javax.swing.JFrame {
             producto.mostrarInfo();
             //Agregamos el producto al inventario
             TeachStoreLJ.inventario.listaProductos.add(producto);
-            JOptionPane.showMessageDialog(null, "Producto Fisico Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            JOptionPane.showMessageDialog(null, "Producto Fisico Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
             //Al agregar el producto la pagina se actualiza
             dispose();
             recargarPagina.recargarAgregarProducto();

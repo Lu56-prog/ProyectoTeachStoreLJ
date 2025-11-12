@@ -8,6 +8,7 @@ public abstract class Producto{
     protected  String nombre;
     protected double precio;
     protected  String categoria;
+    protected int cantidadVenta;
 
     public Producto(String nombre, double precio, String categoria) throws CampoVacioException{
         setNombre(nombre);
@@ -47,4 +48,14 @@ public abstract class Producto{
         }
         this.categoria = categoria;
     } 
+
+    public int getCantidadVenta() {
+        return cantidadVenta;
+    }
+
+    public void setCantidadVenta(int cantidadVenta) {
+        this.cantidadVenta = this.cantidadVenta + cantidadVenta;
+    }
+    
+    
 }

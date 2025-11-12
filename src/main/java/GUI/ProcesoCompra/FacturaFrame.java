@@ -406,24 +406,13 @@ public class FacturaFrame extends javax.swing.JFrame {
             cliente.getHistorialCompras().add(factura);
             cliente.setComprasAcumuladas(1);
             cliente.setPuntosAcumulados(RegistroCajeroFrame.ticket.getTotal());
-            
-            System.out.println("DATOS CLIENTE");
-            System.out.println(cliente.getPuntosAcumulados());
-            System.out.println(cliente.getComprasAcumuladas());
-            System.out.println(cliente.getHistorialCompras());
         }
         cajero.getHistorialVentas().add(factura);
         cajero.setVentaDelDia(1);
         cajero.setTotalVendidoDia(RegistroCajeroFrame.ticket.getTotal());
+       
         
-        
-        System.out.println("DATOS CAJERO");
-        System.out.println(cajero.getVentaDelDia());
-        System.out.println(cajero.getTotalVendidoDia());
-        System.out.println(cajero.getHistorialVentas());
-        
-
-        JOptionPane.showMessageDialog(null, "LA COMPRA SE A REGISTRADO EXITOSAMENTE", "COMPRA EXITOSA", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "LA COMPRA SE A REGISTRADO EXITOSAMENTE", "COMPRA EXITOSA", JOptionPane.INFORMATION_MESSAGE);
         dispose();
         recargarPagina.recargarMainFrame();
     }//GEN-LAST:event_btnInicio
@@ -458,6 +447,9 @@ public class FacturaFrame extends javax.swing.JFrame {
             String descuento = producto.getDescuento()+ "%";
             double total = producto.getTotalProducto(cantidad);
             modeloProductoVenta.addRow(new Object[] {producto, fm.format(precio), descuento, cantidad,  fm.format(total)});
+            
+            //Aprovechamos para actualizar la venta de este producto
+            producto.setCantidadVenta(cantidad);
         }
         
         //Agregamos Servicios Digitales
@@ -468,6 +460,9 @@ public class FacturaFrame extends javax.swing.JFrame {
             String duracion = (String.valueOf(servicio.getDuracionEstimada().toMinutes()));
             
             modeloProductoVenta.addRow(new Object[] {servicio, fm.format(precio), tecnico, duracion, fm.format(precio)});
+            
+            //Aprovechamos para actualizar la venta de este servicio
+            servicio.setCantidadVenta(1);
         }
         
         //Ingresamos subtotal - impuesto - descuentos y total

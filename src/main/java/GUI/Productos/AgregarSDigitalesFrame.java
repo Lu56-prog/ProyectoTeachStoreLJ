@@ -287,7 +287,7 @@ public class AgregarSDigitalesFrame extends javax.swing.JFrame {
             servicioDigital.mostrarInfo();
             
             TeachStoreLJ.inventario.listaSDigitales.add(servicioDigital);
-            JOptionPane.showMessageDialog(null, "Servicio Digital Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            JOptionPane.showMessageDialog(null, "Servicio Digital Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
             //Al agregar el producto la pagina se actualiza
             dispose();
             recargarPagina.recargarAgregarSDigital();

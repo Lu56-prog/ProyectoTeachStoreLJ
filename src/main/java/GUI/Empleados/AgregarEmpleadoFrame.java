@@ -311,17 +311,17 @@ public class AgregarEmpleadoFrame extends javax.swing.JFrame {
                 case "Tecnico":
                     Tecnico tecnico = new Tecnico(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
                     TeachStoreLJ.usuarios.listaEmpleados.add(tecnico);
-                    JOptionPane.showMessageDialog(null, "Tecnico Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    JOptionPane.showMessageDialog(null, "Tecnico Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case "Cajero":
                     Cajero cajero = new Cajero(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
                     TeachStoreLJ.usuarios.listaEmpleados.add(cajero);
-                    JOptionPane.showMessageDialog(null, "Cajero Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    JOptionPane.showMessageDialog(null, "Cajero Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
                     break;
                  case "Supervisor":
                     Supervisor supervisor = new Supervisor(nombre, cedula, telefono, email, cargo, profesion, salario, jornada);
                     TeachStoreLJ.usuarios.listaEmpleados.add(supervisor);
-                    JOptionPane.showMessageDialog(null, "Supervisor Creado", "Creacion Producto", JOptionPane.HEIGHT);
+                    JOptionPane.showMessageDialog(null, "Supervisor Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 default:
                     throw new AssertionError();

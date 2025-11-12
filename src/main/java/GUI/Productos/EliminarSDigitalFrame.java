@@ -187,7 +187,7 @@ public class EliminarSDigitalFrame extends javax.swing.JFrame {
         ServicioDigital servicioEliminar = (ServicioDigital) comboSDigitales.getSelectedItem();
 
         TeachStoreLJ.inventario.listaSDigitales.remove(servicioEliminar);
-        JOptionPane.showMessageDialog(null, "Servicio Digital  Eliminado", "Creacion Producto", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Servicio Digital  Eliminado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
 
         dispose();
         recargarPagina.recargarEliminarSDigital();

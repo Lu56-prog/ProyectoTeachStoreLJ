@@ -330,7 +330,7 @@ public class EliminarEmpleadoFrame extends javax.swing.JFrame {
         
         TeachStoreLJ.usuarios.listaEmpleados.remove (empleadoEliminar);
         
-        JOptionPane.showMessageDialog(null, "Empledo Eliminado", "Eliminacion Empleado", JOptionPane.HEIGHT);
+        JOptionPane.showMessageDialog(null, "Empledo Eliminado", "Eliminacion Empleado", JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
         recargarPagina.recargarEliminarEmpleado();

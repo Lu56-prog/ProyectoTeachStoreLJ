@@ -7,10 +7,14 @@ package Clases;
 import com.mycompany.teachstorelj.TeachStoreLJ;
 import java.io.*;
 import java.nio.file.WatchEvent;
+import java.text.DecimalFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,12 +25,16 @@ public class CSV2000  {
     String archSDigital = "Servicios Digitales.csv";
     String archEmpleados = "Empleados.csv";
     String archCliente = "Clientes.csv";
+    LocalDateTime fecha = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String archVentasCajeros = "Reporte Ventas Cajeros " +  fecha.format(formato) + ".csv";
+    String archProductosStockBajo = "Productos Con Stock Bajo";
+    String archProductosVenta = "Venta de Productos";
 
     public CSV2000() {
     }
     
     public void guardarCSVClientes (){
-        
         try {
             FileWriter csv = new FileWriter (archCliente);
             BufferedWriter writeCSV = new BufferedWriter(csv);
@@ -45,7 +53,7 @@ public class CSV2000  {
                     writeCSV.flush();
                 }   
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -75,7 +83,7 @@ public class CSV2000  {
                 TeachStoreLJ.usuarios.listaClientes.add(cliente);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
             
         } catch(NullPointerException e){
         }
@@ -107,7 +115,7 @@ public class CSV2000  {
                     writeCSV.flush();
                 }   
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -148,7 +156,7 @@ public class CSV2000  {
                 
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
             
         } catch(NullPointerException e){
         }
@@ -163,7 +171,7 @@ public class CSV2000  {
             BufferedWriter writeCSV = new BufferedWriter(csv);
             
                 //encabezados
-                String encabezado = "NOMBRE,PRECIO,CATEGORIA,ID,DURACION,DESCRIPCION,TECNICO RESPONSABLE";
+                String encabezado = "NOMBRE,PRECIO,CATEGORIA,ID,DURACION,DESCRIPCION,TECNICO RESPONSABLE, CANTIDAD VENTA";
                 writeCSV.write(encabezado);
                 List<ServicioDigital>serviciosDigitales = TeachStoreLJ.inventario.listaSDigitales;
                 
@@ -176,7 +184,7 @@ public class CSV2000  {
                     writeCSV.flush();
                 }   
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+           JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
             
         }
     } 
@@ -211,11 +219,13 @@ public class CSV2000  {
                 
                 //Ahora con los datos se crea el producto y lo agregamos al inventario
                 ServicioDigital sDigital = new ServicioDigital(nombre, precio, categoria, duracion, descripcion, tecnicoResponsable);
+                int cantidadVenta  = Integer.parseInt(datos[7]);
+                sDigital.setCantidadVenta(cantidadVenta);
                 TeachStoreLJ.inventario.listaSDigitales.add(sDigital);
                 
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
             
         } catch(NullPointerException e){
         }
@@ -230,7 +240,7 @@ public class CSV2000  {
             BufferedWriter writeCSV = new BufferedWriter(csv);
             
                 //encabezados
-                String encabezado = "NOMBRE,PRECIO,CATEGORIA,MARCA, STOCK, CODIGO BARRAS, UBICACION, DESCUENTO";
+                String encabezado = "NOMBRE,PRECIO,CATEGORIA,MARCA, STOCK, CODIGO BARRAS, UBICACION, DESCUENTO, CANTIDAD VENTA";
                 writeCSV.write(encabezado);
                 List<ProductoFisico>productos = TeachStoreLJ.inventario.listaProductos;
                 
@@ -243,8 +253,7 @@ public class CSV2000  {
                     writeCSV.flush();
                 }   
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
         }
     } 
     
@@ -270,12 +279,112 @@ public class CSV2000  {
                 
                 //Ahora con los datos se crea el producto y lo agregamos al inventario
                 ProductoFisico productoFis = new ProductoFisico(nombre, precio, categoria, marca, stock, ubicacion, descuento);
+                int cantidadVenta  = Integer.parseInt(datos[8]);
+                productoFis.setCantidadVenta(cantidadVenta);
                 TeachStoreLJ.inventario.listaProductos.add(productoFis);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
             
         } catch(NullPointerException e){
+        }
+    }
+    
+    //Generar reportes
+    
+    public void generarReporteVentasCajeros(){
+        try {
+            FileWriter csv = new FileWriter (archVentasCajeros);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "CAJERO, CANTIDAD VENTA, TOTAL VENDIDO";
+                writeCSV.write(encabezado);
+                List<Empleado> empleados = TeachStoreLJ.usuarios.listaEmpleados;
+                DecimalFormat fm = new DecimalFormat("#, ###");
+                for (Empleado empleado: empleados) {
+                    if(empleado.getCargo().equals("Cajero")){
+                        writeCSV.newLine();
+                        Cajero cajero = (Cajero) empleado;
+                        String datos = cajero.toString() + "," + cajero.getVentaDelDia() + "," + fm.format(cajero.getTotalVendidoDia());
+                        String datosCajero = datos;
+                        writeCSV.write(datosCajero);
+
+                        //CERRAR EL CSV
+                        writeCSV.flush();
+                    }
+                }   
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void generarReporteProductosStockBajo(){
+        try {
+            FileWriter csv = new FileWriter (archProductosStockBajo);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "PRODUCTO, STOCK";
+                writeCSV.write(encabezado);
+                List<ProductoFisico> productos = TeachStoreLJ.inventario.listaProductos;
+                for (ProductoFisico producto: productos) {
+                    if(producto.getStock() < 5){
+                        writeCSV.newLine();
+                        String datos = producto.toString() + "," + producto.getStock();
+                        String datosProducto = datos;
+                        writeCSV.write(datosProducto);
+
+                        //CERRAR EL CSV
+                        writeCSV.flush();
+                    }
+                }   
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void generarReporteVentaProductos(){
+        try {
+            FileWriter csv = new FileWriter (archProductosVenta);
+            BufferedWriter writeCSV = new BufferedWriter(csv);
+            
+                //encabezados
+                String encabezado = "PRODUCTO, CANTIDAD VENTA, TOTAL VENDIDO";
+                writeCSV.write(encabezado);
+                List<ProductoFisico> productos = TeachStoreLJ.inventario.listaProductos;
+                List<ServicioDigital> servicios = TeachStoreLJ.inventario.listaSDigitales;
+                DecimalFormat fm = new DecimalFormat("#, ###");
+                writeCSV.newLine();
+                writeCSV.write("Productos Fisicos");
+                for (ProductoFisico producto: productos) {
+                    if(producto.getCantidadVenta() > 0){
+                        writeCSV.newLine();
+                        double totalVendido = producto.getCantidadVenta() * producto.getPrecio();
+                        String datos = producto.toString() + "," + producto.getCantidadVenta() + fm.format(totalVendido);
+                        String datosProducto = datos;
+                        writeCSV.write(datosProducto);
+
+                        //CERRAR EL CSV
+                        writeCSV.flush();
+                    }
+                }   
+                
+                writeCSV.write("Servicios Digitales");
+                for (ServicioDigital servicio: servicios) {
+                    if(servicio.getCantidadVenta() > 0){
+                        writeCSV.newLine();
+                        double totalVendido = servicio.getCantidadVenta() * servicio.getPrecio();
+                        String datos = servicio.toString() + "," + servicio.getCantidadVenta() + fm.format(totalVendido);
+                        String datosProducto = datos;
+                        writeCSV.write(datosProducto);
+
+                        //CERRAR EL CSV
+                        writeCSV.flush();
+                    }
+                } 
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "PROBLEMAS CON EL ARCHIVO", "ARCHIVO", JOptionPane.ERROR_MESSAGE);
         }
     }
 

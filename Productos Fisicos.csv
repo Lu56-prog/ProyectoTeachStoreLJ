@@ -1,6 +1,7 @@
-NOMBRE,PRECIO,CATEGORIA,MARCA, STOCK, CODIGO BARRAS, UBICACION, DESCUENTO
-Laptop ASUS,2500000.0,Computadoras,Samsung,2,PR-FISICO-001,Bodega 1,5
-Mouse Logitech,120000.0,Accesorios,Logitech,27,PR-FISICO-002,Bodega 2,10
-Monitor Samsung,800000.0,Pantallas,Samsung,0,PR-FISICO-003,Bodega 1,0
-Teclado Redragon,180000.0,Accesorios,Redragon,23,PR-FISICO-004,Bodega 3,8
-Impresora HP,650000.0,Periféricos,HP,4,PR-FISICO-005,Bodega 2,0
+NOMBRE,PRECIO,CATEGORIA,MARCA, STOCK, CODIGO BARRAS, UBICACION, DESCUENTO, CANTIDAD VENTA
+Laptop ASUS,2500000.0,Computadoras,Samsung,9,PR-FISICO-001,Bodega 1,5,1
+Mouse Logitech,120000.0,Accesorios,Logitech,26,PR-FISICO-002,Bodega 2,10,0
+Monitor Samsung,800000.0,Accesorios,Samsung,15,PR-FISICO-003,Bodega 1,0,1
+Teclado Redragon,180000.0,Accesorios,Redragon,22,PR-FISICO-004,Bodega 3,8,1
+Impresora HP,650000.0,Accesorios,HP,6,PR-FISICO-005,Bodega 2,0,0
+Audifonos,50000.0,Accesorios,Apple,22,PR-FISICO-006,Bodega 3,0,8

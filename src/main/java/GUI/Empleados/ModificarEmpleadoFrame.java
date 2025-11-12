@@ -354,7 +354,7 @@ public class ModificarEmpleadoFrame extends javax.swing.JFrame {
        
        try{
            empleadoModificar.modificarEmpleado(nombre, cedula, telefono, email, cargo, profesion, salario, jornadaa);
-           JOptionPane.showMessageDialog(null, "Empleado Modificado", "Modificar Empleado", JOptionPane.HEIGHT);
+           JOptionPane.showMessageDialog(null, "Empleado Modificado", "Modificar Empleado", JOptionPane.INFORMATION_MESSAGE);
            dispose();
            recargarPagina.recargarModificarEmpleado();
        }  catch (CampoVacioException ex){

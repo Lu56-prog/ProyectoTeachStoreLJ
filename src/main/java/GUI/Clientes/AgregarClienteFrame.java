@@ -245,7 +245,7 @@ public class AgregarClienteFrame extends javax.swing.JFrame {
             Cliente cliente = new Cliente(nombre, cedula, telefono, email, direccion);
             cliente.mostrarInfo();
             TeachStoreLJ.usuarios.listaClientes.add(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente Creado", "Creacion Producto", JOptionPane.HEIGHT);
+            JOptionPane.showMessageDialog(null, "Cliente Creado", "Creacion Producto", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             recargarPagina.recargarAgregarCliente();
         } catch (CampoVacioException ex){
